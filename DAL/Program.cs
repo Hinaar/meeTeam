@@ -1,4 +1,4 @@
-﻿using DAL.Model;
+﻿//using DAL.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,7 +11,7 @@ namespace DAL
     {
         public static void Main(string[] args)
         {
-            DbInitializer.Initialize();
+            //DbInitializer.Initialize();
             Console.ReadKey();
         }
 

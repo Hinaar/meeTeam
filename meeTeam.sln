@@ -5,6 +5,13 @@ VisualStudioVersion = 15.0.27004.2005
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DAL", "DAL\DAL.csproj", "{4E00AFAE-6ED5-41E7-BF44-BFAB63F1CDF7}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataService", "DataService\DataService.csproj", "{F67152AC-FED1-48E9-8335-2D9033AE1582}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestConsolClient", "TestConsolClient\TestConsolClient.csproj", "{3C6F1129-83A7-419F-9F47-9D4E31EC505E}"
+	ProjectSection(ProjectDependencies) = postProject
+		{F67152AC-FED1-48E9-8335-2D9033AE1582} = {F67152AC-FED1-48E9-8335-2D9033AE1582}
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +22,14 @@ Global
 		{4E00AFAE-6ED5-41E7-BF44-BFAB63F1CDF7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4E00AFAE-6ED5-41E7-BF44-BFAB63F1CDF7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4E00AFAE-6ED5-41E7-BF44-BFAB63F1CDF7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F67152AC-FED1-48E9-8335-2D9033AE1582}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F67152AC-FED1-48E9-8335-2D9033AE1582}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F67152AC-FED1-48E9-8335-2D9033AE1582}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F67152AC-FED1-48E9-8335-2D9033AE1582}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3C6F1129-83A7-419F-9F47-9D4E31EC505E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3C6F1129-83A7-419F-9F47-9D4E31EC505E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3C6F1129-83A7-419F-9F47-9D4E31EC505E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3C6F1129-83A7-419F-9F47-9D4E31EC505E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

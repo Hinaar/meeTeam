@@ -5,13 +5,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DAL.Model
+namespace DataService.Model
 {
     public class LocalContext : DbContext
     {
         public LocalContext() : base("name=LocalContext")
         {
-         //   this.Configuration.ProxyCreationEnabled = false;
+            this.Configuration.ProxyCreationEnabled = false;
         }
 
         public DbSet<User> Users{ get; set; }
