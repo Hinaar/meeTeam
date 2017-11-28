@@ -12,6 +12,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestConsolClient", "TestCon
 		{F67152AC-FED1-48E9-8335-2D9033AE1582} = {F67152AC-FED1-48E9-8335-2D9033AE1582}
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Client", "Client\Client.csproj", "{24CD4A1E-055D-4705-B1DA-7A48824BCA99}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -30,6 +32,10 @@ Global
 		{3C6F1129-83A7-419F-9F47-9D4E31EC505E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3C6F1129-83A7-419F-9F47-9D4E31EC505E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3C6F1129-83A7-419F-9F47-9D4E31EC505E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{24CD4A1E-055D-4705-B1DA-7A48824BCA99}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{24CD4A1E-055D-4705-B1DA-7A48824BCA99}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{24CD4A1E-055D-4705-B1DA-7A48824BCA99}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{24CD4A1E-055D-4705-B1DA-7A48824BCA99}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
