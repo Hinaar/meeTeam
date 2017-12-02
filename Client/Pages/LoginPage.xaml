@@ -5,10 +5,44 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:Client"
       mc:Ignorable="d" 
-      d:DesignHeight="300" d:DesignWidth="300"
+      d:DesignHeight="350" d:DesignWidth="525"
       Title="LoginPage">
 
     <Grid>
-        <Button Content="test"/>
+        <Grid.Background>
+            <ImageBrush Stretch="UniformToFill"  ImageSource="/Images/Backgrounds/4.jpg" />
+        </Grid.Background>
+        <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto">
+        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" TextBlock.TextAlignment="Center">
+            <Border Background="{StaticResource ForegroundLightBrush}" 
+                    CornerRadius="10" 
+                    Padding="10 50 10 10" 
+                    Width="300" 
+                    Margin="50 50 50 0" >
+                <StackPanel>
+
+                    <TextBlock Text="Sign In" FontSize="25" FontWeight="Bold" Foreground="{StaticResource ForegroundPurpleBrush}" >
+                        <TextBlock.Effect>
+                            <DropShadowEffect
+                                ShadowDepth="0"
+                                Color="Black"
+                                Opacity="1"
+                                BlurRadius="1" Direction="0">        
+                            </DropShadowEffect>
+                        </TextBlock.Effect>
+                    </TextBlock>
+
+                    <TextBox Margin="0 10 0 0" Padding="2"/>
+                    <TextBox Margin="0 10 0 0" Padding="2"/>
+                        <Button Content="Next" HorizontalAlignment="Center" Margin="5" Padding="3">
+                            
+                        </Button>
+                </StackPanel>
+            </Border>
+
+                <Button Content="Register" HorizontalAlignment="Center" Margin="0 10 0 10"/>
+            </StackPanel>
+        </ScrollViewer>
+
     </Grid>
 </Page>
