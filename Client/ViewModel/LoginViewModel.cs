@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using System.Windows.Controls;
 using System.Windows.Input;
 
 namespace Client
@@ -26,6 +27,9 @@ namespace Client
         private RelayCommand login;
 
         private ICommand loginCommand;
+
+        //LoginCommand = new RelayParameterizedCommand(async (Parameter) => await Login(Parameter));   : anonym async task
+        //TODO: code behind solution
         public ICommand LoginCommand
         {
             get
@@ -34,7 +38,7 @@ namespace Client
                 {
                     loginCommand = new RelayCommand
                         (
-                        x => Login(),
+                        x => Login(x),
                         x => CanLogin()
                         );
                 }
@@ -42,10 +46,11 @@ namespace Client
             }
         }
 
-        private async Task Login()
+        private async Task Login(object param)
         {
+            var pwdBox = param as PasswordBox;
             await Task.Delay(5000);
-            Debug.WriteLine(Email) ;
+            Debug.WriteLine($"{Email} : {pwdBox.Password}");
         }
 
         private bool CanLogin()

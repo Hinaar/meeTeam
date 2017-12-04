@@ -34,8 +34,8 @@
                     </TextBlock>
 
                     <TextBox Text="{Binding Email}" Margin="0 10 0 0" Padding="2"/>
-                    <PasswordBox Margin="0 10 0 0" Padding="2"/>
-                        <Button Command="{Binding LoginCommand}" Content="Next" HorizontalAlignment="Center" Margin="5" Padding="3">
+                    <PasswordBox Name="pwdBox" Margin="0 10 0 0" Padding="2"/>
+                        <Button Command="{Binding LoginCommand}" CommandParameter="{Binding ElementName=pwdBox}" Content="Next" HorizontalAlignment="Center" Margin="5" Padding="3">
                         
                     </Button>
                 </StackPanel>
