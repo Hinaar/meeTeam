@@ -11,5 +11,6 @@ namespace Client
         public ApplicationPage CurrentPage { get; set; } = ApplicationPage.Login;
 
 
+
     }
 }
