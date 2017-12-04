@@ -17,9 +17,9 @@ namespace DataService.Model
             Attends = new List<Attend>();
             Events = new List<Event>();
         }
-
         [DataMember]
         public int UserID { get; set; }
+
 
         [DataMember]
         public string Name { get; set; }
@@ -36,12 +36,12 @@ namespace DataService.Model
         public byte[] Salt { get; set; }
 
         [DataMember]
-        public string Hash { get; set; }
+        public byte[] Hash { get; set; }
 
 
 
         [DataMember]
-        public virtual ICollection<Attend> Attends{ get; set; }
+        public virtual ICollection<Attend> Attends { get; set; }
         [DataMember]
         public virtual ICollection<Event> Events { get; set; }
     }

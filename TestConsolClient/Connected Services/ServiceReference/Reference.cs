@@ -15,6 +15,67 @@ namespace TestConsolClient.ServiceReference {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="CompositeType", Namespace="http://schemas.datacontract.org/2004/07/DataService")]
+    [System.SerializableAttribute()]
+    public partial class CompositeType : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private bool BoolValueField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string StringValueField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public bool BoolValue {
+            get {
+                return this.BoolValueField;
+            }
+            set {
+                if ((this.BoolValueField.Equals(value) != true)) {
+                    this.BoolValueField = value;
+                    this.RaisePropertyChanged("BoolValue");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string StringValue {
+            get {
+                return this.StringValueField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.StringValueField, value) != true)) {
+                    this.StringValueField = value;
+                    this.RaisePropertyChanged("StringValue");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
     [System.Runtime.Serialization.DataContractAttribute(Name="User", Namespace="http://schemas.datacontract.org/2004/07/DataService.Model")]
     [System.SerializableAttribute()]
     public partial class User : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
@@ -654,76 +715,9 @@ namespace TestConsolClient.ServiceReference {
         }
     }
     
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="CompositeType", Namespace="http://schemas.datacontract.org/2004/07/DataService")]
-    [System.SerializableAttribute()]
-    public partial class CompositeType : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
-        
-        [System.NonSerializedAttribute()]
-        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private bool BoolValueField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string StringValueField;
-        
-        [global::System.ComponentModel.BrowsableAttribute(false)]
-        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
-            get {
-                return this.extensionDataField;
-            }
-            set {
-                this.extensionDataField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public bool BoolValue {
-            get {
-                return this.BoolValueField;
-            }
-            set {
-                if ((this.BoolValueField.Equals(value) != true)) {
-                    this.BoolValueField = value;
-                    this.RaisePropertyChanged("BoolValue");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string StringValue {
-            get {
-                return this.StringValueField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.StringValueField, value) != true)) {
-                    this.StringValueField = value;
-                    this.RaisePropertyChanged("StringValue");
-                }
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="ServiceReference.IService")]
     public interface IService {
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/GetUsers", ReplyAction="http://tempuri.org/IService/GetUsersResponse")]
-        TestConsolClient.ServiceReference.User[] GetUsers();
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/GetUsers", ReplyAction="http://tempuri.org/IService/GetUsersResponse")]
-        System.Threading.Tasks.Task<TestConsolClient.ServiceReference.User[]> GetUsersAsync();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/Faszom", ReplyAction="http://tempuri.org/IService/FaszomResponse")]
         int Faszom();
@@ -742,6 +736,180 @@ namespace TestConsolClient.ServiceReference {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/GetDataUsingDataContract", ReplyAction="http://tempuri.org/IService/GetDataUsingDataContractResponse")]
         System.Threading.Tasks.Task<TestConsolClient.ServiceReference.CompositeType> GetDataUsingDataContractAsync(TestConsolClient.ServiceReference.CompositeType composite);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/GetUsers", ReplyAction="http://tempuri.org/IService/GetUsersResponse")]
+        TestConsolClient.ServiceReference.User[] GetUsers();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/GetUsers", ReplyAction="http://tempuri.org/IService/GetUsersResponse")]
+        System.Threading.Tasks.Task<TestConsolClient.ServiceReference.User[]> GetUsersAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/GetUsersOfEvent", ReplyAction="http://tempuri.org/IService/GetUsersOfEventResponse")]
+        TestConsolClient.ServiceReference.User[] GetUsersOfEvent(int eventId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/GetUsersOfEvent", ReplyAction="http://tempuri.org/IService/GetUsersOfEventResponse")]
+        System.Threading.Tasks.Task<TestConsolClient.ServiceReference.User[]> GetUsersOfEventAsync(int eventId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/GetUserById", ReplyAction="http://tempuri.org/IService/GetUserByIdResponse")]
+        TestConsolClient.ServiceReference.User GetUserById(int id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/GetUserById", ReplyAction="http://tempuri.org/IService/GetUserByIdResponse")]
+        System.Threading.Tasks.Task<TestConsolClient.ServiceReference.User> GetUserByIdAsync(int id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/GetUserByPassword", ReplyAction="http://tempuri.org/IService/GetUserByPasswordResponse")]
+        TestConsolClient.ServiceReference.User GetUserByPassword(string email, string psw);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/GetUserByPassword", ReplyAction="http://tempuri.org/IService/GetUserByPasswordResponse")]
+        System.Threading.Tasks.Task<TestConsolClient.ServiceReference.User> GetUserByPasswordAsync(string email, string psw);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/GetEventsOwner", ReplyAction="http://tempuri.org/IService/GetEventsOwnerResponse")]
+        TestConsolClient.ServiceReference.User GetEventsOwner(int eventId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/GetEventsOwner", ReplyAction="http://tempuri.org/IService/GetEventsOwnerResponse")]
+        System.Threading.Tasks.Task<TestConsolClient.ServiceReference.User> GetEventsOwnerAsync(int eventId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/CreateUser", ReplyAction="http://tempuri.org/IService/CreateUserResponse")]
+        void CreateUser(TestConsolClient.ServiceReference.User user);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/CreateUser", ReplyAction="http://tempuri.org/IService/CreateUserResponse")]
+        System.Threading.Tasks.Task CreateUserAsync(TestConsolClient.ServiceReference.User user);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/DeleteUser", ReplyAction="http://tempuri.org/IService/DeleteUserResponse")]
+        void DeleteUser(int id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/DeleteUser", ReplyAction="http://tempuri.org/IService/DeleteUserResponse")]
+        System.Threading.Tasks.Task DeleteUserAsync(int id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/UpdateUser", ReplyAction="http://tempuri.org/IService/UpdateUserResponse")]
+        TestConsolClient.ServiceReference.User UpdateUser(int id, TestConsolClient.ServiceReference.User user);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/UpdateUser", ReplyAction="http://tempuri.org/IService/UpdateUserResponse")]
+        System.Threading.Tasks.Task<TestConsolClient.ServiceReference.User> UpdateUserAsync(int id, TestConsolClient.ServiceReference.User user);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/GetCoordinates", ReplyAction="http://tempuri.org/IService/GetCoordinatesResponse")]
+        TestConsolClient.ServiceReference.Coordinate[] GetCoordinates();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/GetCoordinates", ReplyAction="http://tempuri.org/IService/GetCoordinatesResponse")]
+        System.Threading.Tasks.Task<TestConsolClient.ServiceReference.Coordinate[]> GetCoordinatesAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/GetCoordinateById", ReplyAction="http://tempuri.org/IService/GetCoordinateByIdResponse")]
+        TestConsolClient.ServiceReference.Coordinate GetCoordinateById(int id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/GetCoordinateById", ReplyAction="http://tempuri.org/IService/GetCoordinateByIdResponse")]
+        System.Threading.Tasks.Task<TestConsolClient.ServiceReference.Coordinate> GetCoordinateByIdAsync(int id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/GetCoordinateByName", ReplyAction="http://tempuri.org/IService/GetCoordinateByNameResponse")]
+        TestConsolClient.ServiceReference.Coordinate GetCoordinateByName(string name);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/GetCoordinateByName", ReplyAction="http://tempuri.org/IService/GetCoordinateByNameResponse")]
+        System.Threading.Tasks.Task<TestConsolClient.ServiceReference.Coordinate> GetCoordinateByNameAsync(string name);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/GetEventCoordinate", ReplyAction="http://tempuri.org/IService/GetEventCoordinateResponse")]
+        TestConsolClient.ServiceReference.Coordinate GetEventCoordinate(int eventId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/GetEventCoordinate", ReplyAction="http://tempuri.org/IService/GetEventCoordinateResponse")]
+        System.Threading.Tasks.Task<TestConsolClient.ServiceReference.Coordinate> GetEventCoordinateAsync(int eventId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/CreateCoordinate", ReplyAction="http://tempuri.org/IService/CreateCoordinateResponse")]
+        void CreateCoordinate(TestConsolClient.ServiceReference.Coordinate coordinate);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/CreateCoordinate", ReplyAction="http://tempuri.org/IService/CreateCoordinateResponse")]
+        System.Threading.Tasks.Task CreateCoordinateAsync(TestConsolClient.ServiceReference.Coordinate coordinate);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/DeleteCoordinate", ReplyAction="http://tempuri.org/IService/DeleteCoordinateResponse")]
+        void DeleteCoordinate(int id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/DeleteCoordinate", ReplyAction="http://tempuri.org/IService/DeleteCoordinateResponse")]
+        System.Threading.Tasks.Task DeleteCoordinateAsync(int id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/UpdateCoordinate", ReplyAction="http://tempuri.org/IService/UpdateCoordinateResponse")]
+        TestConsolClient.ServiceReference.Coordinate UpdateCoordinate(int id, TestConsolClient.ServiceReference.Coordinate coordinate);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/UpdateCoordinate", ReplyAction="http://tempuri.org/IService/UpdateCoordinateResponse")]
+        System.Threading.Tasks.Task<TestConsolClient.ServiceReference.Coordinate> UpdateCoordinateAsync(int id, TestConsolClient.ServiceReference.Coordinate coordinate);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/GetPosts", ReplyAction="http://tempuri.org/IService/GetPostsResponse")]
+        TestConsolClient.ServiceReference.Post[] GetPosts();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/GetPosts", ReplyAction="http://tempuri.org/IService/GetPostsResponse")]
+        System.Threading.Tasks.Task<TestConsolClient.ServiceReference.Post[]> GetPostsAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/GetPostByID", ReplyAction="http://tempuri.org/IService/GetPostByIDResponse")]
+        TestConsolClient.ServiceReference.Post GetPostByID(int id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/GetPostByID", ReplyAction="http://tempuri.org/IService/GetPostByIDResponse")]
+        System.Threading.Tasks.Task<TestConsolClient.ServiceReference.Post> GetPostByIDAsync(int id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/GetPostsByEvent", ReplyAction="http://tempuri.org/IService/GetPostsByEventResponse")]
+        TestConsolClient.ServiceReference.Post[] GetPostsByEvent(int eventID);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/GetPostsByEvent", ReplyAction="http://tempuri.org/IService/GetPostsByEventResponse")]
+        System.Threading.Tasks.Task<TestConsolClient.ServiceReference.Post[]> GetPostsByEventAsync(int eventID);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/CreatePost", ReplyAction="http://tempuri.org/IService/CreatePostResponse")]
+        void CreatePost(TestConsolClient.ServiceReference.Post post);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/CreatePost", ReplyAction="http://tempuri.org/IService/CreatePostResponse")]
+        System.Threading.Tasks.Task CreatePostAsync(TestConsolClient.ServiceReference.Post post);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/DeletePost", ReplyAction="http://tempuri.org/IService/DeletePostResponse")]
+        void DeletePost(int id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/DeletePost", ReplyAction="http://tempuri.org/IService/DeletePostResponse")]
+        System.Threading.Tasks.Task DeletePostAsync(int id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/UpdatePost", ReplyAction="http://tempuri.org/IService/UpdatePostResponse")]
+        TestConsolClient.ServiceReference.Post UpdatePost(int id, TestConsolClient.ServiceReference.Post post);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/UpdatePost", ReplyAction="http://tempuri.org/IService/UpdatePostResponse")]
+        System.Threading.Tasks.Task<TestConsolClient.ServiceReference.Post> UpdatePostAsync(int id, TestConsolClient.ServiceReference.Post post);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/GetEvents", ReplyAction="http://tempuri.org/IService/GetEventsResponse")]
+        TestConsolClient.ServiceReference.Event[] GetEvents();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/GetEvents", ReplyAction="http://tempuri.org/IService/GetEventsResponse")]
+        System.Threading.Tasks.Task<TestConsolClient.ServiceReference.Event[]> GetEventsAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/GetEventById", ReplyAction="http://tempuri.org/IService/GetEventByIdResponse")]
+        TestConsolClient.ServiceReference.Event GetEventById(int id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/GetEventById", ReplyAction="http://tempuri.org/IService/GetEventByIdResponse")]
+        System.Threading.Tasks.Task<TestConsolClient.ServiceReference.Event> GetEventByIdAsync(int id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/GetEventsOfUser", ReplyAction="http://tempuri.org/IService/GetEventsOfUserResponse")]
+        TestConsolClient.ServiceReference.Event[] GetEventsOfUser(int userId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/GetEventsOfUser", ReplyAction="http://tempuri.org/IService/GetEventsOfUserResponse")]
+        System.Threading.Tasks.Task<TestConsolClient.ServiceReference.Event[]> GetEventsOfUserAsync(int userId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/CreateEvent", ReplyAction="http://tempuri.org/IService/CreateEventResponse")]
+        void CreateEvent(TestConsolClient.ServiceReference.Event even);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/CreateEvent", ReplyAction="http://tempuri.org/IService/CreateEventResponse")]
+        System.Threading.Tasks.Task CreateEventAsync(TestConsolClient.ServiceReference.Event even);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/DeleteEvent", ReplyAction="http://tempuri.org/IService/DeleteEventResponse")]
+        void DeleteEvent(int eventId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/DeleteEvent", ReplyAction="http://tempuri.org/IService/DeleteEventResponse")]
+        System.Threading.Tasks.Task DeleteEventAsync(int eventId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/UpdateEvent", ReplyAction="http://tempuri.org/IService/UpdateEventResponse")]
+        TestConsolClient.ServiceReference.Event UpdateEvent(int eventId, TestConsolClient.ServiceReference.Event even);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/UpdateEvent", ReplyAction="http://tempuri.org/IService/UpdateEventResponse")]
+        System.Threading.Tasks.Task<TestConsolClient.ServiceReference.Event> UpdateEventAsync(int eventId, TestConsolClient.ServiceReference.Event even);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/IsAttend", ReplyAction="http://tempuri.org/IService/IsAttendResponse")]
+        bool IsAttend(int userId, int eventId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/IsAttend", ReplyAction="http://tempuri.org/IService/IsAttendResponse")]
+        System.Threading.Tasks.Task<bool> IsAttendAsync(int userId, int eventId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/DeleteAttend", ReplyAction="http://tempuri.org/IService/DeleteAttendResponse")]
+        void DeleteAttend(int userId, int eventId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/DeleteAttend", ReplyAction="http://tempuri.org/IService/DeleteAttendResponse")]
+        System.Threading.Tasks.Task DeleteAttendAsync(int userId, int eventId);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -771,14 +939,6 @@ namespace TestConsolClient.ServiceReference {
                 base(binding, remoteAddress) {
         }
         
-        public TestConsolClient.ServiceReference.User[] GetUsers() {
-            return base.Channel.GetUsers();
-        }
-        
-        public System.Threading.Tasks.Task<TestConsolClient.ServiceReference.User[]> GetUsersAsync() {
-            return base.Channel.GetUsersAsync();
-        }
-        
         public int Faszom() {
             return base.Channel.Faszom();
         }
@@ -801,6 +961,238 @@ namespace TestConsolClient.ServiceReference {
         
         public System.Threading.Tasks.Task<TestConsolClient.ServiceReference.CompositeType> GetDataUsingDataContractAsync(TestConsolClient.ServiceReference.CompositeType composite) {
             return base.Channel.GetDataUsingDataContractAsync(composite);
+        }
+        
+        public TestConsolClient.ServiceReference.User[] GetUsers() {
+            return base.Channel.GetUsers();
+        }
+        
+        public System.Threading.Tasks.Task<TestConsolClient.ServiceReference.User[]> GetUsersAsync() {
+            return base.Channel.GetUsersAsync();
+        }
+        
+        public TestConsolClient.ServiceReference.User[] GetUsersOfEvent(int eventId) {
+            return base.Channel.GetUsersOfEvent(eventId);
+        }
+        
+        public System.Threading.Tasks.Task<TestConsolClient.ServiceReference.User[]> GetUsersOfEventAsync(int eventId) {
+            return base.Channel.GetUsersOfEventAsync(eventId);
+        }
+        
+        public TestConsolClient.ServiceReference.User GetUserById(int id) {
+            return base.Channel.GetUserById(id);
+        }
+        
+        public System.Threading.Tasks.Task<TestConsolClient.ServiceReference.User> GetUserByIdAsync(int id) {
+            return base.Channel.GetUserByIdAsync(id);
+        }
+        
+        public TestConsolClient.ServiceReference.User GetUserByPassword(string email, string psw) {
+            return base.Channel.GetUserByPassword(email, psw);
+        }
+        
+        public System.Threading.Tasks.Task<TestConsolClient.ServiceReference.User> GetUserByPasswordAsync(string email, string psw) {
+            return base.Channel.GetUserByPasswordAsync(email, psw);
+        }
+        
+        public TestConsolClient.ServiceReference.User GetEventsOwner(int eventId) {
+            return base.Channel.GetEventsOwner(eventId);
+        }
+        
+        public System.Threading.Tasks.Task<TestConsolClient.ServiceReference.User> GetEventsOwnerAsync(int eventId) {
+            return base.Channel.GetEventsOwnerAsync(eventId);
+        }
+        
+        public void CreateUser(TestConsolClient.ServiceReference.User user) {
+            base.Channel.CreateUser(user);
+        }
+        
+        public System.Threading.Tasks.Task CreateUserAsync(TestConsolClient.ServiceReference.User user) {
+            return base.Channel.CreateUserAsync(user);
+        }
+        
+        public void DeleteUser(int id) {
+            base.Channel.DeleteUser(id);
+        }
+        
+        public System.Threading.Tasks.Task DeleteUserAsync(int id) {
+            return base.Channel.DeleteUserAsync(id);
+        }
+        
+        public TestConsolClient.ServiceReference.User UpdateUser(int id, TestConsolClient.ServiceReference.User user) {
+            return base.Channel.UpdateUser(id, user);
+        }
+        
+        public System.Threading.Tasks.Task<TestConsolClient.ServiceReference.User> UpdateUserAsync(int id, TestConsolClient.ServiceReference.User user) {
+            return base.Channel.UpdateUserAsync(id, user);
+        }
+        
+        public TestConsolClient.ServiceReference.Coordinate[] GetCoordinates() {
+            return base.Channel.GetCoordinates();
+        }
+        
+        public System.Threading.Tasks.Task<TestConsolClient.ServiceReference.Coordinate[]> GetCoordinatesAsync() {
+            return base.Channel.GetCoordinatesAsync();
+        }
+        
+        public TestConsolClient.ServiceReference.Coordinate GetCoordinateById(int id) {
+            return base.Channel.GetCoordinateById(id);
+        }
+        
+        public System.Threading.Tasks.Task<TestConsolClient.ServiceReference.Coordinate> GetCoordinateByIdAsync(int id) {
+            return base.Channel.GetCoordinateByIdAsync(id);
+        }
+        
+        public TestConsolClient.ServiceReference.Coordinate GetCoordinateByName(string name) {
+            return base.Channel.GetCoordinateByName(name);
+        }
+        
+        public System.Threading.Tasks.Task<TestConsolClient.ServiceReference.Coordinate> GetCoordinateByNameAsync(string name) {
+            return base.Channel.GetCoordinateByNameAsync(name);
+        }
+        
+        public TestConsolClient.ServiceReference.Coordinate GetEventCoordinate(int eventId) {
+            return base.Channel.GetEventCoordinate(eventId);
+        }
+        
+        public System.Threading.Tasks.Task<TestConsolClient.ServiceReference.Coordinate> GetEventCoordinateAsync(int eventId) {
+            return base.Channel.GetEventCoordinateAsync(eventId);
+        }
+        
+        public void CreateCoordinate(TestConsolClient.ServiceReference.Coordinate coordinate) {
+            base.Channel.CreateCoordinate(coordinate);
+        }
+        
+        public System.Threading.Tasks.Task CreateCoordinateAsync(TestConsolClient.ServiceReference.Coordinate coordinate) {
+            return base.Channel.CreateCoordinateAsync(coordinate);
+        }
+        
+        public void DeleteCoordinate(int id) {
+            base.Channel.DeleteCoordinate(id);
+        }
+        
+        public System.Threading.Tasks.Task DeleteCoordinateAsync(int id) {
+            return base.Channel.DeleteCoordinateAsync(id);
+        }
+        
+        public TestConsolClient.ServiceReference.Coordinate UpdateCoordinate(int id, TestConsolClient.ServiceReference.Coordinate coordinate) {
+            return base.Channel.UpdateCoordinate(id, coordinate);
+        }
+        
+        public System.Threading.Tasks.Task<TestConsolClient.ServiceReference.Coordinate> UpdateCoordinateAsync(int id, TestConsolClient.ServiceReference.Coordinate coordinate) {
+            return base.Channel.UpdateCoordinateAsync(id, coordinate);
+        }
+        
+        public TestConsolClient.ServiceReference.Post[] GetPosts() {
+            return base.Channel.GetPosts();
+        }
+        
+        public System.Threading.Tasks.Task<TestConsolClient.ServiceReference.Post[]> GetPostsAsync() {
+            return base.Channel.GetPostsAsync();
+        }
+        
+        public TestConsolClient.ServiceReference.Post GetPostByID(int id) {
+            return base.Channel.GetPostByID(id);
+        }
+        
+        public System.Threading.Tasks.Task<TestConsolClient.ServiceReference.Post> GetPostByIDAsync(int id) {
+            return base.Channel.GetPostByIDAsync(id);
+        }
+        
+        public TestConsolClient.ServiceReference.Post[] GetPostsByEvent(int eventID) {
+            return base.Channel.GetPostsByEvent(eventID);
+        }
+        
+        public System.Threading.Tasks.Task<TestConsolClient.ServiceReference.Post[]> GetPostsByEventAsync(int eventID) {
+            return base.Channel.GetPostsByEventAsync(eventID);
+        }
+        
+        public void CreatePost(TestConsolClient.ServiceReference.Post post) {
+            base.Channel.CreatePost(post);
+        }
+        
+        public System.Threading.Tasks.Task CreatePostAsync(TestConsolClient.ServiceReference.Post post) {
+            return base.Channel.CreatePostAsync(post);
+        }
+        
+        public void DeletePost(int id) {
+            base.Channel.DeletePost(id);
+        }
+        
+        public System.Threading.Tasks.Task DeletePostAsync(int id) {
+            return base.Channel.DeletePostAsync(id);
+        }
+        
+        public TestConsolClient.ServiceReference.Post UpdatePost(int id, TestConsolClient.ServiceReference.Post post) {
+            return base.Channel.UpdatePost(id, post);
+        }
+        
+        public System.Threading.Tasks.Task<TestConsolClient.ServiceReference.Post> UpdatePostAsync(int id, TestConsolClient.ServiceReference.Post post) {
+            return base.Channel.UpdatePostAsync(id, post);
+        }
+        
+        public TestConsolClient.ServiceReference.Event[] GetEvents() {
+            return base.Channel.GetEvents();
+        }
+        
+        public System.Threading.Tasks.Task<TestConsolClient.ServiceReference.Event[]> GetEventsAsync() {
+            return base.Channel.GetEventsAsync();
+        }
+        
+        public TestConsolClient.ServiceReference.Event GetEventById(int id) {
+            return base.Channel.GetEventById(id);
+        }
+        
+        public System.Threading.Tasks.Task<TestConsolClient.ServiceReference.Event> GetEventByIdAsync(int id) {
+            return base.Channel.GetEventByIdAsync(id);
+        }
+        
+        public TestConsolClient.ServiceReference.Event[] GetEventsOfUser(int userId) {
+            return base.Channel.GetEventsOfUser(userId);
+        }
+        
+        public System.Threading.Tasks.Task<TestConsolClient.ServiceReference.Event[]> GetEventsOfUserAsync(int userId) {
+            return base.Channel.GetEventsOfUserAsync(userId);
+        }
+        
+        public void CreateEvent(TestConsolClient.ServiceReference.Event even) {
+            base.Channel.CreateEvent(even);
+        }
+        
+        public System.Threading.Tasks.Task CreateEventAsync(TestConsolClient.ServiceReference.Event even) {
+            return base.Channel.CreateEventAsync(even);
+        }
+        
+        public void DeleteEvent(int eventId) {
+            base.Channel.DeleteEvent(eventId);
+        }
+        
+        public System.Threading.Tasks.Task DeleteEventAsync(int eventId) {
+            return base.Channel.DeleteEventAsync(eventId);
+        }
+        
+        public TestConsolClient.ServiceReference.Event UpdateEvent(int eventId, TestConsolClient.ServiceReference.Event even) {
+            return base.Channel.UpdateEvent(eventId, even);
+        }
+        
+        public System.Threading.Tasks.Task<TestConsolClient.ServiceReference.Event> UpdateEventAsync(int eventId, TestConsolClient.ServiceReference.Event even) {
+            return base.Channel.UpdateEventAsync(eventId, even);
+        }
+        
+        public bool IsAttend(int userId, int eventId) {
+            return base.Channel.IsAttend(userId, eventId);
+        }
+        
+        public System.Threading.Tasks.Task<bool> IsAttendAsync(int userId, int eventId) {
+            return base.Channel.IsAttendAsync(userId, eventId);
+        }
+        
+        public void DeleteAttend(int userId, int eventId) {
+            base.Channel.DeleteAttend(userId, eventId);
+        }
+        
+        public System.Threading.Tasks.Task DeleteAttendAsync(int userId, int eventId) {
+            return base.Channel.DeleteAttendAsync(userId, eventId);
         }
     }
 }

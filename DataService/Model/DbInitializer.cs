@@ -23,7 +23,7 @@ namespace DataService.Model
                         DateOfBirth = new DateTime(1996, 7, 21),
                         Email = "bela@meeTeam.hu",
                         Salt = null,
-                        Hash = "pass"
+                        Hash = null
                     });
                     ctx.SaveChanges();
 

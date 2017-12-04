@@ -70,6 +70,15 @@
     <None Include="Connected Services\ServiceReference\TestConsolClient.ServiceReference.CompositeType.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
+    <None Include="Connected Services\ServiceReference\TestConsolClient.ServiceReference.Coordinate.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReference\TestConsolClient.ServiceReference.Event.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReference\TestConsolClient.ServiceReference.Post.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
     <None Include="Connected Services\ServiceReference\TestConsolClient.ServiceReference.User.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>

@@ -10,6 +10,20 @@ namespace DataService.Security
     //TODO: slow hash(Rfc2898DeriveBytes) instead
     public class PwdTransformer
     {
+        private static PwdTransformer instance;
+
+        private PwdTransformer() { }
+
+        public static PwdTransformer Instance
+        {
+            get
+            {
+                if (instance == null)
+                    instance = new PwdTransformer();
+                return instance;
+            }
+        }
+
         /// <summary>
         /// Creates salt and hash for password
         /// </summary>

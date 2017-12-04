@@ -7,6 +7,9 @@ using System.ServiceModel.Web;
 using System.Text;
 using DataService.Model;
 using System.Diagnostics;
+using System.Threading;
+using DataService.Security;
+using System.Data.Entity;
 
 namespace DataService
 {
@@ -34,24 +37,274 @@ namespace DataService
             return composite;
         }
 
-        public List<User> GetUsers()
-        {
-            try
-            {
-                using (LocalContext ctx = new LocalContext())
-                {
-                    return ctx.Users.ToList();
-                }
-            }catch (Exception e)
-            {
-                Debug.WriteLine(e);
-                return null;
-            }
-        }
+      
 
         public int Faszom()
         {
             return 4;
         }
+        #region DbMethods Implementations
+            #region User Methods Implementation
+            public List<User> GetUsers()
+            {
+                try
+                {
+                    using (LocalContext ctx = new LocalContext())
+                    {
+                        return ctx.Users.ToList();
+                    }
+                }
+                catch (Exception e)
+                {
+                    Debug.WriteLine(e);
+                    return null;
+                }
+            }
+            public List<User> GetUsersOfEvent(int eventId)
+            {
+            try
+            {
+                using (LocalContext ctx = new LocalContext())
+                {
+                    var users = ctx.Attends
+                        .Where(a => a.Event.EventID == eventId)
+                        .Select(a => a.User)
+                        .ToList();
+                    return users;
+                }
+            }
+            catch (Exception e)
+            {
+                Debug.WriteLine(e);
+                return null;
+            }
+            }
+
+            public User GetUserById(int id)
+            {
+                try
+                {
+                    using (LocalContext ctx = new LocalContext())
+                    {
+                        return ctx.Users.SingleOrDefault(u => u.UserID == id);
+                    }
+                }
+                catch (Exception e)
+                {
+                    Debug.Write(e);
+                    return null;
+                }
+            }
+
+            public User GetUserByPassword(string email, string psw)
+        {
+            try
+            {
+                using (LocalContext ctx = new LocalContext())
+                {
+                    var user = ctx.Users.SingleOrDefault(u => u.Email.Equals(email));
+                    bool check = PwdTransformer.Instance.CheckPass(psw, user.Salt, user.Hash);
+                    if (check)
+                        return user;
+                    return null;
+                }
+            }
+            catch (Exception e)
+            {
+                Debug.Write(e);
+                return null;
+            }
+        }
+    
+
+            public User GetEventsOwner(int eventId)
+            {
+                try
+                {
+                    using (LocalContext ctx = new LocalContext())
+                    {
+                       return ctx.Events.SingleOrDefault(ev=> ev.EventID == eventId).Owner;
+                    }
+                }
+                catch (Exception e)
+                {
+                    Debug.WriteLine(e);
+                    return null;
+                }
+            }
+
+            public void CreateUser(User user)
+            {
+            try
+            {
+                using (LocalContext ctx = new LocalContext())
+                {
+                    ctx.Users.Add(user);
+                    ctx.SaveChanges();
+                }
+            }
+            catch (Exception e)
+            {
+                Debug.WriteLine(e);
+            }
+                
+            }
+
+            public void DeleteUser(int id)
+            {
+            try
+            {
+                using (LocalContext ctx = new LocalContext())
+                {
+                    var user = ctx.Users.SingleOrDefault(u => u.UserID == id);
+                    if (user != null)
+                    {
+                        ctx.Users.Remove(user);
+                        ctx.SaveChanges();
+                    }
+                }
+            }
+            catch (Exception e)
+            {
+                Debug.WriteLine(e);
+            }
+        }
+
+            //TODO: psw change
+            public User UpdateUser(int id, User user)
+            {
+            try
+            {
+                using (LocalContext ctx = new LocalContext())
+                {
+                    ctx.Users.Attach(user);
+                    var entry = ctx.Entry(user);
+                    entry.State = EntityState.Modified;
+
+                    //password wont change
+                    entry.Property(u => u.Salt).IsModified = false;
+                    entry.Property(u => u.Hash).IsModified = false;
+                    ctx.SaveChanges();
+                    return user;
+                }
+            }
+            catch (Exception e)
+            {
+                Debug.WriteLine(e);
+                return null;
+            }
+        }
+            #endregion
+
+            #region  Coordinate Methods Implementation
+            public List<Coordinate> GetCoordinates()
+            {
+                throw new NotImplementedException();
+            }
+
+            public Coordinate GetCoordinateById(int id)
+            {
+                throw new NotImplementedException();
+            }
+
+            public Coordinate GetCoordinateByName(string name)
+            {
+                throw new NotImplementedException();
+            }
+
+            public Coordinate GetEventCoordinate(int eventId)
+            {
+                throw new NotImplementedException();
+            }
+
+            public void CreateCoordinate(Coordinate coordinate)
+            {
+                throw new NotImplementedException();
+            }
+
+            public void DeleteCoordinate(int id)
+            {
+                throw new NotImplementedException();
+            }
+
+            public Coordinate UpdateCoordinate(int id, Coordinate coordinate)
+            {
+                throw new NotImplementedException();
+            }
+            #endregion
+            #region Post Methods Implementation
+            public List<Post> GetPosts()
+            {
+                throw new NotImplementedException();
+            }
+
+            public Post GetPostByID(int id)
+            {
+                throw new NotImplementedException();
+            }
+
+            public List<Post> GetPostsByEvent(int eventID)
+            {
+                throw new NotImplementedException();
+            }
+
+            public void CreatePost(Post post)
+            {
+                throw new NotImplementedException();
+            }
+
+            public void DeletePost(int id)
+            {
+                throw new NotImplementedException();
+            }
+
+            public Post UpdatePost(int id, Post post)
+            {
+                throw new NotImplementedException();
+            }
+            #endregion
+            #region Event Methods Implementation
+            public List<Event> GetEvents()
+            {
+                throw new NotImplementedException();
+            }
+
+            public Event GetEventById(int id)
+            {
+                throw new NotImplementedException();
+            }
+
+            public List<Event> GetEventsOfUser(int userId)
+            {
+                throw new NotImplementedException();
+            }
+
+            public void CreateEvent(Event even)
+            {
+                throw new NotImplementedException();
+            }
+
+            public void DeleteEvent(int eventId)
+            {
+                throw new NotImplementedException();
+            }
+
+            public Event UpdateEvent(int eventId, Event even)
+            {
+                throw new NotImplementedException();
+            }
+            #endregion
+            #region Attend Methods Implementation
+            public bool IsAttend(int userId, int eventId)
+            {
+                throw new NotImplementedException();
+            }
+
+            public void DeleteAttend(int userId, int eventId)
+            {
+                throw new NotImplementedException();
+            }
+            #endregion
+        #endregion
     }
 }
