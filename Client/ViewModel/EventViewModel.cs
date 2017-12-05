@@ -9,25 +9,25 @@ using System.Threading.Tasks;
 
 namespace Client
 {
-    public class EventViewModel : INotifyPropertyChanged
+    public class EventViewModel : BaseViewModel //INotifyPropertyChanged
     {
         Event even;
 
-        public event PropertyChangedEventHandler PropertyChanged;
+        //public event PropertyChangedEventHandler PropertyChanged;
 
         public string Description
         {
             get { return even.Description; }
-            set { even.Description = value; OnPropertyChanged(); }
+            set { even.Description = value; OnPropertyChanged(nameof(even.Description)); }
         }
 
-        private void OnPropertyChanged([CallerMemberName] string propertyname=null)
-        {
-            if(PropertyChanged != null)
-            {
-                PropertyChanged(this, new PropertyChangedEventArgs(propertyname));
-            }
-        }
+        //private void OnPropertyChanged([CallerMemberName] string propertyname=null)
+        //{
+        //    if(PropertyChanged != null)
+        //    {
+        //        PropertyChanged(this, new PropertyChangedEventArgs(propertyname));
+        //    }
+        //}
 
         public EventViewModel(Event e)
         {
