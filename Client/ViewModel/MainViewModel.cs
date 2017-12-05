@@ -6,11 +6,32 @@ using System.Threading.Tasks;
 
 namespace Client
 {
-    public class MainViewModel
+    public class MainViewModel : BaseViewModel
     {
-        public ApplicationPage CurrentPage { get; set; } = ApplicationPage.Login;
+        private static MainViewModel instance;
 
+        private MainViewModel() { currentPage = ApplicationPage.Login; }
 
+        public static MainViewModel Instance
+        {
+            get
+            {
+                if (instance == null)
+                    instance = new MainViewModel();
+                return instance;
+            }
+        }
+
+        private ApplicationPage currentPage;
+        public ApplicationPage CurrentPage
+        {
+            get { return currentPage; }
+            set
+            {
+                currentPage = value;
+                OnPropertyChanged(nameof(currentPage));
+            }
+        }
 
     }
 }

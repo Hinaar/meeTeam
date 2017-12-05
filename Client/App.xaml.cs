@@ -18,7 +18,7 @@ namespace Client
         {
             base.OnStartup(e);
             MainWindow mainWindow = new MainWindow();
-            MainViewModel mainViewModel = new MainViewModel();
+            MainViewModel mainViewModel = MainViewModel.Instance;
 
 
             mainWindow.DataContext = mainViewModel;

@@ -17,7 +17,8 @@ namespace Client
             {
                 case ApplicationPage.Login:
                     return new LoginPage();
-
+                case ApplicationPage.Inner:
+                    return new InnerPage();
                 default:
                     Debugger.Break();
                     return null;

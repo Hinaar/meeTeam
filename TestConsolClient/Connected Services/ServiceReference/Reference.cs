@@ -96,7 +96,7 @@ namespace TestConsolClient.ServiceReference {
         private TestConsolClient.ServiceReference.Event[] EventsField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string HashField;
+        private byte[] HashField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string NameField;
@@ -170,7 +170,7 @@ namespace TestConsolClient.ServiceReference {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public string Hash {
+        public byte[] Hash {
             get {
                 return this.HashField;
             }

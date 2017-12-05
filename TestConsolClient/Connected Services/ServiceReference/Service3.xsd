@@ -12,7 +12,7 @@
       <xs:element minOccurs="0" name="DateOfBirth" type="xs:dateTime" />
       <xs:element minOccurs="0" name="Email" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Events" nillable="true" type="tns:ArrayOfEvent" />
-      <xs:element minOccurs="0" name="Hash" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Hash" nillable="true" type="xs:base64Binary" />
       <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Salt" nillable="true" type="xs:base64Binary" />
       <xs:element minOccurs="0" name="UserID" type="xs:int" />

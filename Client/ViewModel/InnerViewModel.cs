@@ -6,9 +6,8 @@ using System.Threading.Tasks;
 
 namespace Client
 {
-    public enum ApplicationPage
+    public class InnerViewModel : BaseViewModel
     {
-        Login=0,
-        Inner=1
+
     }
 }

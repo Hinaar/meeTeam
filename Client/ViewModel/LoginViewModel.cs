@@ -51,6 +51,7 @@ namespace Client
             var pwdBox = param as PasswordBox;
             await Task.Delay(5000);
             Debug.WriteLine($"{Email} : {pwdBox.Password}");
+            MainViewModel.Instance.CurrentPage = ApplicationPage.Inner;
         }
 
         private bool CanLogin()

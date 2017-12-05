@@ -199,38 +199,114 @@ namespace DataService
             #region  Coordinate Methods Implementation
             public List<Coordinate> GetCoordinates()
             {
-                throw new NotImplementedException();
+            try
+            {
+                using (LocalContext ctx = new LocalContext())
+                {
+                    return ctx.Coordinates.ToList();
+                }
+            }
+            catch (Exception)
+            {
+                return null;
+            }
             }
 
             public Coordinate GetCoordinateById(int id)
             {
-                throw new NotImplementedException();
+            try
+            {
+                using (LocalContext ctx = new LocalContext())
+                {
+                    return ctx.Coordinates.SingleOrDefault(c => c.CoordinateID == id);
+                }
             }
+            catch (Exception)
+            {
+                return null;
+            }
+        }
 
             public Coordinate GetCoordinateByName(string name)
             {
-                throw new NotImplementedException();
+            try
+            {
+                using (LocalContext ctx = new LocalContext())
+                {
+                    return ctx.Coordinates.SingleOrDefault(c => c.LocationName.Equals(name));
+                }
             }
+            catch (Exception)
+            {
+                return null;
+            }
+        }
 
             public Coordinate GetEventCoordinate(int eventId)
             {
-                throw new NotImplementedException();
+            try
+            {
+                using (LocalContext ctx = new LocalContext())
+                {
+                    return ctx.Events.SingleOrDefault(e => e.EventID == eventId).Coordinate;
+                }
             }
+            catch (Exception)
+            {
+                return null;
+            }
+        }
 
             public void CreateCoordinate(Coordinate coordinate)
             {
-                throw new NotImplementedException();
+            try
+            {
+                using (LocalContext ctx = new LocalContext())
+                {
+                    ctx.Coordinates.Add(coordinate);
+                    ctx.SaveChanges();
+                }
             }
+            catch (Exception)
+            {
+                
+            }
+        }
 
             public void DeleteCoordinate(int id)
             {
-                throw new NotImplementedException();
+            try
+            {
+                using (LocalContext ctx = new LocalContext())
+                {
+                    var coord = ctx.Coordinates.SingleOrDefault(c => c.CoordinateID == id);
+                    ctx.Coordinates.Remove(coord);
+                    ctx.SaveChanges();
+                }
             }
+            catch (Exception)
+            {
+                
+            }
+        }
 
             public Coordinate UpdateCoordinate(int id, Coordinate coordinate)
             {
-                throw new NotImplementedException();
+            try
+            {
+                using (LocalContext ctx = new LocalContext())
+                {
+                    ctx.Coordinates.Attach(coordinate);
+                    ctx.Entry(coordinate).State = EntityState.Modified;
+                    ctx.SaveChanges();
+                    return coordinate;
+                }
             }
+            catch (Exception)
+            {
+                return null;
+            }
+        }
             #endregion
             #region Post Methods Implementation
             public List<Post> GetPosts()
