@@ -46,10 +46,11 @@ namespace Client
             }
         }
 
+        //TODO: login
         private async Task Login(object param)
         {
             var pwdBox = param as PasswordBox;
-            await Task.Delay(5000);
+           // await Task.Delay(5000);
             Debug.WriteLine($"{Email} : {pwdBox.Password}");
             MainViewModel.Instance.CurrentPage = ApplicationPage.Inner;
         }

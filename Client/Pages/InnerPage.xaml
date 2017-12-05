@@ -12,5 +12,30 @@
         <Grid.Background>
             <ImageBrush Stretch="UniformToFill"  ImageSource="/Images/Backgrounds/4.jpg" />
         </Grid.Background>
+        <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto">
+            <Border Margin="15" CornerRadius="10" Background="{StaticResource ForegroundLightBrush}">
+                <Grid>
+                    <Grid.OpacityMask>
+                        <VisualBrush Visual="{Binding ElementName=MyRoundedBorder}"/>
+                    </Grid.OpacityMask>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="3*"/>
+                    </Grid.ColumnDefinitions>
+                    <Border x:Name="MyRoundedBorder" CornerRadius="10" Background="{StaticResource ForegroundLightBrush}" />
+                    <StackPanel Grid.Column="0" TextBlock.TextAlignment="Center" Orientation="Vertical">
+                        <TextBlock Text="My Events" FontWeight="Bold" Background="AliceBlue" Padding="5"/>
+                        <ListView ItemsSource="{Binding Path=EventList}">
+                            <ListView.ItemTemplate>
+                                <DataTemplate>
+                                    <local:EventView/>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                        </ListView>
+                        
+                    </StackPanel>
+                </Grid>
+            </Border>    
+        </ScrollViewer>
     </Grid>
 </local:BasePage>

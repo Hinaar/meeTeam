@@ -13,6 +13,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestConsolClient", "TestCon
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Client", "Client\Client.csproj", "{24CD4A1E-055D-4705-B1DA-7A48824BCA99}"
+	ProjectSection(ProjectDependencies) = postProject
+		{F67152AC-FED1-48E9-8335-2D9033AE1582} = {F67152AC-FED1-48E9-8335-2D9033AE1582}
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

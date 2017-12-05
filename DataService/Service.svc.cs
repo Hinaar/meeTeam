@@ -342,7 +342,18 @@ namespace DataService
             #region Event Methods Implementation
             public List<Event> GetEvents()
             {
-                throw new NotImplementedException();
+            try
+            {
+                using (LocalContext ctx = new LocalContext())
+                {
+                    return ctx.Events.ToList();
+                }
+            }
+            catch (Exception e)
+            {
+                Debug.WriteLine(e);
+                return null;
+            }
             }
 
             public Event GetEventById(int id)
