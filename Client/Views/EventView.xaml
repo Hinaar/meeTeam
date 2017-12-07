@@ -7,6 +7,9 @@
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
     <Border BorderThickness="2" CornerRadius="5" Padding="5,2,5,2">
-        <TextBlock Text="{Binding Path=Description}" FontWeight="Bold" />
+        <StackPanel Orientation="Vertical">
+           <TextBlock Text="{Binding Path=Title}" FontWeight="Bold" />
+           <TextBlock Text="{Binding Path=Description}" FontStyle="Italic"/>
+        </StackPanel>
     </Border>
 </UserControl>

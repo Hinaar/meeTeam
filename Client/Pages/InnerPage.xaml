@@ -25,14 +25,28 @@
                     <Border x:Name="MyRoundedBorder" CornerRadius="10" Background="{StaticResource ForegroundLightBrush}" />
                     <StackPanel Grid.Column="0" TextBlock.TextAlignment="Center" Orientation="Vertical">
                         <TextBlock Text="My Events" FontWeight="Bold" Background="AliceBlue" Padding="5"/>
-                        <ListView ItemsSource="{Binding Path=EventList}">
+                        <ListView Name="lvEventList" ItemsSource="{Binding Path=EventList}" SelectedItem="{Binding SelectedEvent, Mode=TwoWay}">
                             <ListView.ItemTemplate>
                                 <DataTemplate>
                                     <local:EventView/>
                                 </DataTemplate>
                             </ListView.ItemTemplate>
                         </ListView>
-                        
+                    </StackPanel>
+                    <StackPanel Grid.Column="1">
+                        <Label Content="Title:" />
+                        <TextBox Text="{Binding SelectedEvent.Title, Mode=TwoWay}" />
+                        <Label Content="From:" />
+                        <TextBox Text="{Binding SelectedEvent.FromDate, Mode=TwoWay,StringFormat='yyyy.MM.dd HH:mm:ss '}" />
+                        <DatePicker SelectedDate="{Binding SelectedEvent.FromDate}"/>
+                        <Label Content="To:" />
+                        <TextBox Text="{Binding SelectedEvent.ToDate, Mode=TwoWay, StringFormat='yyyy.MM.dd HH:mm:ss '}" />
+                        <Label Content="Description:" />
+                        <TextBox Text="{Binding SelectedEvent.Description, Mode=TwoWay}" />
+                        <Label Content="Posts:" />
+                        <TextBox Text=".include(e=>e.Posts)" />
+                        <Button Command="{Binding NewEventCommand}" Padding="10 10" Margin="0 20" Content="New" HorizontalAlignment="Center"/>
+
                     </StackPanel>
                 </Grid>
             </Border>    

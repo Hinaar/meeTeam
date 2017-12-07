@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Title="meeTeam" Height="350" Width="525">
     <DockPanel>
-        <Frame x:Name="MainFrame" Content="{Binding CurrentPage, Converter={local:ApplicationPageValueConverter}}" />
+        <Frame x:Name="MainFrame" Content="{Binding CurrentPage, Converter={local:ApplicationPageValueConverter}}" NavigationUIVisibility="Hidden" />
     </DockPanel>
     
 </Window>

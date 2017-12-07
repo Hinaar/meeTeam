@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 
@@ -49,10 +50,18 @@ namespace Client
         //TODO: login
         private async Task Login(object param)
         {
-            var pwdBox = param as PasswordBox;
-           // await Task.Delay(5000);
-            Debug.WriteLine($"{Email} : {pwdBox.Password}");
-            MainViewModel.Instance.CurrentPage = ApplicationPage.Inner;
+            await Task.Delay(3000);
+            using (ServiceReference.ServiceClient sc = new ServiceReference.ServiceClient())
+            {
+                var pwdBox = param as PasswordBox;
+                var user = await sc.GetUserByPasswordAsync(Email, pwdBox.Password);
+                if (user == null)
+                    MessageBox.Show("Invalid email or password");
+                else
+                    MainViewModel.Instance.CurrentPage = ApplicationPage.Inner;
+                //MainViewModel.Instance.CurrentPage = new InnerViewModel(user);
+            }
+
         }
 
         private bool CanLogin()
