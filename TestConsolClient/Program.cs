@@ -15,9 +15,7 @@ namespace TestConsolClient
             Console.ReadKey();
             using (ServiceReference.ServiceClient sc = new ServiceReference.ServiceClient())
             {
-                Console.WriteLine(sc.Faszom());
 
-                Console.ReadKey();
                 var users = sc.GetUsers();
                 foreach (var item in users)
                 {
@@ -34,12 +32,18 @@ namespace TestConsolClient
             
             using (ServiceReference.ServiceClient sc = new ServiceReference.ServiceClient())
             {
-                var users = await sc.GetUsersOfEventAsync(1);
-                foreach (User user in users)
+                //var users = await sc.GetUsersOfEventAsync(1);
+                //foreach (User user in users)
+                //{
+                //    Console.WriteLine($"{user.Email} , {user.Hash}");
+                //}
+
+                var complex = await sc.GetComplexUsersOfEventAsync(1);
+                foreach (var item in complex)
                 {
-                    Console.WriteLine($"{user.Email} , {user.Hash}");
+                    Console.WriteLine(item.UserName + " - " + item.Attends);
                 }
-                
+
             }
         }
     }

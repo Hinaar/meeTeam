@@ -14,9 +14,6 @@ namespace DataService
     [ServiceContract]
     public interface IService
     {
-        
-        [OperationContract]
-        int Faszom();
 
         [OperationContract]
         string GetData(int value);
@@ -91,7 +88,7 @@ namespace DataService
         List<Post> GetPostsByEvent(int eventID);
 
         [OperationContract]
-        void CreatePost(Post post);
+        Post CreatePost(Post post);
 
         [OperationContract]
         void DeletePost(int id);
@@ -112,7 +109,7 @@ namespace DataService
         List<Event> GetEventsOfUser(int userId);
 
         [OperationContract]
-        void CreateEvent(Event even);
+        Event CreateEvent(Event even);
 
         [OperationContract]
         void DeleteEvent(int eventId);
@@ -129,6 +126,9 @@ namespace DataService
 
         [OperationContract]
         void DeleteAttend(int userId, int eventId);
+
+        [OperationContract]
+        List<UserAttend> GetComplexUsersOfEvent(int eventID);
         #endregion
         #endregion
     }

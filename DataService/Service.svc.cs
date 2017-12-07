@@ -37,13 +37,8 @@ namespace DataService
             return composite;
         }
 
-      
-
-        public int Faszom()
-        {
-            return 4;
-        }
-        #region DbMethods Implementations
+        #region DbMethod Implementations
+        
             #region User Methods Implementation
             public List<User> GetUsers()
             {
@@ -308,37 +303,115 @@ namespace DataService
             }
         }
             #endregion
+
             #region Post Methods Implementation
             public List<Post> GetPosts()
             {
-                throw new NotImplementedException();
+            try
+            {
+                using (LocalContext ctx = new LocalContext())
+                {
+                    return ctx.Posts.ToList();
+                }
+            }
+            catch (Exception e)
+            {
+                Debug.WriteLine(e);
+                return null;
+            }    
             }
 
             public Post GetPostByID(int id)
             {
-                throw new NotImplementedException();
+            try
+            {
+                using (LocalContext ctx = new LocalContext())
+                {
+                    return ctx.Posts.SingleOrDefault(p => p.PostID == id);
+                }
             }
+            catch (Exception e)
+            {
+                Debug.WriteLine(e);
+                return null;
+            }
+        }
 
             public List<Post> GetPostsByEvent(int eventID)
             {
-                throw new NotImplementedException();
-            }
-
-            public void CreatePost(Post post)
+            try
             {
-                throw new NotImplementedException();
+                using (LocalContext ctx = new LocalContext())
+                {
+                    return ctx.Events
+                        .SingleOrDefault(e => e.EventID == eventID)
+                        .Posts
+                        .ToList();
+                }
             }
+            catch (Exception e)
+            {
+                Debug.WriteLine(e);
+                return null;
+            }
+        }
+
+            public Post CreatePost(Post post)
+            {
+            try
+            {
+                using (LocalContext ctx = new LocalContext())
+                {
+                    ctx.Posts.Add(post);
+                    ctx.SaveChanges();
+                    return post;
+                }
+            }
+            catch (Exception e)
+            {
+                Debug.WriteLine(e);
+                return null;
+            }
+        }
 
             public void DeletePost(int id)
             {
-                throw new NotImplementedException();
+            try
+            {
+                using (LocalContext ctx = new LocalContext())
+                {
+                    var post = ctx.Posts.SingleOrDefault(p => p.PostID == id);
+                    ctx.Posts.Remove(post);
+                    ctx.SaveChanges();
+                }
             }
+            catch (Exception e)
+            {
+                Debug.WriteLine(e);
+            }
+        }
 
             public Post UpdatePost(int id, Post post)
             {
-                throw new NotImplementedException();
+            try
+            {
+                using (LocalContext ctx = new LocalContext())
+                {
+                    ctx.Posts.Attach(post);
+                    var entry = ctx.Entry(post);
+                    entry.State = EntityState.Modified;
+                    ctx.SaveChanges();
+                    return post;
+                }
             }
+            catch (Exception e)
+            {
+                Debug.WriteLine(e);
+                return null;
+            }
+        }
             #endregion
+            
             #region Event Methods Implementation
             public List<Event> GetEvents()
             {
@@ -358,40 +431,164 @@ namespace DataService
 
             public Event GetEventById(int id)
             {
-                throw new NotImplementedException();
+            try
+            {
+                using (LocalContext ctx = new LocalContext())
+                {
+                    return ctx.Events.SingleOrDefault(e => e.EventID == id);
+                }
+            }
+            catch (Exception e)
+            {
+                Debug.WriteLine(e);
+                return null;
+            }
             }
 
             public List<Event> GetEventsOfUser(int userId)
             {
-                throw new NotImplementedException();
+            try
+            {
+                using (LocalContext ctx = new LocalContext())
+                {
+                    return ctx.Attends
+                        .Where(a => a.UserID == userId)
+                        .Select(a=>a.Event)
+                        .ToList();
+                }
+            }
+            catch (Exception e)
+            {
+                Debug.WriteLine(e);
+                return null;
+            }
             }
 
-            public void CreateEvent(Event even)
+            public Event CreateEvent(Event even)
             {
-                throw new NotImplementedException();
+                try
+                {
+                    using (LocalContext ctx = new LocalContext())
+                    {
+                        ctx.Events.Add(even);
+                        ctx.SaveChanges();
+                        return even;
+                    }
+                }
+                catch (Exception e)
+                {
+                    Debug.WriteLine(e);
+                    return null;
+                }
             }
 
             public void DeleteEvent(int eventId)
             {
-                throw new NotImplementedException();
+                try
+                {
+                    using (LocalContext ctx = new LocalContext())
+                    {
+                        var even = ctx.Events.SingleOrDefault(e => e.EventID == eventId);
+                        ctx.Events.Remove(even);
+                        ctx.SaveChanges();
+                    }
+                }
+                catch (Exception e)
+                {
+                    Debug.WriteLine(e);
+
+                }
             }
 
             public Event UpdateEvent(int eventId, Event even)
             {
-                throw new NotImplementedException();
+            try
+            {
+                using (LocalContext ctx = new LocalContext())
+                {
+                    ctx.Events.Attach(even);
+                    var entry = ctx.Entry(even);
+                    entry.State = EntityState.Modified;
+                    ctx.SaveChanges();
+                    return even;
+                }
+            }
+            catch (Exception e)
+            {
+                Debug.WriteLine(e);
+                return null;
+            }
             }
             #endregion
+            
             #region Attend Methods Implementation
             public bool IsAttend(int userId, int eventId)
             {
-                throw new NotImplementedException();
+            try
+            {
+                using (LocalContext ctx = new LocalContext())
+                {
+                   return ctx.Attends
+                        .SingleOrDefault(a => a.UserID == userId && a.EventID == eventId)
+                        .willAttend;
+                }
+            }
+            catch (Exception e)
+            {
+                Debug.WriteLine(e);
+                return false;
+            }
             }
 
             public void DeleteAttend(int userId, int eventId)
             {
-                throw new NotImplementedException();
+            try
+            {
+                using (LocalContext ctx = new LocalContext())
+                {
+                    var att = ctx.Attends.SingleOrDefault(a => a.UserID == userId && a.EventID == eventId);
+                    ctx.Attends.Remove(att);
+                    ctx.SaveChanges();
+                }
             }
-            #endregion
+            catch (Exception e)
+            {
+                Debug.WriteLine(e);
+            }
+            }
+            public List<UserAttend> GetComplexUsersOfEvent(int eventID)
+            {
+                try
+                {
+                    using (LocalContext ctx = new LocalContext())
+                    {
+                        var query = ctx.Events.Include(e => e.Attends)
+                            .SingleOrDefault(e => e.EventID == eventID)
+                            .Attends
+                            .Select(a =>
+                                new UserAttend()
+                                {
+                                    UserName = ctx.Users
+                                                  .Single(u=>u.UserID==a.UserID)
+                                                  .Name,
+                                    Attends = a.willAttend
+                                })
+                            .ToList();
+                        return query;
+
+                    }
+                }
+                catch (Exception e)
+                {
+                    Debug.WriteLine(e);
+                    return null;
+                }
+            }
+
         #endregion
+
+        #endregion
+
+
     }
 }

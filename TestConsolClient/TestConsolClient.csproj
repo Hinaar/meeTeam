@@ -82,6 +82,9 @@
     <None Include="Connected Services\ServiceReference\TestConsolClient.ServiceReference.User.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
+    <None Include="Connected Services\ServiceReference\TestConsolClient.ServiceReference.UserAttend.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Connected Services\" />

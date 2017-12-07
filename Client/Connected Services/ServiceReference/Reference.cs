@@ -719,12 +719,6 @@ namespace Client.ServiceReference {
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="ServiceReference.IService")]
     public interface IService {
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/Faszom", ReplyAction="http://tempuri.org/IService/FaszomResponse")]
-        int Faszom();
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/Faszom", ReplyAction="http://tempuri.org/IService/FaszomResponse")]
-        System.Threading.Tasks.Task<int> FaszomAsync();
-        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/GetData", ReplyAction="http://tempuri.org/IService/GetDataResponse")]
         string GetData(int value);
         
@@ -846,10 +840,10 @@ namespace Client.ServiceReference {
         System.Threading.Tasks.Task<System.Collections.Generic.List<Client.ServiceReference.Post>> GetPostsByEventAsync(int eventID);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/CreatePost", ReplyAction="http://tempuri.org/IService/CreatePostResponse")]
-        void CreatePost(Client.ServiceReference.Post post);
+        Client.ServiceReference.Post CreatePost(Client.ServiceReference.Post post);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/CreatePost", ReplyAction="http://tempuri.org/IService/CreatePostResponse")]
-        System.Threading.Tasks.Task CreatePostAsync(Client.ServiceReference.Post post);
+        System.Threading.Tasks.Task<Client.ServiceReference.Post> CreatePostAsync(Client.ServiceReference.Post post);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/DeletePost", ReplyAction="http://tempuri.org/IService/DeletePostResponse")]
         void DeletePost(int id);
@@ -882,10 +876,10 @@ namespace Client.ServiceReference {
         System.Threading.Tasks.Task<System.Collections.Generic.List<Client.ServiceReference.Event>> GetEventsOfUserAsync(int userId);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/CreateEvent", ReplyAction="http://tempuri.org/IService/CreateEventResponse")]
-        void CreateEvent(Client.ServiceReference.Event even);
+        Client.ServiceReference.Event CreateEvent(Client.ServiceReference.Event even);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/CreateEvent", ReplyAction="http://tempuri.org/IService/CreateEventResponse")]
-        System.Threading.Tasks.Task CreateEventAsync(Client.ServiceReference.Event even);
+        System.Threading.Tasks.Task<Client.ServiceReference.Event> CreateEventAsync(Client.ServiceReference.Event even);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/DeleteEvent", ReplyAction="http://tempuri.org/IService/DeleteEventResponse")]
         void DeleteEvent(int eventId);
@@ -937,14 +931,6 @@ namespace Client.ServiceReference {
         
         public ServiceClient(System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
                 base(binding, remoteAddress) {
-        }
-        
-        public int Faszom() {
-            return base.Channel.Faszom();
-        }
-        
-        public System.Threading.Tasks.Task<int> FaszomAsync() {
-            return base.Channel.FaszomAsync();
         }
         
         public string GetData(int value) {
@@ -1107,11 +1093,11 @@ namespace Client.ServiceReference {
             return base.Channel.GetPostsByEventAsync(eventID);
         }
         
-        public void CreatePost(Client.ServiceReference.Post post) {
-            base.Channel.CreatePost(post);
+        public Client.ServiceReference.Post CreatePost(Client.ServiceReference.Post post) {
+            return base.Channel.CreatePost(post);
         }
         
-        public System.Threading.Tasks.Task CreatePostAsync(Client.ServiceReference.Post post) {
+        public System.Threading.Tasks.Task<Client.ServiceReference.Post> CreatePostAsync(Client.ServiceReference.Post post) {
             return base.Channel.CreatePostAsync(post);
         }
         
@@ -1155,11 +1141,11 @@ namespace Client.ServiceReference {
             return base.Channel.GetEventsOfUserAsync(userId);
         }
         
-        public void CreateEvent(Client.ServiceReference.Event even) {
-            base.Channel.CreateEvent(even);
+        public Client.ServiceReference.Event CreateEvent(Client.ServiceReference.Event even) {
+            return base.Channel.CreateEvent(even);
         }
         
-        public System.Threading.Tasks.Task CreateEventAsync(Client.ServiceReference.Event even) {
+        public System.Threading.Tasks.Task<Client.ServiceReference.Event> CreateEventAsync(Client.ServiceReference.Event even) {
             return base.Channel.CreateEventAsync(even);
         }
         

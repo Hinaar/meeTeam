@@ -86,4 +86,17 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="ArrayOfCoordinate" nillable="true" type="tns:ArrayOfCoordinate" />
+  <xs:complexType name="ArrayOfUserAttend">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="UserAttend" nillable="true" type="tns:UserAttend" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfUserAttend" nillable="true" type="tns:ArrayOfUserAttend" />
+  <xs:complexType name="UserAttend">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Attends" type="xs:boolean" />
+      <xs:element minOccurs="0" name="UserName" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="UserAttend" nillable="true" type="tns:UserAttend" />
 </xs:schema>

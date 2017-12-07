@@ -80,6 +80,7 @@
     <Compile Include="Model\LocalContext.cs" />
     <Compile Include="Model\Post.cs" />
     <Compile Include="Model\User.cs" />
+    <Compile Include="Model\UserAttend.cs" />
     <Compile Include="Security\PwdTransformer.cs" />
     <Compile Include="Service.svc.cs">
       <DependentUpon>Service.svc</DependentUpon>

@@ -13,7 +13,7 @@
             <ImageBrush Stretch="UniformToFill"  ImageSource="/Images/Backgrounds/4.jpg" />
         </Grid.Background>
         <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto">
-            <Border Margin="15" CornerRadius="10" Background="{StaticResource ForegroundLightBrush}">
+            <Border Margin="25" CornerRadius="10" Background="{StaticResource ForegroundLightBrush}">
                 <Grid>
                     <Grid.OpacityMask>
                         <VisualBrush Visual="{Binding ElementName=MyRoundedBorder}"/>
