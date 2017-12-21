@@ -19,7 +19,7 @@
     <SolidColorBrush x:Key="Button.Disabled.Background" Color="#FFF4F4F4"/>
     <SolidColorBrush x:Key="Button.Disabled.Border" Color="#FFADB2B5"/>
     <SolidColorBrush x:Key="Button.Disabled.Foreground" Color="#FF838383"/>
- 
+
     <Style x:Key="NextButtonStyle" TargetType="{x:Type Button}">
         <Setter Property="FocusVisualStyle" Value="{StaticResource FocusVisual}"/>
         <Setter Property="Background" Value="{StaticResource Button.Static.Background}"/>
@@ -68,7 +68,7 @@
             </Setter.Value>
         </Setter>
     </Style>
-   
+
     <Style x:Key="RegisterButton" TargetType="{x:Type Button}">
         <Setter Property="FocusVisualStyle" Value="{StaticResource FocusVisual}"/>
         <Setter Property="Background" Value="{StaticResource Button.Static.Background}"/>

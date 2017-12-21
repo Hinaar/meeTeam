@@ -104,7 +104,7 @@
     <Compile Include="Views\EventView.xaml.cs">
       <DependentUpon>EventView.xaml</DependentUpon>
     </Compile>
-    <Page Include="Buttons.xaml">
+    <Page Include="Styles\Buttons.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
