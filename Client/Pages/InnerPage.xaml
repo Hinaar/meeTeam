@@ -3,26 +3,28 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:m="clr-namespace:Microsoft.Maps.MapControl.WPF;assembly=Microsoft.Maps.MapControl.WPF"
       xmlns:local="clr-namespace:Client"
       mc:Ignorable="d" 
-      d:DesignHeight="350" d:DesignWidth="525"
+      d:DesignHeight="650" d:DesignWidth="900"
       Title="InnerPage">
 
     <Grid>
         <Grid.Background>
             <ImageBrush Stretch="UniformToFill"  ImageSource="/Images/Backgrounds/4.jpg" />
         </Grid.Background>
+        <Border x:Name="MyRoundedBorder" Margin="35" CornerRadius="10" Background="{StaticResource ForegroundLightBrush}" />
         <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto">
-            <Border Margin="25" CornerRadius="10" Background="{StaticResource ForegroundLightBrush}">
+            <Border Margin="35" CornerRadius="10" Background="{StaticResource ForegroundLightBrush}">
                 <Grid>
                     <Grid.OpacityMask>
                         <VisualBrush Visual="{Binding ElementName=MyRoundedBorder}"/>
                     </Grid.OpacityMask>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*"/>
-                        <ColumnDefinition Width="3*"/>
+                        <ColumnDefinition Width="4*"/>
                     </Grid.ColumnDefinitions>
-                    <Border x:Name="MyRoundedBorder" CornerRadius="10" Background="{StaticResource ForegroundLightBrush}" />
+                   
                     <StackPanel Grid.Column="0" TextBlock.TextAlignment="Center" Orientation="Vertical">
                         <TextBlock Text="My Events" FontWeight="Bold" Background="AliceBlue" Padding="5"/>
                         <ListView Name="lvEventList" ItemsSource="{Binding Path=EventList}" SelectedItem="{Binding SelectedEvent, Mode=TwoWay}">
@@ -34,22 +36,37 @@
                         </ListView>
                     </StackPanel>
                     <StackPanel Grid.Column="1">
-                        <Label Content="Title:" />
-                        <TextBox Text="{Binding SelectedEvent.Title, Mode=TwoWay}" />
-                        <Label Content="From:" />
-                        <TextBox Text="{Binding SelectedEvent.FromDate, Mode=TwoWay,StringFormat='yyyy.MM.dd HH:mm:ss '}" />
-                        <DatePicker SelectedDate="{Binding SelectedEvent.FromDate}"/>
-                        <Label Content="To:" />
-                        <TextBox Text="{Binding SelectedEvent.ToDate, Mode=TwoWay, StringFormat='yyyy.MM.dd HH:mm:ss '}" />
-                        <Label Content="Description:" />
-                        <TextBox Text="{Binding SelectedEvent.Description, Mode=TwoWay}" />
-                        <Label Content="Posts:" />
-                        <TextBox Text=".include(e=>e.Posts)" />
-                        <Button Command="{Binding NewEventCommand}" Padding="10 10" Margin="0 20" Content="New" HorizontalAlignment="Center"/>
+                        <Grid>
+                            <Grid.OpacityMask>
+                                <VisualBrush Visual="{Binding ElementName=MyRoundedBorder}"/>
+                            </Grid.OpacityMask>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="2*"/>
+                            </Grid.ColumnDefinitions>
+                            <StackPanel Grid.Column="0">
+                                <Label Content="Title:" />
+                                <TextBox Text="{Binding SelectedEvent.Title, Mode=TwoWay}" />
+                                <Label Content="From:" />
+                                <TextBox Text="{Binding SelectedEvent.FromDate, Mode=TwoWay,StringFormat='yyyy.MM.dd HH:mm:ss '}" />
+                                <DatePicker SelectedDate="{Binding SelectedEvent.FromDate}"/>
+                                <Label Content="To:" />
+                                <TextBox Text="{Binding SelectedEvent.ToDate, Mode=TwoWay, StringFormat='yyyy.MM.dd HH:mm:ss '}" />
+                                <Label Content="Description:" />
+                                <TextBox Text="{Binding SelectedEvent.Description, Mode=TwoWay}" />
+                                <Label Content="Posts:" />
+                                <TextBox Text=".include(e=>e.Posts)" />
+                                <Button Command="{Binding NewEventCommand}" Padding="10 10" Margin="0 20" Content="New" HorizontalAlignment="Center"/>
+                            </StackPanel>
+                            <DockPanel Grid.Column="1">
+                                <m:Map x:Name="myMap" CredentialsProvider="AgYxX00-G5CD-Yy4ydFp9xnvPZNIpuETBAZyx8rZo3xHu1WxsoBKJxzlOFu20WR_" 
+                                       Center="39.3683,-95.2734,0.0000" ZoomLevel="16.000" />
+                            </DockPanel>
+                        </Grid>
 
                     </StackPanel>
                 </Grid>
-            </Border>    
+            </Border>
         </ScrollViewer>
     </Grid>
 </local:BasePage>

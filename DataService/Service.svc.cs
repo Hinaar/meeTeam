@@ -419,7 +419,7 @@ namespace DataService
             {
                 using (LocalContext ctx = new LocalContext())
                 {
-                    return ctx.Events.ToList();
+                    return ctx.Events.Include(e=>e.Coordinate).ToList();
                 }
             }
             catch (Exception e)
@@ -453,7 +453,7 @@ namespace DataService
                 {
                     return ctx.Attends
                         .Where(a => a.UserID == userId)
-                        .Select(a=>a.Event)
+                        .Select(a=>a.Event).Include(e=>e.Coordinate)
                         .ToList();
                 }
             }

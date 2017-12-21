@@ -7,7 +7,11 @@
       mc:Ignorable="d" 
       d:DesignHeight="350" d:DesignWidth="525"
       Title="LoginPage">
+    <Page.InputBindings>
+        <KeyBinding Key="U" Modifiers="Control" Command="{Binding RegisterPageCommand}"/>
+        <KeyBinding Key="Return" Command="{Binding LoginCommand}" CommandParameter="{Binding ElementName=pwdBox}"/>
 
+    </Page.InputBindings>
     <Grid>
         <Grid.Background>
             <ImageBrush Stretch="UniformToFill"  ImageSource="/Images/Backgrounds/4.jpg" />
@@ -41,8 +45,8 @@
                 </Border>
 
                 <Button Command="{Binding RegisterPageCommand}" Content="Register" HorizontalAlignment="Center" Margin="0 10 0 10" Style="{DynamicResource RegisterButton}" Width="164"/>
+
             </StackPanel>
         </ScrollViewer>
-
     </Grid>
 </local:BasePage>

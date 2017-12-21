@@ -68,7 +68,7 @@ namespace Client
         //TODO: login
         private async Task Login(object param)
         {
-            await Task.Delay(3000);
+            //await Task.Delay(5000);
             using (ServiceReference.ServiceClient sc = new ServiceReference.ServiceClient())
             {
                 var pwdBox = param as PasswordBox;
