@@ -13,10 +13,11 @@ namespace Client
 {
     public class LoginViewModel : BaseViewModel
     {
+        #region Properties
         public string Email { get; set; }
         //TODO: SecurePassword psw
         public string Password { get; set; }
-
+        #endregion
         //public ICommand LoginCommand { get; set; }
 
 
@@ -25,9 +26,12 @@ namespace Client
         //    await RunCommand();
         //}
 
+        #region Commands
         private RelayCommand login;
+        private RelayCommand registerPage;
 
         private ICommand loginCommand;
+        private ICommand registerPageCommand;
 
         //LoginCommand = new RelayParameterizedCommand(async (Parameter) => await Login(Parameter));   : anonym async task
         //TODO: code behind solution
@@ -47,6 +51,20 @@ namespace Client
             }
         }
 
+        public ICommand RegisterPageCommand
+        {
+            get
+            {
+                if(registerPageCommand == null)
+                {
+                    registerPageCommand = new RelayCommand(x=>RegisterPage(x));
+                }
+                return registerPageCommand;
+            }
+        }
+
+   
+        #endregion
         //TODO: login
         private async Task Login(object param)
         {
@@ -62,6 +80,11 @@ namespace Client
                 //MainViewModel.Instance.CurrentPage = new InnerViewModel(user);
             }
 
+        }
+
+        private void RegisterPage(object x)
+        {
+            MainViewModel.Instance.CurrentPage = ApplicationPage.Register;
         }
 
         private bool CanLogin()

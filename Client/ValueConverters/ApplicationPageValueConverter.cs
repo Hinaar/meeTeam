@@ -19,6 +19,8 @@ namespace Client
                     return new LoginPage();
                 case ApplicationPage.Inner:
                     return new InnerPage();
+                case ApplicationPage.Register:
+                    return new RegisterPage();
                 default:
                     Debugger.Break();
                     return null;

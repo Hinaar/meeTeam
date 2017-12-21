@@ -9,6 +9,7 @@ namespace Client
     public enum ApplicationPage
     {
         Login=0,
-        Inner=1
+        Inner=1,
+        Register = 2
     }
 }

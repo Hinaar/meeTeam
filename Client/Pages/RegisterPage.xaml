@@ -1,0 +1,32 @@
+﻿<local:BasePage x:TypeArguments="local:RegisterViewModel" x:Class="Client.RegisterPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Client"
+      mc:Ignorable="d" 
+      d:DesignHeight="350" d:DesignWidth="525"
+      Title="RegisterPage">
+
+    <Grid>
+        <Grid.Background>
+            <ImageBrush Stretch="UniformToFill"  ImageSource="/Images/Backgrounds/4.jpg" />
+        </Grid.Background>
+        <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto">
+            <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" TextBlock.TextAlignment="Center">
+                <Border Background="{StaticResource ForegroundLightBrush}" 
+                    CornerRadius="10" 
+                    Padding="10 50 10 10" 
+                    Width="398.915" 
+                    Margin="50 50 50 0" Height="258.107" >
+                    <StackPanel>
+
+
+                    </StackPanel>
+                </Border>
+
+            </StackPanel>
+        </ScrollViewer>
+
+    </Grid>
+</local:BasePage>
