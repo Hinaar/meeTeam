@@ -14,37 +14,38 @@
             <ImageBrush Stretch="UniformToFill"  ImageSource="/Images/Backgrounds/4.jpg" />
         </Grid.Background>
         <Border x:Name="MyRoundedBorder" Margin="35" CornerRadius="10" Background="{StaticResource ForegroundLightBrush}" />
-        <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto">
-            <Border Margin="35" CornerRadius="10" Background="{StaticResource ForegroundLightBrush}">
-                <Grid>
-                    <Grid.OpacityMask>
-                        <VisualBrush Visual="{Binding ElementName=MyRoundedBorder}"/>
-                    </Grid.OpacityMask>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="*"/>
-                        <ColumnDefinition Width="4*"/>
-                    </Grid.ColumnDefinitions>
-                   
-                    <StackPanel Grid.Column="0" TextBlock.TextAlignment="Center" Orientation="Vertical">
-                        <TextBlock Text="My Events" FontWeight="Bold" Background="AliceBlue" Padding="5"/>
-                        <ListView Name="lvEventList" ItemsSource="{Binding Path=EventList}" SelectedItem="{Binding SelectedEvent, Mode=TwoWay}">
-                            <ListView.ItemTemplate>
-                                <DataTemplate>
-                                    <local:EventView/>
-                                </DataTemplate>
-                            </ListView.ItemTemplate>
-                        </ListView>
-                    </StackPanel>
-                    <StackPanel Grid.Column="1">
-                        <Grid>
-                            <Grid.OpacityMask>
-                                <VisualBrush Visual="{Binding ElementName=MyRoundedBorder}"/>
-                            </Grid.OpacityMask>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="*"/>
-                                <ColumnDefinition Width="2*"/>
-                            </Grid.ColumnDefinitions>
-                            <StackPanel Grid.Column="0">
+
+        <Border Margin="35" CornerRadius="10" Background="{StaticResource ForegroundLightBrush}">
+            <Grid>
+                <Grid.OpacityMask>
+                    <VisualBrush Visual="{Binding ElementName=MyRoundedBorder}"/>
+                </Grid.OpacityMask>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="4*"/>
+                </Grid.ColumnDefinitions>
+
+                <StackPanel Grid.Column="0" TextBlock.TextAlignment="Center" Orientation="Vertical">
+                    <TextBlock Text="My Events" FontWeight="Bold" Background="AliceBlue" Padding="5"/>
+                    <ListView Name="lvEventList" ItemsSource="{Binding Path=EventList}" SelectedItem="{Binding SelectedEvent, Mode=TwoWay}">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <local:EventView/>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                </StackPanel>
+                <StackPanel Grid.Column="1">
+                    <Grid>
+                        <Grid.OpacityMask>
+                            <VisualBrush Visual="{Binding ElementName=MyRoundedBorder}"/>
+                        </Grid.OpacityMask>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="2*"/>
+                        </Grid.ColumnDefinitions>
+                            <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto" Grid.Column="0">
+                            <StackPanel >
                                 <Label Content="Title:" />
                                 <TextBox Text="{Binding SelectedEvent.Title, Mode=TwoWay}" />
                                 <Label Content="From:" />
@@ -58,15 +59,14 @@
                                 <TextBox Text=".include(e=>e.Posts)" />
                                 <Button Command="{Binding NewEventCommand}" Padding="10 10" Margin="0 20" Content="New" HorizontalAlignment="Center"/>
                             </StackPanel>
-                            <DockPanel Grid.Column="1">
-                                <m:Map x:Name="myMap" CredentialsProvider="AgYxX00-G5CD-Yy4ydFp9xnvPZNIpuETBAZyx8rZo3xHu1WxsoBKJxzlOFu20WR_" 
+                        </ScrollViewer>
+                        <DockPanel Grid.Column="1">
+                            <m:Map x:Name="myMap" CredentialsProvider="AgYxX00-G5CD-Yy4ydFp9xnvPZNIpuETBAZyx8rZo3xHu1WxsoBKJxzlOFu20WR_" 
                                        Center="39.3683,-95.2734,0.0000" ZoomLevel="16.000" />
-                            </DockPanel>
-                        </Grid>
-
-                    </StackPanel>
-                </Grid>
-            </Border>
-        </ScrollViewer>
+                        </DockPanel>
+                    </Grid>
+                </StackPanel>
+            </Grid>
+        </Border>
     </Grid>
 </local:BasePage>
