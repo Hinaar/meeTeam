@@ -1,4 +1,5 @@
 ﻿using Client.ServiceReference;
+using Microsoft.Maps.MapControl.WPF;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -14,7 +15,11 @@ namespace Client
 {
     public class InnerViewModel : BaseViewModel
     {
-        public User LoggedInUser { get; set; }
+        public User LoggedInUser
+        {
+            get;
+            set;
+        }
         private ObservableCollection<EventViewModel> eventList = new ObservableCollection<EventViewModel>();
 
         public ObservableCollection<EventViewModel> EventList
@@ -31,9 +36,17 @@ namespace Client
             get { return selectedEvent; }
             set {
                 selectedEvent = value;
+                MapCenter = new Location(value.EventLocation);
                 OnPropertyChanged();
- 
             }
+        }
+
+        //Property to make selectedevents location independent from map movement
+        private Location mapCenter;
+        public Location MapCenter
+        {
+            get { return mapCenter; }
+            set { mapCenter = value; OnPropertyChanged(); }
         }
 
         public async void loadEventListAsync()
@@ -81,15 +94,17 @@ namespace Client
 
         public InnerViewModel()
         {
-           
-           loadEventListAsync();
+            MapCenter = new Location(0, 0, 0);
+            loadEventListAsync();
            
         }
 
         public InnerViewModel(User u)
         {
+           // MapCenter = new Location(0, 0, 0);
             LoggedInUser = u;
-            loadEventListAsync();
+            loadEventListAsync(); 
+            
         }
     }
 }

@@ -65,7 +65,7 @@ namespace Client
 
    
         #endregion
-        //TODO: login
+        //TODO: pass user to innerpage
         private async Task Login(object param)
         {
             //await Task.Delay(5000);
@@ -76,7 +76,9 @@ namespace Client
                 if (user == null)
                     MessageBox.Show("Invalid email or password");
                 else
+                    MainViewModel.Instance.User = user;
                     MainViewModel.Instance.CurrentPage = ApplicationPage.Inner;
+                    
                 //MainViewModel.Instance.CurrentPage = new InnerViewModel(user);
             }
 

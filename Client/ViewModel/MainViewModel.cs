@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Client.ServiceReference;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -29,9 +30,19 @@ namespace Client
             set
             {
                 currentPage = value;
-                OnPropertyChanged(nameof(currentPage));
+                OnPropertyChanged();
             }
         }
+
+        private User user;
+
+        public User User
+        {
+            get { return user; }
+            set { user = value; }
+        }
+
+
 
     }
 }

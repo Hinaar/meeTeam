@@ -1,4 +1,5 @@
 ﻿using Client.ServiceReference;
+using Microsoft.Maps.MapControl.WPF;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -27,7 +28,7 @@ namespace Client
 
         public DateTime FromDate
         {
-            get { return even.FromDate; }
+            get { return even.FromDate;}
             set { even.FromDate = value; OnPropertyChanged(); }
         }
 
@@ -37,12 +38,25 @@ namespace Client
             set { even.ToDate = value; OnPropertyChanged(); }
         }
 
+        private Location eventLocation = new Location();
+        public Location EventLocation {
+            get {
+                return eventLocation;
+            }
+            set
+            {
+                eventLocation = value;
+                OnPropertyChanged();
+            }
+        }
+
 
 
 
         public EventViewModel(Event e)
         {
             even = e;
+            EventLocation = new Location(e.Coordinate.Latitude, e.Coordinate.Longitude, 0.0);
         }
     }
 }
