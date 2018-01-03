@@ -118,12 +118,12 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="Create_account" xml:space="preserve">
-    <value>Create account</value>
+    <value>Új felhasználó</value>
   </data>
   <data name="SignIn" xml:space="preserve">
-    <value>Sign In</value>
+    <value>Bejelentkezés</value>
   </data>
   <data name="Title" xml:space="preserve">
-    <value>Main</value>
+    <value>Teszt</value>
   </data>
 </root>

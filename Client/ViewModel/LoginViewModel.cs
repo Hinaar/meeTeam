@@ -68,6 +68,8 @@ namespace Client
         //TODO: pass user to innerpage
         private async Task Login(object param)
         {
+            Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo("en");
+
             //await Task.Delay(5000);
             using (ServiceReference.ServiceClient sc = new ServiceReference.ServiceClient())
             {
@@ -76,9 +78,11 @@ namespace Client
                 if (user == null)
                     MessageBox.Show("Invalid email or password");
                 else
+                {
+                    Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo("en");
                     MainViewModel.Instance.User = user;
                     MainViewModel.Instance.CurrentPage = ApplicationPage.Inner;
-                    
+                }
                 //MainViewModel.Instance.CurrentPage = new InnerViewModel(user);
             }
 

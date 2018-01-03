@@ -16,13 +16,17 @@ namespace Client
         
         protected override void OnStartup(StartupEventArgs e)
         {
+            System.Threading.Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo("hu-HU");
+
             base.OnStartup(e);
+
             MainWindow mainWindow = new MainWindow();
             MainViewModel mainViewModel = MainViewModel.Instance;
 
 
             mainWindow.DataContext = mainViewModel;
-            mainWindow.Show();    
+            mainWindow.Show();
+
         }
     }
 }

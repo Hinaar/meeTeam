@@ -94,6 +94,8 @@ namespace Client
 
         public InnerViewModel()
         {
+          //  Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo("hu-HU");
+            
             MapCenter = new Location(0, 0, 0);
             loadEventListAsync();
            

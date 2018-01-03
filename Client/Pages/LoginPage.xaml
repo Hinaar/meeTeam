@@ -3,6 +3,7 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:p="clr-namespace:Client.Properties"
       xmlns:local="clr-namespace:Client"
       mc:Ignorable="d" 
       d:DesignHeight="350" d:DesignWidth="525"
@@ -26,7 +27,7 @@
                     <StackPanel>
 
 
-                        <TextBlock Text="Sign In" FontSize="30" FontWeight="Bold" Foreground="{StaticResource ForegroundPurpleBrush}" >
+                        <TextBlock Text="{x:Static p:Resources.SignIn}" FontSize="30" FontWeight="Bold" Foreground="{StaticResource ForegroundPurpleBrush}" >
                             <TextBlock.Effect>
                                 <DropShadowEffect
                                 ShadowDepth="0"
