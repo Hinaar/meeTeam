@@ -73,10 +73,15 @@ namespace Client
             //await Task.Delay(5000);
             using (ServiceReference.ServiceClient sc = new ServiceReference.ServiceClient())
             {
+                DialogWindow tmp;
                 var pwdBox = param as PasswordBox;
                 var user = await sc.GetUserByPasswordAsync(Email, pwdBox.Password);
                 if (user == null)
-                    MessageBox.Show("Invalid email or password");
+                {
+                    tmp = new DialogWindow();
+                    tmp.ShowDialog();
+                    // MessageBox.Show("Invalid email or password");
+                }
                 else
                 {
                     Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo("en");
