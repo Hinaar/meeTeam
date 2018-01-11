@@ -117,8 +117,47 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="Address" xml:space="preserve">
+    <value>Cím</value>
+  </data>
+  <data name="Country" xml:space="preserve">
+    <value>Ország</value>
+  </data>
   <data name="Create_account" xml:space="preserve">
     <value>Új felhasználó</value>
+  </data>
+  <data name="DateOfBirth" xml:space="preserve">
+    <value>Születés</value>
+  </data>
+  <data name="ErrorAddress" xml:space="preserve">
+    <value>-</value>
+  </data>
+  <data name="ErrorBirth" xml:space="preserve">
+    <value>10 és 150 év közöttinek kell lenned</value>
+  </data>
+  <data name="ErrorMail" xml:space="preserve">
+    <value>Hibás email formátum</value>
+  </data>
+  <data name="ErrorName" xml:space="preserve">
+    <value>Legalább 4 karakter hosszú név kell</value>
+  </data>
+  <data name="ErrorPassword" xml:space="preserve">
+    <value>A jelszóban szerepelnie kell számnak és betűnek is</value>
+  </data>
+  <data name="ErrorPhoneNumber" xml:space="preserve">
+    <value>-</value>
+  </data>
+  <data name="Name" xml:space="preserve">
+    <value>Név</value>
+  </data>
+  <data name="Password" xml:space="preserve">
+    <value>Jelszó</value>
+  </data>
+  <data name="PhoneNumber" xml:space="preserve">
+    <value>Telefonszám</value>
+  </data>
+  <data name="Register" xml:space="preserve">
+    <value>Regisztráció</value>
   </data>
   <data name="SignIn" xml:space="preserve">
     <value>Bejelentkezés</value>

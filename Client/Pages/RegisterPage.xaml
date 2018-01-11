@@ -2,12 +2,55 @@
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:p="clr-namespace:Client.Properties"
       xmlns:local="clr-namespace:Client"
       mc:Ignorable="d" 
-      d:DesignHeight="350" d:DesignWidth="525"
+      d:DesignHeight="500" d:DesignWidth="625"
       Title="RegisterPage">
-
+    <Page.Resources>
+        <Style x:Key="DateErrorStyle" TargetType="{x:Type DatePicker}">
+            <Setter Property="Validation.ErrorTemplate">
+                <Setter.Value>
+                    <ControlTemplate x:Name="TextErrorTemplate">
+                        <DockPanel>
+                            <Border BorderBrush="Red" BorderThickness="2">
+                                <AdornedElementPlaceholder/>
+                            </Border>
+                            <TextBlock FontSize="25" FontWeight="Bold" Foreground="Red" Text=" !" />
+                        </DockPanel>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <Trigger Property="Validation.HasError" Value="True">
+                    <Setter Property="Background" Value="#FEC4C4"/>
+                    <Setter Property="ToolTip" Value="{Binding RelativeSource={x:Static RelativeSource.Self},Path=(Validation.Errors)[0].ErrorContent}"></Setter>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+        
+        <Style x:Key="TextErrorStyle" TargetType="{x:Type TextBox}">
+            <Setter Property="Validation.ErrorTemplate">
+                <Setter.Value>
+                    <ControlTemplate x:Name="TextErrorTemplate">
+                        <DockPanel>
+                            <Border BorderBrush="Red" BorderThickness="2">
+                                <AdornedElementPlaceholder/>
+                            </Border>
+                            <TextBlock FontSize="25" FontWeight="Bold" Foreground="Red" Text=" !" />
+                        </DockPanel>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <Trigger Property="Validation.HasError" Value="True">
+                    <Setter Property="Background" Value="#FEC4C4"/>
+                    <Setter Property="ToolTip" Value="{Binding RelativeSource={x:Static RelativeSource.Self},Path=(Validation.Errors)[0].ErrorContent}"></Setter>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+    </Page.Resources>
     <Grid>
         <Grid.Background>
             <ImageBrush Stretch="UniformToFill"  ImageSource="/Images/Backgrounds/4.jpg" />
@@ -16,11 +59,11 @@
             <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" TextBlock.TextAlignment="Center">
                 <Border Background="{StaticResource ForegroundLightBrush}" 
                     CornerRadius="10" 
-                    Padding="10 20 10 10" 
-                    Width="398.915" 
-                    Margin="50 0 50 0" Height="258.107" >
+                    Padding="10" 
+                    Width="420" 
+                    Margin="50 0 50 0" Height="360" >
                     <StackPanel>
-                        <TextBlock Text="Register" FontSize="30" FontWeight="Bold" Foreground="{StaticResource ForegroundPurpleBrush}" >
+                        <TextBlock Text="{x:Static p:Resources.Register}" FontSize="30" Margin="0 0 0 10" FontWeight="Bold" Foreground="{StaticResource ForegroundPurpleBrush}" >
                             <TextBlock.Effect>
                                 <DropShadowEffect
                                 ShadowDepth="0"
@@ -30,6 +73,60 @@
                                 </DropShadowEffect>
                             </TextBlock.Effect>
                         </TextBlock>
+                        <DockPanel VerticalAlignment="Center" Margin="5">
+                            <Label FontWeight="Bold" Content="{x:Static p:Resources.Email}"/>
+                            <TextBox HorizontalAlignment="Right" HorizontalContentAlignment="Left" VerticalContentAlignment="Center"
+                                     x:Name="EmailTextBox" Width="270" Height="30" Margin="0 0 10 0"
+                                  Style="{StaticResource TextErrorStyle}" 
+                                 Text="{Binding Email, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}"/>
+                        </DockPanel>
+                        <DockPanel VerticalAlignment="Center" Margin="5">
+                            <Label FontWeight="Bold" Content="{x:Static p:Resources.Password}"/>
+                            <TextBox HorizontalAlignment="Right" HorizontalContentAlignment="Left" VerticalContentAlignment="Center"
+                                     x:Name="PasswordTextBox" Width="270" Height="30" Margin="0 0 10 0"
+                                  Style="{StaticResource TextErrorStyle}" 
+                                 Text="{Binding Password, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}"/>
+                        </DockPanel>
+                        <DockPanel VerticalAlignment="Center" Margin="5">
+                            <Label FontWeight="Bold" Content="{x:Static p:Resources.Name}"/>
+                            <TextBox HorizontalAlignment="Right" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" 
+                                     x:Name="NameTextBox" Width="270" Height="30" Margin="0 0 10 0"
+                                  Style="{StaticResource TextErrorStyle}" 
+                                 Text="{Binding Name, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}"/>
+                        </DockPanel>
+                        <DockPanel VerticalAlignment="Center" Margin="5">
+                            <Label FontWeight="Bold" Content="{x:Static p:Resources.DateOfBirth}"/>
+                            <DatePicker SelectedDate="{Binding DateOfBirth, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" 
+                                        HorizontalAlignment="Right" Margin="0 0 10 0"
+                                        Style="{StaticResource DateErrorStyle}" FontSize="14"/>
+                            <!--<TextBox HorizontalAlignment="Right" HorizontalContentAlignment="Left" VerticalContentAlignment="Center"
+                                     x:Name="DateTextBox" Width="270" Height="30" Margin="0 0 10 0"
+                                  Style="{StaticResource TextErrorStyle}" 
+                                 Text="{Binding DateOfBirth, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}"/>-->
+                        </DockPanel>
+                        <DockPanel VerticalAlignment="Center" Margin="5">
+                            <Label FontWeight="Bold" Content="{x:Static p:Resources.PhoneNumber}"/>
+                            <TextBox HorizontalAlignment="Right" HorizontalContentAlignment="Left" VerticalContentAlignment="Center"
+                                     x:Name="PhoneTextBox" Width="270" Height="30" Margin="0 0 10 0"
+                                  Style="{StaticResource TextErrorStyle}" 
+                                 Text="{Binding PhoneNumber, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}"/>
+                        </DockPanel>
+                        <DockPanel VerticalAlignment="Center" Margin="5">
+                            <Label FontWeight="Bold" Content="{x:Static p:Resources.Country}"/>
+                            <TextBox HorizontalAlignment="Right" HorizontalContentAlignment="Left" VerticalContentAlignment="Center"
+                                     x:Name="CountryTextBox" Width="270" Height="30" Margin="0 0 10 0"
+                                  Style="{StaticResource TextErrorStyle}" 
+                                 Text="{Binding Country, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}"/>
+                        </DockPanel>
+                        <DockPanel VerticalAlignment="Center" Margin="5">
+                            <Label FontWeight="Bold" Content="{x:Static p:Resources.Address}"/>
+                            <TextBox HorizontalAlignment="Right" HorizontalContentAlignment="Left" VerticalContentAlignment="Center"
+                                     x:Name="AddressTextBox" Width="270" Height="30" Margin="0 0 10 0"
+                                  Style="{StaticResource TextErrorStyle}" 
+                                 Text="{Binding Address, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}"/>
+                        </DockPanel>
+
+
 
                     </StackPanel>
                 </Border>
