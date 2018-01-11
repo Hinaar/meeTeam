@@ -124,6 +124,15 @@ namespace Client.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Invalid username or password.
+        /// </summary>
+        public static string ErrorLogin {
+            get {
+                return ResourceManager.GetString("ErrorLogin", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Invalid Email Address.
         /// </summary>
         public static string ErrorMail {

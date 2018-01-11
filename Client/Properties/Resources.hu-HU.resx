@@ -135,6 +135,9 @@
   <data name="ErrorBirth" xml:space="preserve">
     <value>10 és 150 év közöttinek kell lenned</value>
   </data>
+  <data name="ErrorLogin" xml:space="preserve">
+    <value>Hibás email-jelszó páros</value>
+  </data>
   <data name="ErrorMail" xml:space="preserve">
     <value>Hibás email formátum</value>
   </data>

@@ -138,6 +138,9 @@
   <data name="ErrorBirth" xml:space="preserve">
     <value>You must be between 10-150 years old</value>
   </data>
+  <data name="ErrorLogin" xml:space="preserve">
+    <value>Invalid username or password</value>
+  </data>
   <data name="ErrorMail" xml:space="preserve">
     <value>Invalid Email Address</value>
   </data>

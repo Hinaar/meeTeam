@@ -3,28 +3,30 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:p="clr-namespace:Client.Properties"
         xmlns:local="clr-namespace:Client"
         mc:Ignorable="d"
-        Title="DialogWindow" Height="300" Width="300" AllowsTransparency="True" WindowStyle="None" Background="#00000000">
+        Title="DialogWindow" Height="600" Width="600" AllowsTransparency="True" WindowStyle="None" Background="#00000000"
+        WindowStartupLocation="CenterScreen">
   <Window.Triggers>
     <EventTrigger RoutedEvent="FrameworkElement.Loaded">
             <BeginStoryboard>
                 <Storyboard>
                     <DoubleAnimation
-                        Duration="0:0:5"
-                        From="0"
-                        RepeatBehavior="Forever"
+                        Duration="0:0:2"
+                        From="90"
                         Storyboard.TargetName="rotation"
                         Storyboard.TargetProperty="Angle"
-                        To="-360"/>
+                        To="0"/>
                 </Storyboard>
             </BeginStoryboard>
         </EventTrigger>
   </Window.Triggers>
+    
     <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
         <Viewport3D>
             <Viewport3D.Camera>
-                <PerspectiveCamera Position="0, 0, 4"/>
+                <PerspectiveCamera Position="0, 0, 3"/>
             </Viewport3D.Camera>
     <!-- Button on 3D -->
             <Viewport2DVisual3D>
@@ -47,10 +49,22 @@
                 <Viewport2DVisual3D.Material>
                     <DiffuseMaterial Brush="White" Viewport2DVisual3D.IsVisualHostMaterial="True"/>
                 </Viewport2DVisual3D.Material>
-                <Grid Height="{Binding ActualWidth, RelativeSource={RelativeSource Self}}" Background="Transparent">
-                    <Button VerticalAlignment="Center" Content="Hello, 3D"/>
-                    
-                </Grid>
+                <Canvas Height="{Binding ActualWidth, RelativeSource={RelativeSource Self}}" Width="480" Background="Transparent">
+                    <Rectangle x:Name="rectangle" Height="180" Stroke="Black" VerticalAlignment="Center" Width="480" RadiusY="16.263" RadiusX="16.263" Margin="0">
+                        <Rectangle.Fill>
+                            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                <GradientStop Color="#FF400A0A" Offset="1"/>
+                                <GradientStop Color="#BAF58F8F"/>
+                            </LinearGradientBrush>
+                        </Rectangle.Fill>
+                    </Rectangle>
+                    <Label Content="{x:Static p:Resources.ErrorLogin}" HorizontalAlignment="Right" HorizontalContentAlignment="Center"  Margin="10,48.667,0,0" VerticalAlignment="Top"  FontSize="33" FontWeight="Bold" >
+                        <Label.Effect>
+                            <DropShadowEffect ShadowDepth="0" BlurRadius="2" Color="White"/>
+                        </Label.Effect>
+                    </Label>
+                    <Button Content="Ok" HorizontalAlignment="Left" Height="44" Margin="139.333,130.12,0,0" VerticalAlignment="Top" Width="196.667" Click="Button_Click"/>
+                </Canvas>
             </Viewport2DVisual3D>
     <!-- Lights -->
             <ModelVisual3D>
