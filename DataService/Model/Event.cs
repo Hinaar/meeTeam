@@ -32,7 +32,13 @@ namespace DataService.Model
         public string Description { get; set; }
 
         [DataMember]
-        public int CoordinateID { get; set; }
+        public double Longitude { get; set; }
+
+        [DataMember]
+        public double Latitude { get; set; }
+
+        [DataMember]
+        public string LocationName { get; set; }
 
 
 
@@ -42,9 +48,6 @@ namespace DataService.Model
 
         [DataMember]
         public virtual User Owner { get; set; }
-
-        [DataMember]
-        public virtual Coordinate Coordinate { get; set; }
 
         [DataMember]
         public virtual ICollection<Post> Posts{ get; set; }

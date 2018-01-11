@@ -23,6 +23,10 @@ namespace DataService
 
         // TODO: Add your service operations here
         #region DbMethods
+
+        [OperationContract]
+        void InitializeDataBase();
+
         #region User Methods
         [OperationContract]
         List<User> GetUsers();
@@ -50,32 +54,6 @@ namespace DataService
 
 
         #endregion
-
-        #region Coordinate Methods
-        [OperationContract]
-        List<Coordinate> GetCoordinates();
-
-        [OperationContract]
-        Coordinate GetCoordinateById(int id);
-
-        [OperationContract]
-        Coordinate GetCoordinateByName(string name);
-
-        [OperationContract]
-        Coordinate GetEventCoordinate(int eventId);
-
-        [OperationContract]
-        void CreateCoordinate(Coordinate coordinate);
-
-        [OperationContract]
-        void DeleteCoordinate(int id);
-
-        [OperationContract]
-        Coordinate UpdateCoordinate(int id, Coordinate coordinate);
-
-
-        #endregion
-
 
         #region Post Methods
         [OperationContract]

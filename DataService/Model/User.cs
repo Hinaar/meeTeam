@@ -10,33 +10,34 @@ using System.Threading.Tasks;
 namespace DataService.Model
 {
     [DataContract]
-    public class User
+    [Table("Users")]
+    public partial class User
     {
         public User()
         {
             Attends = new List<Attend>();
             Events = new List<Event>();
         }
+
+        [Key]
         [DataMember]
         public int UserID { get; set; }
 
-
-        [DataMember]
-        public string Name { get; set; }
-
-        [DataMember]
-        public DateTime DateOfBirth { get; set; }
-
-        [DataMember]
-        [MaxLength(450)]
-        [EmailAddress]
-        public string Email { get; set; }
 
         [DataMember]
         public byte[] Salt { get; set; }
 
         [DataMember]
         public byte[] Hash { get; set; }
+
+        [DataMember]
+        [MaxLength(255)]
+        [EmailAddress]
+        public string Email { get; set; }
+
+        [ForeignKey("UserID")]
+        [DataMember]
+        public virtual UserDetail Details { get; set; }
 
 
 

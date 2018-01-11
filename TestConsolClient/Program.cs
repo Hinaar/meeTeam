@@ -13,16 +13,22 @@ namespace TestConsolClient
         static void Main(string[] args)
         {
             Console.ReadKey();
+            
             using (ServiceReference.ServiceClient sc = new ServiceReference.ServiceClient())
             {
+                sc.InitializeDataBase();
+                Console.WriteLine("db initialized");
+                Console.ReadLine();
+
 
                 var users = sc.GetUsers();
                 foreach (var item in users)
                 {
                     Console.WriteLine(item.Email);
+                    Console.WriteLine("\t " + item.Details.Address);
                 }
             }
-            AsyncTest();
+          //  AsyncTest();
 
             Console.ReadLine();
         }

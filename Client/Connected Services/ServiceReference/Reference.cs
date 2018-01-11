@@ -87,7 +87,7 @@ namespace Client.ServiceReference {
         private System.Collections.Generic.List<Client.ServiceReference.Attend> AttendsField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.DateTime DateOfBirthField;
+        private Client.ServiceReference.UserDetail DetailsField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string EmailField;
@@ -97,9 +97,6 @@ namespace Client.ServiceReference {
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private byte[] HashField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string NameField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private byte[] SaltField;
@@ -131,14 +128,14 @@ namespace Client.ServiceReference {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.DateTime DateOfBirth {
+        public Client.ServiceReference.UserDetail Details {
             get {
-                return this.DateOfBirthField;
+                return this.DetailsField;
             }
             set {
-                if ((this.DateOfBirthField.Equals(value) != true)) {
-                    this.DateOfBirthField = value;
-                    this.RaisePropertyChanged("DateOfBirth");
+                if ((object.ReferenceEquals(this.DetailsField, value) != true)) {
+                    this.DetailsField = value;
+                    this.RaisePropertyChanged("Details");
                 }
             }
         }
@@ -183,19 +180,6 @@ namespace Client.ServiceReference {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public string Name {
-            get {
-                return this.NameField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.NameField, value) != true)) {
-                    this.NameField = value;
-                    this.RaisePropertyChanged("Name");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
         public byte[] Salt {
             get {
                 return this.SaltField;
@@ -217,6 +201,115 @@ namespace Client.ServiceReference {
                 if ((this.UserIDField.Equals(value) != true)) {
                     this.UserIDField = value;
                     this.RaisePropertyChanged("UserID");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="UserDetail", Namespace="http://schemas.datacontract.org/2004/07/DataService.Model")]
+    [System.SerializableAttribute()]
+    public partial class UserDetail : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string AddressField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string CountryField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.DateTime DateOfBirthField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string NameField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string PhoneNumberField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Address {
+            get {
+                return this.AddressField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.AddressField, value) != true)) {
+                    this.AddressField = value;
+                    this.RaisePropertyChanged("Address");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Country {
+            get {
+                return this.CountryField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.CountryField, value) != true)) {
+                    this.CountryField = value;
+                    this.RaisePropertyChanged("Country");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.DateTime DateOfBirth {
+            get {
+                return this.DateOfBirthField;
+            }
+            set {
+                if ((this.DateOfBirthField.Equals(value) != true)) {
+                    this.DateOfBirthField = value;
+                    this.RaisePropertyChanged("DateOfBirth");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Name {
+            get {
+                return this.NameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.NameField, value) != true)) {
+                    this.NameField = value;
+                    this.RaisePropertyChanged("Name");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string PhoneNumber {
+            get {
+                return this.PhoneNumberField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.PhoneNumberField, value) != true)) {
+                    this.PhoneNumberField = value;
+                    this.RaisePropertyChanged("PhoneNumber");
                 }
             }
         }
@@ -353,12 +446,6 @@ namespace Client.ServiceReference {
         private System.Collections.Generic.List<Client.ServiceReference.Attend> AttendsField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private Client.ServiceReference.Coordinate CoordinateField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int CoordinateIDField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string DescriptionField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
@@ -366,6 +453,15 @@ namespace Client.ServiceReference {
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private System.DateTime FromDateField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private double LatitudeField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string LocationNameField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private double LongitudeField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private Client.ServiceReference.User OwnerField;
@@ -398,32 +494,6 @@ namespace Client.ServiceReference {
                 if ((object.ReferenceEquals(this.AttendsField, value) != true)) {
                     this.AttendsField = value;
                     this.RaisePropertyChanged("Attends");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public Client.ServiceReference.Coordinate Coordinate {
-            get {
-                return this.CoordinateField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.CoordinateField, value) != true)) {
-                    this.CoordinateField = value;
-                    this.RaisePropertyChanged("Coordinate");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public int CoordinateID {
-            get {
-                return this.CoordinateIDField;
-            }
-            set {
-                if ((this.CoordinateIDField.Equals(value) != true)) {
-                    this.CoordinateIDField = value;
-                    this.RaisePropertyChanged("CoordinateID");
                 }
             }
         }
@@ -463,6 +533,45 @@ namespace Client.ServiceReference {
                 if ((this.FromDateField.Equals(value) != true)) {
                     this.FromDateField = value;
                     this.RaisePropertyChanged("FromDate");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public double Latitude {
+            get {
+                return this.LatitudeField;
+            }
+            set {
+                if ((this.LatitudeField.Equals(value) != true)) {
+                    this.LatitudeField = value;
+                    this.RaisePropertyChanged("Latitude");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string LocationName {
+            get {
+                return this.LocationNameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.LocationNameField, value) != true)) {
+                    this.LocationNameField = value;
+                    this.RaisePropertyChanged("LocationName");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public double Longitude {
+            get {
+                return this.LongitudeField;
+            }
+            set {
+                if ((this.LongitudeField.Equals(value) != true)) {
+                    this.LongitudeField = value;
+                    this.RaisePropertyChanged("Longitude");
                 }
             }
         }
@@ -515,99 +624,6 @@ namespace Client.ServiceReference {
                 if ((this.ToDateField.Equals(value) != true)) {
                     this.ToDateField = value;
                     this.RaisePropertyChanged("ToDate");
-                }
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="Coordinate", Namespace="http://schemas.datacontract.org/2004/07/DataService.Model")]
-    [System.SerializableAttribute()]
-    public partial class Coordinate : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
-        
-        [System.NonSerializedAttribute()]
-        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int CoordinateIDField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private double LatitudeField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string LocationNameField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private double LongitudeField;
-        
-        [global::System.ComponentModel.BrowsableAttribute(false)]
-        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
-            get {
-                return this.extensionDataField;
-            }
-            set {
-                this.extensionDataField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public int CoordinateID {
-            get {
-                return this.CoordinateIDField;
-            }
-            set {
-                if ((this.CoordinateIDField.Equals(value) != true)) {
-                    this.CoordinateIDField = value;
-                    this.RaisePropertyChanged("CoordinateID");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public double Latitude {
-            get {
-                return this.LatitudeField;
-            }
-            set {
-                if ((this.LatitudeField.Equals(value) != true)) {
-                    this.LatitudeField = value;
-                    this.RaisePropertyChanged("Latitude");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string LocationName {
-            get {
-                return this.LocationNameField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.LocationNameField, value) != true)) {
-                    this.LocationNameField = value;
-                    this.RaisePropertyChanged("LocationName");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public double Longitude {
-            get {
-                return this.LongitudeField;
-            }
-            set {
-                if ((this.LongitudeField.Equals(value) != true)) {
-                    this.LongitudeField = value;
-                    this.RaisePropertyChanged("Longitude");
                 }
             }
         }
@@ -715,6 +731,67 @@ namespace Client.ServiceReference {
         }
     }
     
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="UserAttend", Namespace="http://schemas.datacontract.org/2004/07/DataService.Model")]
+    [System.SerializableAttribute()]
+    public partial class UserAttend : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private bool AttendsField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string UserNameField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public bool Attends {
+            get {
+                return this.AttendsField;
+            }
+            set {
+                if ((this.AttendsField.Equals(value) != true)) {
+                    this.AttendsField = value;
+                    this.RaisePropertyChanged("Attends");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string UserName {
+            get {
+                return this.UserNameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.UserNameField, value) != true)) {
+                    this.UserNameField = value;
+                    this.RaisePropertyChanged("UserName");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="ServiceReference.IService")]
     public interface IService {
@@ -730,6 +807,12 @@ namespace Client.ServiceReference {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/GetDataUsingDataContract", ReplyAction="http://tempuri.org/IService/GetDataUsingDataContractResponse")]
         System.Threading.Tasks.Task<Client.ServiceReference.CompositeType> GetDataUsingDataContractAsync(Client.ServiceReference.CompositeType composite);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/InitializeDataBase", ReplyAction="http://tempuri.org/IService/InitializeDataBaseResponse")]
+        void InitializeDataBase();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/InitializeDataBase", ReplyAction="http://tempuri.org/IService/InitializeDataBaseResponse")]
+        System.Threading.Tasks.Task InitializeDataBaseAsync();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/GetUsers", ReplyAction="http://tempuri.org/IService/GetUsersResponse")]
         System.Collections.Generic.List<Client.ServiceReference.User> GetUsers();
@@ -778,48 +861,6 @@ namespace Client.ServiceReference {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/UpdateUser", ReplyAction="http://tempuri.org/IService/UpdateUserResponse")]
         System.Threading.Tasks.Task<Client.ServiceReference.User> UpdateUserAsync(int id, Client.ServiceReference.User user);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/GetCoordinates", ReplyAction="http://tempuri.org/IService/GetCoordinatesResponse")]
-        System.Collections.Generic.List<Client.ServiceReference.Coordinate> GetCoordinates();
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/GetCoordinates", ReplyAction="http://tempuri.org/IService/GetCoordinatesResponse")]
-        System.Threading.Tasks.Task<System.Collections.Generic.List<Client.ServiceReference.Coordinate>> GetCoordinatesAsync();
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/GetCoordinateById", ReplyAction="http://tempuri.org/IService/GetCoordinateByIdResponse")]
-        Client.ServiceReference.Coordinate GetCoordinateById(int id);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/GetCoordinateById", ReplyAction="http://tempuri.org/IService/GetCoordinateByIdResponse")]
-        System.Threading.Tasks.Task<Client.ServiceReference.Coordinate> GetCoordinateByIdAsync(int id);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/GetCoordinateByName", ReplyAction="http://tempuri.org/IService/GetCoordinateByNameResponse")]
-        Client.ServiceReference.Coordinate GetCoordinateByName(string name);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/GetCoordinateByName", ReplyAction="http://tempuri.org/IService/GetCoordinateByNameResponse")]
-        System.Threading.Tasks.Task<Client.ServiceReference.Coordinate> GetCoordinateByNameAsync(string name);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/GetEventCoordinate", ReplyAction="http://tempuri.org/IService/GetEventCoordinateResponse")]
-        Client.ServiceReference.Coordinate GetEventCoordinate(int eventId);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/GetEventCoordinate", ReplyAction="http://tempuri.org/IService/GetEventCoordinateResponse")]
-        System.Threading.Tasks.Task<Client.ServiceReference.Coordinate> GetEventCoordinateAsync(int eventId);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/CreateCoordinate", ReplyAction="http://tempuri.org/IService/CreateCoordinateResponse")]
-        void CreateCoordinate(Client.ServiceReference.Coordinate coordinate);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/CreateCoordinate", ReplyAction="http://tempuri.org/IService/CreateCoordinateResponse")]
-        System.Threading.Tasks.Task CreateCoordinateAsync(Client.ServiceReference.Coordinate coordinate);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/DeleteCoordinate", ReplyAction="http://tempuri.org/IService/DeleteCoordinateResponse")]
-        void DeleteCoordinate(int id);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/DeleteCoordinate", ReplyAction="http://tempuri.org/IService/DeleteCoordinateResponse")]
-        System.Threading.Tasks.Task DeleteCoordinateAsync(int id);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/UpdateCoordinate", ReplyAction="http://tempuri.org/IService/UpdateCoordinateResponse")]
-        Client.ServiceReference.Coordinate UpdateCoordinate(int id, Client.ServiceReference.Coordinate coordinate);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/UpdateCoordinate", ReplyAction="http://tempuri.org/IService/UpdateCoordinateResponse")]
-        System.Threading.Tasks.Task<Client.ServiceReference.Coordinate> UpdateCoordinateAsync(int id, Client.ServiceReference.Coordinate coordinate);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/GetPosts", ReplyAction="http://tempuri.org/IService/GetPostsResponse")]
         System.Collections.Generic.List<Client.ServiceReference.Post> GetPosts();
@@ -904,6 +945,12 @@ namespace Client.ServiceReference {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/DeleteAttend", ReplyAction="http://tempuri.org/IService/DeleteAttendResponse")]
         System.Threading.Tasks.Task DeleteAttendAsync(int userId, int eventId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/GetComplexUsersOfEvent", ReplyAction="http://tempuri.org/IService/GetComplexUsersOfEventResponse")]
+        System.Collections.Generic.List<Client.ServiceReference.UserAttend> GetComplexUsersOfEvent(int eventID);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/GetComplexUsersOfEvent", ReplyAction="http://tempuri.org/IService/GetComplexUsersOfEventResponse")]
+        System.Threading.Tasks.Task<System.Collections.Generic.List<Client.ServiceReference.UserAttend>> GetComplexUsersOfEventAsync(int eventID);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -947,6 +994,14 @@ namespace Client.ServiceReference {
         
         public System.Threading.Tasks.Task<Client.ServiceReference.CompositeType> GetDataUsingDataContractAsync(Client.ServiceReference.CompositeType composite) {
             return base.Channel.GetDataUsingDataContractAsync(composite);
+        }
+        
+        public void InitializeDataBase() {
+            base.Channel.InitializeDataBase();
+        }
+        
+        public System.Threading.Tasks.Task InitializeDataBaseAsync() {
+            return base.Channel.InitializeDataBaseAsync();
         }
         
         public System.Collections.Generic.List<Client.ServiceReference.User> GetUsers() {
@@ -1011,62 +1066,6 @@ namespace Client.ServiceReference {
         
         public System.Threading.Tasks.Task<Client.ServiceReference.User> UpdateUserAsync(int id, Client.ServiceReference.User user) {
             return base.Channel.UpdateUserAsync(id, user);
-        }
-        
-        public System.Collections.Generic.List<Client.ServiceReference.Coordinate> GetCoordinates() {
-            return base.Channel.GetCoordinates();
-        }
-        
-        public System.Threading.Tasks.Task<System.Collections.Generic.List<Client.ServiceReference.Coordinate>> GetCoordinatesAsync() {
-            return base.Channel.GetCoordinatesAsync();
-        }
-        
-        public Client.ServiceReference.Coordinate GetCoordinateById(int id) {
-            return base.Channel.GetCoordinateById(id);
-        }
-        
-        public System.Threading.Tasks.Task<Client.ServiceReference.Coordinate> GetCoordinateByIdAsync(int id) {
-            return base.Channel.GetCoordinateByIdAsync(id);
-        }
-        
-        public Client.ServiceReference.Coordinate GetCoordinateByName(string name) {
-            return base.Channel.GetCoordinateByName(name);
-        }
-        
-        public System.Threading.Tasks.Task<Client.ServiceReference.Coordinate> GetCoordinateByNameAsync(string name) {
-            return base.Channel.GetCoordinateByNameAsync(name);
-        }
-        
-        public Client.ServiceReference.Coordinate GetEventCoordinate(int eventId) {
-            return base.Channel.GetEventCoordinate(eventId);
-        }
-        
-        public System.Threading.Tasks.Task<Client.ServiceReference.Coordinate> GetEventCoordinateAsync(int eventId) {
-            return base.Channel.GetEventCoordinateAsync(eventId);
-        }
-        
-        public void CreateCoordinate(Client.ServiceReference.Coordinate coordinate) {
-            base.Channel.CreateCoordinate(coordinate);
-        }
-        
-        public System.Threading.Tasks.Task CreateCoordinateAsync(Client.ServiceReference.Coordinate coordinate) {
-            return base.Channel.CreateCoordinateAsync(coordinate);
-        }
-        
-        public void DeleteCoordinate(int id) {
-            base.Channel.DeleteCoordinate(id);
-        }
-        
-        public System.Threading.Tasks.Task DeleteCoordinateAsync(int id) {
-            return base.Channel.DeleteCoordinateAsync(id);
-        }
-        
-        public Client.ServiceReference.Coordinate UpdateCoordinate(int id, Client.ServiceReference.Coordinate coordinate) {
-            return base.Channel.UpdateCoordinate(id, coordinate);
-        }
-        
-        public System.Threading.Tasks.Task<Client.ServiceReference.Coordinate> UpdateCoordinateAsync(int id, Client.ServiceReference.Coordinate coordinate) {
-            return base.Channel.UpdateCoordinateAsync(id, coordinate);
         }
         
         public System.Collections.Generic.List<Client.ServiceReference.Post> GetPosts() {
@@ -1179,6 +1178,14 @@ namespace Client.ServiceReference {
         
         public System.Threading.Tasks.Task DeleteAttendAsync(int userId, int eventId) {
             return base.Channel.DeleteAttendAsync(userId, eventId);
+        }
+        
+        public System.Collections.Generic.List<Client.ServiceReference.UserAttend> GetComplexUsersOfEvent(int eventID) {
+            return base.Channel.GetComplexUsersOfEvent(eventID);
+        }
+        
+        public System.Threading.Tasks.Task<System.Collections.Generic.List<Client.ServiceReference.UserAttend>> GetComplexUsersOfEventAsync(int eventID) {
+            return base.Channel.GetComplexUsersOfEventAsync(eventID);
         }
     }
 }

@@ -195,9 +195,6 @@
     <None Include="Connected Services\ServiceReference\Client.ServiceReference.CompositeType.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Connected Services\ServiceReference\Client.ServiceReference.Coordinate.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
     <None Include="Connected Services\ServiceReference\Client.ServiceReference.Event.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
@@ -205,6 +202,9 @@
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Connected Services\ServiceReference\Client.ServiceReference.User.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReference\Client.ServiceReference.UserAttend.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Connected Services\ServiceReference\Service.wsdl" />

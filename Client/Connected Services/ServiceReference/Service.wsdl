@@ -20,6 +20,12 @@
   <wsdl:message name="IService_GetDataUsingDataContract_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetDataUsingDataContractResponse" />
   </wsdl:message>
+  <wsdl:message name="IService_InitializeDataBase_InputMessage">
+    <wsdl:part name="parameters" element="tns:InitializeDataBase" />
+  </wsdl:message>
+  <wsdl:message name="IService_InitializeDataBase_OutputMessage">
+    <wsdl:part name="parameters" element="tns:InitializeDataBaseResponse" />
+  </wsdl:message>
   <wsdl:message name="IService_GetUsers_InputMessage">
     <wsdl:part name="parameters" element="tns:GetUsers" />
   </wsdl:message>
@@ -67,48 +73,6 @@
   </wsdl:message>
   <wsdl:message name="IService_UpdateUser_OutputMessage">
     <wsdl:part name="parameters" element="tns:UpdateUserResponse" />
-  </wsdl:message>
-  <wsdl:message name="IService_GetCoordinates_InputMessage">
-    <wsdl:part name="parameters" element="tns:GetCoordinates" />
-  </wsdl:message>
-  <wsdl:message name="IService_GetCoordinates_OutputMessage">
-    <wsdl:part name="parameters" element="tns:GetCoordinatesResponse" />
-  </wsdl:message>
-  <wsdl:message name="IService_GetCoordinateById_InputMessage">
-    <wsdl:part name="parameters" element="tns:GetCoordinateById" />
-  </wsdl:message>
-  <wsdl:message name="IService_GetCoordinateById_OutputMessage">
-    <wsdl:part name="parameters" element="tns:GetCoordinateByIdResponse" />
-  </wsdl:message>
-  <wsdl:message name="IService_GetCoordinateByName_InputMessage">
-    <wsdl:part name="parameters" element="tns:GetCoordinateByName" />
-  </wsdl:message>
-  <wsdl:message name="IService_GetCoordinateByName_OutputMessage">
-    <wsdl:part name="parameters" element="tns:GetCoordinateByNameResponse" />
-  </wsdl:message>
-  <wsdl:message name="IService_GetEventCoordinate_InputMessage">
-    <wsdl:part name="parameters" element="tns:GetEventCoordinate" />
-  </wsdl:message>
-  <wsdl:message name="IService_GetEventCoordinate_OutputMessage">
-    <wsdl:part name="parameters" element="tns:GetEventCoordinateResponse" />
-  </wsdl:message>
-  <wsdl:message name="IService_CreateCoordinate_InputMessage">
-    <wsdl:part name="parameters" element="tns:CreateCoordinate" />
-  </wsdl:message>
-  <wsdl:message name="IService_CreateCoordinate_OutputMessage">
-    <wsdl:part name="parameters" element="tns:CreateCoordinateResponse" />
-  </wsdl:message>
-  <wsdl:message name="IService_DeleteCoordinate_InputMessage">
-    <wsdl:part name="parameters" element="tns:DeleteCoordinate" />
-  </wsdl:message>
-  <wsdl:message name="IService_DeleteCoordinate_OutputMessage">
-    <wsdl:part name="parameters" element="tns:DeleteCoordinateResponse" />
-  </wsdl:message>
-  <wsdl:message name="IService_UpdateCoordinate_InputMessage">
-    <wsdl:part name="parameters" element="tns:UpdateCoordinate" />
-  </wsdl:message>
-  <wsdl:message name="IService_UpdateCoordinate_OutputMessage">
-    <wsdl:part name="parameters" element="tns:UpdateCoordinateResponse" />
   </wsdl:message>
   <wsdl:message name="IService_GetPosts_InputMessage">
     <wsdl:part name="parameters" element="tns:GetPosts" />
@@ -194,6 +158,12 @@
   <wsdl:message name="IService_DeleteAttend_OutputMessage">
     <wsdl:part name="parameters" element="tns:DeleteAttendResponse" />
   </wsdl:message>
+  <wsdl:message name="IService_GetComplexUsersOfEvent_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetComplexUsersOfEvent" />
+  </wsdl:message>
+  <wsdl:message name="IService_GetComplexUsersOfEvent_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetComplexUsersOfEventResponse" />
+  </wsdl:message>
   <wsdl:portType name="IService">
     <wsdl:operation name="GetData">
       <wsdl:input wsaw:Action="http://tempuri.org/IService/GetData" message="tns:IService_GetData_InputMessage" />
@@ -202,6 +172,10 @@
     <wsdl:operation name="GetDataUsingDataContract">
       <wsdl:input wsaw:Action="http://tempuri.org/IService/GetDataUsingDataContract" message="tns:IService_GetDataUsingDataContract_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IService/GetDataUsingDataContractResponse" message="tns:IService_GetDataUsingDataContract_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="InitializeDataBase">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService/InitializeDataBase" message="tns:IService_InitializeDataBase_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService/InitializeDataBaseResponse" message="tns:IService_InitializeDataBase_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="GetUsers">
       <wsdl:input wsaw:Action="http://tempuri.org/IService/GetUsers" message="tns:IService_GetUsers_InputMessage" />
@@ -234,34 +208,6 @@
     <wsdl:operation name="UpdateUser">
       <wsdl:input wsaw:Action="http://tempuri.org/IService/UpdateUser" message="tns:IService_UpdateUser_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IService/UpdateUserResponse" message="tns:IService_UpdateUser_OutputMessage" />
-    </wsdl:operation>
-    <wsdl:operation name="GetCoordinates">
-      <wsdl:input wsaw:Action="http://tempuri.org/IService/GetCoordinates" message="tns:IService_GetCoordinates_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IService/GetCoordinatesResponse" message="tns:IService_GetCoordinates_OutputMessage" />
-    </wsdl:operation>
-    <wsdl:operation name="GetCoordinateById">
-      <wsdl:input wsaw:Action="http://tempuri.org/IService/GetCoordinateById" message="tns:IService_GetCoordinateById_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IService/GetCoordinateByIdResponse" message="tns:IService_GetCoordinateById_OutputMessage" />
-    </wsdl:operation>
-    <wsdl:operation name="GetCoordinateByName">
-      <wsdl:input wsaw:Action="http://tempuri.org/IService/GetCoordinateByName" message="tns:IService_GetCoordinateByName_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IService/GetCoordinateByNameResponse" message="tns:IService_GetCoordinateByName_OutputMessage" />
-    </wsdl:operation>
-    <wsdl:operation name="GetEventCoordinate">
-      <wsdl:input wsaw:Action="http://tempuri.org/IService/GetEventCoordinate" message="tns:IService_GetEventCoordinate_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IService/GetEventCoordinateResponse" message="tns:IService_GetEventCoordinate_OutputMessage" />
-    </wsdl:operation>
-    <wsdl:operation name="CreateCoordinate">
-      <wsdl:input wsaw:Action="http://tempuri.org/IService/CreateCoordinate" message="tns:IService_CreateCoordinate_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IService/CreateCoordinateResponse" message="tns:IService_CreateCoordinate_OutputMessage" />
-    </wsdl:operation>
-    <wsdl:operation name="DeleteCoordinate">
-      <wsdl:input wsaw:Action="http://tempuri.org/IService/DeleteCoordinate" message="tns:IService_DeleteCoordinate_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IService/DeleteCoordinateResponse" message="tns:IService_DeleteCoordinate_OutputMessage" />
-    </wsdl:operation>
-    <wsdl:operation name="UpdateCoordinate">
-      <wsdl:input wsaw:Action="http://tempuri.org/IService/UpdateCoordinate" message="tns:IService_UpdateCoordinate_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IService/UpdateCoordinateResponse" message="tns:IService_UpdateCoordinate_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="GetPosts">
       <wsdl:input wsaw:Action="http://tempuri.org/IService/GetPosts" message="tns:IService_GetPosts_InputMessage" />
@@ -319,6 +265,10 @@
       <wsdl:input wsaw:Action="http://tempuri.org/IService/DeleteAttend" message="tns:IService_DeleteAttend_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IService/DeleteAttendResponse" message="tns:IService_DeleteAttend_OutputMessage" />
     </wsdl:operation>
+    <wsdl:operation name="GetComplexUsersOfEvent">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService/GetComplexUsersOfEvent" message="tns:IService_GetComplexUsersOfEvent_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService/GetComplexUsersOfEventResponse" message="tns:IService_GetComplexUsersOfEvent_OutputMessage" />
+    </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IService" type="tns:IService">
     <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
@@ -333,6 +283,15 @@
     </wsdl:operation>
     <wsdl:operation name="GetDataUsingDataContract">
       <soap:operation soapAction="http://tempuri.org/IService/GetDataUsingDataContract" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InitializeDataBase">
+      <soap:operation soapAction="http://tempuri.org/IService/InitializeDataBase" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -405,69 +364,6 @@
     </wsdl:operation>
     <wsdl:operation name="UpdateUser">
       <soap:operation soapAction="http://tempuri.org/IService/UpdateUser" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="GetCoordinates">
-      <soap:operation soapAction="http://tempuri.org/IService/GetCoordinates" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="GetCoordinateById">
-      <soap:operation soapAction="http://tempuri.org/IService/GetCoordinateById" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="GetCoordinateByName">
-      <soap:operation soapAction="http://tempuri.org/IService/GetCoordinateByName" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="GetEventCoordinate">
-      <soap:operation soapAction="http://tempuri.org/IService/GetEventCoordinate" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="CreateCoordinate">
-      <soap:operation soapAction="http://tempuri.org/IService/CreateCoordinate" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="DeleteCoordinate">
-      <soap:operation soapAction="http://tempuri.org/IService/DeleteCoordinate" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="UpdateCoordinate">
-      <soap:operation soapAction="http://tempuri.org/IService/UpdateCoordinate" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -594,6 +490,15 @@
     </wsdl:operation>
     <wsdl:operation name="DeleteAttend">
       <soap:operation soapAction="http://tempuri.org/IService/DeleteAttend" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetComplexUsersOfEvent">
+      <soap:operation soapAction="http://tempuri.org/IService/GetComplexUsersOfEvent" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

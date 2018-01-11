@@ -9,11 +9,10 @@
   <xs:complexType name="User">
     <xs:sequence>
       <xs:element minOccurs="0" name="Attends" nillable="true" type="tns:ArrayOfAttend" />
-      <xs:element minOccurs="0" name="DateOfBirth" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Details" nillable="true" type="tns:UserDetail" />
       <xs:element minOccurs="0" name="Email" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Events" nillable="true" type="tns:ArrayOfEvent" />
       <xs:element minOccurs="0" name="Hash" nillable="true" type="xs:base64Binary" />
-      <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Salt" nillable="true" type="xs:base64Binary" />
       <xs:element minOccurs="0" name="UserID" type="xs:int" />
     </xs:sequence>
@@ -38,11 +37,12 @@
   <xs:complexType name="Event">
     <xs:sequence>
       <xs:element minOccurs="0" name="Attends" nillable="true" type="tns:ArrayOfAttend" />
-      <xs:element minOccurs="0" name="Coordinate" nillable="true" type="tns:Coordinate" />
-      <xs:element minOccurs="0" name="CoordinateID" type="xs:int" />
       <xs:element minOccurs="0" name="Description" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="EventID" type="xs:int" />
       <xs:element minOccurs="0" name="FromDate" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Latitude" type="xs:double" />
+      <xs:element minOccurs="0" name="LocationName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Longitude" type="xs:double" />
       <xs:element minOccurs="0" name="Owner" nillable="true" type="tns:User" />
       <xs:element minOccurs="0" name="Posts" nillable="true" type="tns:ArrayOfPost" />
       <xs:element minOccurs="0" name="Title" nillable="true" type="xs:string" />
@@ -50,15 +50,6 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="Event" nillable="true" type="tns:Event" />
-  <xs:complexType name="Coordinate">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="CoordinateID" type="xs:int" />
-      <xs:element minOccurs="0" name="Latitude" type="xs:double" />
-      <xs:element minOccurs="0" name="LocationName" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="Longitude" type="xs:double" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="Coordinate" nillable="true" type="tns:Coordinate" />
   <xs:complexType name="ArrayOfPost">
     <xs:sequence>
       <xs:element minOccurs="0" maxOccurs="unbounded" name="Post" nillable="true" type="tns:Post" />
@@ -74,16 +65,33 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="Post" nillable="true" type="tns:Post" />
+  <xs:complexType name="UserDetail">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Address" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Country" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="DateOfBirth" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PhoneNumber" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="UserDetail" nillable="true" type="tns:UserDetail" />
   <xs:complexType name="ArrayOfEvent">
     <xs:sequence>
       <xs:element minOccurs="0" maxOccurs="unbounded" name="Event" nillable="true" type="tns:Event" />
     </xs:sequence>
   </xs:complexType>
   <xs:element name="ArrayOfEvent" nillable="true" type="tns:ArrayOfEvent" />
-  <xs:complexType name="ArrayOfCoordinate">
+  <xs:complexType name="ArrayOfUserAttend">
     <xs:sequence>
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="Coordinate" nillable="true" type="tns:Coordinate" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="UserAttend" nillable="true" type="tns:UserAttend" />
     </xs:sequence>
   </xs:complexType>
-  <xs:element name="ArrayOfCoordinate" nillable="true" type="tns:ArrayOfCoordinate" />
+  <xs:element name="ArrayOfUserAttend" nillable="true" type="tns:ArrayOfUserAttend" />
+  <xs:complexType name="UserAttend">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Attends" type="xs:boolean" />
+      <xs:element minOccurs="0" name="UserName" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="UserAttend" nillable="true" type="tns:UserAttend" />
 </xs:schema>

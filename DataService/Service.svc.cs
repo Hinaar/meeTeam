@@ -38,15 +38,22 @@ namespace DataService
         }
 
         #region DbMethod Implementations
-        
-            #region User Methods Implementation
-            public List<User> GetUsers()
+        public void InitializeDataBase()
+        {
+            DbInitializer.Initialize();
+        }
+
+
+        #region User Methods Implementation
+        public List<User> GetUsers()
             {
                 try
                 {
                     using (LocalContext ctx = new LocalContext())
                     {
-                        return ctx.Users.ToList();
+                        var user =  ctx.Users.Include("Details").ToList();
+                    
+                        return user;
                     }
                 }
                 catch (Exception e)
@@ -81,7 +88,8 @@ namespace DataService
                 {
                     using (LocalContext ctx = new LocalContext())
                     {
-                        return ctx.Users.SingleOrDefault(u => u.UserID == id);
+                        var user =  ctx.Users.Include(u=>u.Details).SingleOrDefault(u => u.UserID == id);
+                        return user;
                     }
                 }
                 catch (Exception e)
@@ -97,7 +105,7 @@ namespace DataService
             {
                 using (LocalContext ctx = new LocalContext())
                 {
-                    var user = ctx.Users.SingleOrDefault(u => u.Email.Equals(email));
+                    var user = ctx.Users.Include(u=>u.Details).SingleOrDefault(u => u.Email.Equals(email));
                     bool check = PwdTransformer.Instance.CheckPass(psw, user.Salt, user.Hash);
                     if (check)
                         return user;
@@ -186,119 +194,6 @@ namespace DataService
             catch (Exception e)
             {
                 Debug.WriteLine(e);
-                return null;
-            }
-        }
-            #endregion
-
-            #region  Coordinate Methods Implementation
-            public List<Coordinate> GetCoordinates()
-            {
-            try
-            {
-                using (LocalContext ctx = new LocalContext())
-                {
-                    return ctx.Coordinates.ToList();
-                }
-            }
-            catch (Exception)
-            {
-                return null;
-            }
-            }
-
-            public Coordinate GetCoordinateById(int id)
-            {
-            try
-            {
-                using (LocalContext ctx = new LocalContext())
-                {
-                    return ctx.Coordinates.SingleOrDefault(c => c.CoordinateID == id);
-                }
-            }
-            catch (Exception)
-            {
-                return null;
-            }
-        }
-
-            public Coordinate GetCoordinateByName(string name)
-            {
-            try
-            {
-                using (LocalContext ctx = new LocalContext())
-                {
-                    return ctx.Coordinates.SingleOrDefault(c => c.LocationName.Equals(name));
-                }
-            }
-            catch (Exception)
-            {
-                return null;
-            }
-        }
-
-            public Coordinate GetEventCoordinate(int eventId)
-            {
-            try
-            {
-                using (LocalContext ctx = new LocalContext())
-                {
-                    return ctx.Events.SingleOrDefault(e => e.EventID == eventId).Coordinate;
-                }
-            }
-            catch (Exception)
-            {
-                return null;
-            }
-        }
-
-            public void CreateCoordinate(Coordinate coordinate)
-            {
-            try
-            {
-                using (LocalContext ctx = new LocalContext())
-                {
-                    ctx.Coordinates.Add(coordinate);
-                    ctx.SaveChanges();
-                }
-            }
-            catch (Exception)
-            {
-                
-            }
-        }
-
-            public void DeleteCoordinate(int id)
-            {
-            try
-            {
-                using (LocalContext ctx = new LocalContext())
-                {
-                    var coord = ctx.Coordinates.SingleOrDefault(c => c.CoordinateID == id);
-                    ctx.Coordinates.Remove(coord);
-                    ctx.SaveChanges();
-                }
-            }
-            catch (Exception)
-            {
-                
-            }
-        }
-
-            public Coordinate UpdateCoordinate(int id, Coordinate coordinate)
-            {
-            try
-            {
-                using (LocalContext ctx = new LocalContext())
-                {
-                    ctx.Coordinates.Attach(coordinate);
-                    ctx.Entry(coordinate).State = EntityState.Modified;
-                    ctx.SaveChanges();
-                    return coordinate;
-                }
-            }
-            catch (Exception)
-            {
                 return null;
             }
         }
@@ -419,7 +314,7 @@ namespace DataService
             {
                 using (LocalContext ctx = new LocalContext())
                 {
-                    return ctx.Events.Include(e=>e.Coordinate).ToList();
+                    return ctx.Events.ToList();
                 }
             }
             catch (Exception e)
@@ -453,7 +348,7 @@ namespace DataService
                 {
                     return ctx.Attends
                         .Where(a => a.UserID == userId)
-                        .Select(a=>a.Event).Include(e=>e.Coordinate)
+                        .Select(a=>a.Event)
                         .ToList();
                 }
             }
@@ -569,8 +464,9 @@ namespace DataService
                                 new UserAttend()
                                 {
                                     UserName = ctx.Users
+                                                  .Include(u=>u.Details)
                                                   .Single(u=>u.UserID==a.UserID)
-                                                  .Name,
+                                                  .Details.Name,
                                     Attends = a.willAttend
                                 })
                             .ToList();
@@ -584,6 +480,8 @@ namespace DataService
                     return null;
                 }
             }
+
+    
 
         #endregion
 

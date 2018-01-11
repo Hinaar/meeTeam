@@ -56,7 +56,8 @@ namespace Client
         public EventViewModel(Event e)
         {
             even = e;
-            EventLocation = new Location(e.Coordinate.Latitude, e.Coordinate.Longitude, 0.0);
+            //TODO: adatbazisba megcserelni erteket es itt is (db be rosszul van)
+            EventLocation = new Location(e.Longitude, e.Latitude, 0.0); 
         }
     }
 }

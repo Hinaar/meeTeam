@@ -74,13 +74,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Model\Attend.cs" />
-    <Compile Include="Model\Coordinate.cs" />
     <Compile Include="Model\DbInitializer.cs" />
     <Compile Include="Model\Event.cs" />
     <Compile Include="Model\LocalContext.cs" />
     <Compile Include="Model\Post.cs" />
     <Compile Include="Model\User.cs" />
     <Compile Include="Model\UserAttend.cs" />
+    <Compile Include="Model\UserDetails.cs" />
     <Compile Include="Security\PwdTransformer.cs" />
     <Compile Include="Service.svc.cs">
       <DependentUpon>Service.svc</DependentUpon>
