@@ -59,16 +59,6 @@ namespace Client
                     EventList.Add(new EventViewModel(even));
                 }
             }
-            Increment();
-        }
-
-        public async void Increment()
-        {
-            await Task.Delay(3000);
-            foreach (var item in EventList)
-            {
-                item.Title += "halo";
-            }
         }
 
 

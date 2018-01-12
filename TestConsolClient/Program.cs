@@ -16,17 +16,26 @@ namespace TestConsolClient
             
             using (ServiceReference.ServiceClient sc = new ServiceReference.ServiceClient())
             {
-                sc.InitializeDataBase();
-                Console.WriteLine("db initialized");
-                Console.ReadLine();
+               
+                
+                var users = sc.GetUserById(4);
+                Console.WriteLine(users.Email);
+                Console.WriteLine(users.Details.Address);
+                Console.ReadKey();
+                sc.DeleteUser(4);
+                Console.ReadKey();
+                var mas = sc.GetUserById(4);
+                if (mas==null)
+                    Console.WriteLine("kitorlodott");
+                else
+                    Console.WriteLine("nem torlodott");
 
 
-                var users = sc.GetUsers();
-                foreach (var item in users)
-                {
-                    Console.WriteLine(item.Email);
-                    Console.WriteLine("\t " + item.Details.Address);
-                }
+                //foreach (var item in users)
+                //{
+                //    Console.WriteLine(item.Email);
+                //    Console.WriteLine("\t " + item.Details.Address);
+                //}
             }
           //  AsyncTest();
 

@@ -17,6 +17,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Client", "Client\Client.csp
 		{F67152AC-FED1-48E9-8335-2D9033AE1582} = {F67152AC-FED1-48E9-8335-2D9033AE1582}
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTestProject", "UnitTestProject\UnitTestProject.csproj", "{327FCC70-7375-4E18-BD3B-54787D4208C5}"
+	ProjectSection(ProjectDependencies) = postProject
+		{F67152AC-FED1-48E9-8335-2D9033AE1582} = {F67152AC-FED1-48E9-8335-2D9033AE1582}
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +44,10 @@ Global
 		{24CD4A1E-055D-4705-B1DA-7A48824BCA99}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{24CD4A1E-055D-4705-B1DA-7A48824BCA99}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{24CD4A1E-055D-4705-B1DA-7A48824BCA99}.Release|Any CPU.Build.0 = Release|Any CPU
+		{327FCC70-7375-4E18-BD3B-54787D4208C5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{327FCC70-7375-4E18-BD3B-54787D4208C5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{327FCC70-7375-4E18-BD3B-54787D4208C5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{327FCC70-7375-4E18-BD3B-54787D4208C5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -820,6 +820,12 @@ namespace TestConsolClient.ServiceReference {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/GetUsers", ReplyAction="http://tempuri.org/IService/GetUsersResponse")]
         System.Threading.Tasks.Task<TestConsolClient.ServiceReference.User[]> GetUsersAsync();
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/EmailTaken", ReplyAction="http://tempuri.org/IService/EmailTakenResponse")]
+        bool EmailTaken(string email);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/EmailTaken", ReplyAction="http://tempuri.org/IService/EmailTakenResponse")]
+        System.Threading.Tasks.Task<bool> EmailTakenAsync(string email);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/GetUsersOfEvent", ReplyAction="http://tempuri.org/IService/GetUsersOfEventResponse")]
         TestConsolClient.ServiceReference.User[] GetUsersOfEvent(int eventId);
         
@@ -845,10 +851,10 @@ namespace TestConsolClient.ServiceReference {
         System.Threading.Tasks.Task<TestConsolClient.ServiceReference.User> GetEventsOwnerAsync(int eventId);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/CreateUser", ReplyAction="http://tempuri.org/IService/CreateUserResponse")]
-        void CreateUser(TestConsolClient.ServiceReference.User user);
+        TestConsolClient.ServiceReference.User CreateUser(TestConsolClient.ServiceReference.User user);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/CreateUser", ReplyAction="http://tempuri.org/IService/CreateUserResponse")]
-        System.Threading.Tasks.Task CreateUserAsync(TestConsolClient.ServiceReference.User user);
+        System.Threading.Tasks.Task<TestConsolClient.ServiceReference.User> CreateUserAsync(TestConsolClient.ServiceReference.User user);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/DeleteUser", ReplyAction="http://tempuri.org/IService/DeleteUserResponse")]
         void DeleteUser(int id);
@@ -1012,6 +1018,14 @@ namespace TestConsolClient.ServiceReference {
             return base.Channel.GetUsersAsync();
         }
         
+        public bool EmailTaken(string email) {
+            return base.Channel.EmailTaken(email);
+        }
+        
+        public System.Threading.Tasks.Task<bool> EmailTakenAsync(string email) {
+            return base.Channel.EmailTakenAsync(email);
+        }
+        
         public TestConsolClient.ServiceReference.User[] GetUsersOfEvent(int eventId) {
             return base.Channel.GetUsersOfEvent(eventId);
         }
@@ -1044,11 +1058,11 @@ namespace TestConsolClient.ServiceReference {
             return base.Channel.GetEventsOwnerAsync(eventId);
         }
         
-        public void CreateUser(TestConsolClient.ServiceReference.User user) {
-            base.Channel.CreateUser(user);
+        public TestConsolClient.ServiceReference.User CreateUser(TestConsolClient.ServiceReference.User user) {
+            return base.Channel.CreateUser(user);
         }
         
-        public System.Threading.Tasks.Task CreateUserAsync(TestConsolClient.ServiceReference.User user) {
+        public System.Threading.Tasks.Task<TestConsolClient.ServiceReference.User> CreateUserAsync(TestConsolClient.ServiceReference.User user) {
             return base.Channel.CreateUserAsync(user);
         }
         

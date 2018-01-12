@@ -15,20 +15,20 @@ namespace DAL.Model
             {
                 try
                 {
-                    if (ctx.Users.Any())
-                        return;
+                    //if (ctx.Users.Any())
+                    //    return;
 
-                    PwdTransformer tr = new PwdTransformer();
-                    var tuple = tr.EncryptPass("jelszo");
-                    ctx.Users.Add(new User()
-                    {
-                        Name = "Bela",
-                        DateOfBirth = new DateTime(1996, 7, 21),
-                        Email = "bela@meeTeam.hu",
-                        Salt = tuple.Item1,
-                        Hash = tuple.Item2
-                    });
-                    ctx.SaveChanges();
+                    //PwdTransformer tr = new PwdTransformer();
+                    //var tuple = tr.EncryptPass("jelszo");
+                    //ctx.Users.Add(new User()
+                    //{
+                    //    Name = "Bela",
+                    //    DateOfBirth = new DateTime(1996, 7, 21),
+                    //    Email = "bela@meeTeam.hu",
+                    //    Salt = tuple.Item1,
+                    //    Hash = tuple.Item2
+                    //});
+                    //ctx.SaveChanges();
 
                 }
                 catch (Exception e)

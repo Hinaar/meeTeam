@@ -1,7 +1,9 @@
-﻿using System;
+﻿using Client.Properties;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using System.Resources;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
@@ -14,6 +16,7 @@ namespace Client
     public class LoginViewModel : BaseViewModel
     {
         #region Properties
+        ResourceManager rm = Resources.ResourceManager;
         public string Email { get; set; }
         //TODO: SecurePassword psw
         public string Password { get; set; }
@@ -77,7 +80,7 @@ namespace Client
                 var user = await sc.GetUserByPasswordAsync(Email, pwdBox.Password);
                 if (user == null)
                 {
-                    tmp = new DialogWindow();
+                    tmp = new DialogWindow(rm.GetString("ErrorLogin"));
                     
                     tmp.ShowDialog();
 

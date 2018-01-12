@@ -32,6 +32,9 @@ namespace DataService
         List<User> GetUsers();
 
         [OperationContract]
+        bool EmailTaken(string email);
+
+        [OperationContract]
         List<User> GetUsersOfEvent(int eventId);
 
         [OperationContract]
@@ -44,7 +47,7 @@ namespace DataService
         User GetEventsOwner(int eventId);
 
         [OperationContract]
-        void CreateUser(User user);
+        User CreateUser(User user);
 
         [OperationContract]
         void DeleteUser(int id);

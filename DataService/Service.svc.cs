@@ -45,7 +45,7 @@ namespace DataService
 
 
         #region User Methods Implementation
-        public List<User> GetUsers()
+            public List<User> GetUsers()
             {
                 try
                 {
@@ -119,7 +119,13 @@ namespace DataService
             }
         }
     
-
+            public bool EmailTaken(string email)
+            {
+                using (LocalContext ctx = new LocalContext())
+                {
+                    return ctx.Users.Any(u => u.Email.Equals(email)); 
+                }
+            }
             public User GetEventsOwner(int eventId)
             {
                 try
@@ -136,19 +142,33 @@ namespace DataService
                 }
             }
 
-            public void CreateUser(User user)
+            /// <summary>
+            /// Creates user, with the password given in hash by encoding psw string
+            /// </summary>
+            /// <param name="user"></param>
+            /// <returns>Created user with proper hash and salt</returns>
+            public User CreateUser(User user)
             {
             try
             {
+                if (EmailTaken(user.Email))
+                    return null;
+
+                var passStr = Encoding.UTF8.GetString(user.Hash);
+                var tuple = PwdTransformer.Instance.EncryptPass(passStr);
+                user.Salt = tuple.Item1;
+                user.Hash = tuple.Item2;
                 using (LocalContext ctx = new LocalContext())
                 {
                     ctx.Users.Add(user);
                     ctx.SaveChanges();
+                    return user;
                 }
             }
             catch (Exception e)
             {
                 Debug.WriteLine(e);
+                return null;
             }
                 
             }
@@ -159,12 +179,11 @@ namespace DataService
             {
                 using (LocalContext ctx = new LocalContext())
                 {
-                    var user = ctx.Users.SingleOrDefault(u => u.UserID == id);
-                    if (user != null)
-                    {
-                        ctx.Users.Remove(user);
-                        ctx.SaveChanges();
-                    }
+                    User user = ctx.Users.Include(u=>u.Details).FirstOrDefault(u => u.UserID == id);
+                    ctx.Entry<UserDetail>(user.Details).State = EntityState.Deleted;
+                    ctx.Entry<User>(user).State = EntityState.Deleted;
+
+                    ctx.SaveChanges();
                 }
             }
             catch (Exception e)

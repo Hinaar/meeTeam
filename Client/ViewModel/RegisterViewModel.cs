@@ -39,6 +39,8 @@ namespace Client
         public string Address { get; set; }
 
 
+
+
         public string Error => null;
 
         public string this[string columnName]
