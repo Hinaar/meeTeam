@@ -88,6 +88,15 @@ namespace Client.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Registration Failed.
+        /// </summary>
+        public static string CreateUserDialog {
+            get {
+                return ResourceManager.GetString("CreateUserDialog", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Date of birth.
         /// </summary>
         public static string DateOfBirth {
@@ -219,6 +228,15 @@ namespace Client.Properties {
         public static string Title {
             get {
                 return ResourceManager.GetString("Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Email already taken.
+        /// </summary>
+        public static string UniqueEmailDialog {
+            get {
+                return ResourceManager.GetString("UniqueEmailDialog", resourceCulture);
             }
         }
     }
