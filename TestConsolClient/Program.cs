@@ -17,7 +17,7 @@ namespace TestConsolClient
             using (ServiceReference.ServiceClient sc = new ServiceReference.ServiceClient())
             {
                sc.ChannelFactory.Credentials.UserName.UserName = "meeteam";
-                sc.ChannelFactory.Credentials.UserName.Password = "jelszo2";
+                sc.ChannelFactory.Credentials.UserName.Password = "jelszo";
                 
                 var users = sc.GetUserById(3);
                 Console.WriteLine(users.Email);
