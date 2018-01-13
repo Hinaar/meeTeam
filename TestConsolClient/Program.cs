@@ -16,15 +16,16 @@ namespace TestConsolClient
             
             using (ServiceReference.ServiceClient sc = new ServiceReference.ServiceClient())
             {
-               
+               sc.ChannelFactory.Credentials.UserName.UserName = "meeteam";
+                sc.ChannelFactory.Credentials.UserName.Password = "jelszo2";
                 
-                var users = sc.GetUserById(4);
+                var users = sc.GetUserById(3);
                 Console.WriteLine(users.Email);
                 Console.WriteLine(users.Details.Address);
                 Console.ReadKey();
-                sc.DeleteUser(4);
+                //sc.DeleteUser(4);
                 Console.ReadKey();
-                var mas = sc.GetUserById(4);
+                var mas = sc.GetUserById(3);
                 if (mas==null)
                     Console.WriteLine("kitorlodott");
                 else

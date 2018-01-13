@@ -134,6 +134,8 @@ namespace Client
             {
                 using (ServiceClient sc = new ServiceClient())
                 {
+                    sc.ChannelFactory.Credentials.UserName.UserName = "meeteam";
+                    sc.ChannelFactory.Credentials.UserName.Password = "jelszo";
                     bool emailIsTaken = await sc.EmailTakenAsync(Email);
                     if (emailIsTaken)
                     {

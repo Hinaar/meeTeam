@@ -16,6 +16,8 @@ namespace UnitTestProject
         {
             using (ServiceClient sc = new ServiceClient())
             {
+                sc.ChannelFactory.Credentials.UserName.UserName = "meeteam";
+                sc.ChannelFactory.Credentials.UserName.Password = "jelszo";
                 var users = sc.GetUsers();
                 if (users == null)
                     Assert.Fail("No users");
@@ -28,6 +30,8 @@ namespace UnitTestProject
         {
             using (ServiceClient sc = new ServiceClient())
             {
+                sc.ChannelFactory.Credentials.UserName.UserName = "meeteam";
+                sc.ChannelFactory.Credentials.UserName.Password = "jelszo";
                 var user = sc.GetUserById(1);
                 Assert.IsNotNull(user.Details, "Table splitting failed, no data in details entity");
                 return;
@@ -39,6 +43,8 @@ namespace UnitTestProject
         {
             using (ServiceClient sc = new ServiceClient())
             {
+                sc.ChannelFactory.Credentials.UserName.UserName = "meeteam";
+                sc.ChannelFactory.Credentials.UserName.Password = "jelszo";
                 var myEv = sc.GetEventById(2);
                 Assert.IsNotNull(myEv.LocationName, "Entity splitting failed, no data from Coordinate table");
                 return;
@@ -50,6 +56,8 @@ namespace UnitTestProject
         {
             using (ServiceClient sc = new ServiceClient())
             {
+                sc.ChannelFactory.Credentials.UserName.UserName = "meeteam";
+                sc.ChannelFactory.Credentials.UserName.Password = "jelszo";
                 var user = sc.GetUserByPasswordAsync("bela@meeTeam.hu", "jelszo");
                 Assert.IsNotNull(user, "Login failed with correct data");
                 return;
@@ -61,6 +69,8 @@ namespace UnitTestProject
         {
             using (ServiceClient sc = new ServiceClient())
             {
+                sc.ChannelFactory.Credentials.UserName.UserName = "meeteam";
+                sc.ChannelFactory.Credentials.UserName.Password = "jelszo";
                 var user = sc.GetUserByPassword("bela@meeTeam.hu", "jelszo2");
                 Assert.IsNull(user, "Succesful login, with incorrect data");
                 return;
@@ -82,7 +92,8 @@ namespace UnitTestProject
         {
             using (ServiceClient sc = new ServiceClient())
             {
-
+                sc.ChannelFactory.Credentials.UserName.UserName = "meeteam";
+                sc.ChannelFactory.Credentials.UserName.Password = "jelszo";
                 var user = new User
                 {
                     Email = "test1@mail.hu",
@@ -109,6 +120,8 @@ namespace UnitTestProject
         {
             using (ServiceClient sc = new ServiceClient())
             {
+                sc.ChannelFactory.Credentials.UserName.UserName = "meeteam";
+                sc.ChannelFactory.Credentials.UserName.Password = "jelszo";
                 var list = sc.GetComplexUsersOfEvent(2);
                 foreach (var attendant in list)
                 {
@@ -134,6 +147,8 @@ namespace UnitTestProject
         {
             using (ServiceClient sc = new ServiceClient())
             {
+                sc.ChannelFactory.Credentials.UserName.UserName = "meeteam";
+                sc.ChannelFactory.Credentials.UserName.Password = "jelszo";
                 var user = sc.GetUserById(4);
                 Assert.IsNotNull(user, "User doues not exist");
 

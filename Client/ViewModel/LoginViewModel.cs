@@ -75,6 +75,8 @@ namespace Client
             //await Task.Delay(5000);
             using (ServiceReference.ServiceClient sc = new ServiceReference.ServiceClient())
             {
+                sc.ChannelFactory.Credentials.UserName.UserName = "meeteam";
+                sc.ChannelFactory.Credentials.UserName.Password = "jelszo";
                 DialogWindow tmp;
                 var pwdBox = param as PasswordBox;
                 var user = await sc.GetUserByPasswordAsync(Email, pwdBox.Password);

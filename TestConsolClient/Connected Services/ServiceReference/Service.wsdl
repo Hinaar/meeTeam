@@ -1,5 +1,106 @@
 <?xml version="1.0" encoding="utf-8"?>
 <wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="Service" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsp:Policy wsu:Id="WSHttpBinding_IService_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:TransportBinding xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <wsp:Policy>
+            <sp:TransportToken>
+              <wsp:Policy>
+                <sp:HttpsToken RequireClientCertificate="false" />
+              </wsp:Policy>
+            </sp:TransportToken>
+            <sp:AlgorithmSuite>
+              <wsp:Policy>
+                <sp:Basic256 />
+              </wsp:Policy>
+            </sp:AlgorithmSuite>
+            <sp:Layout>
+              <wsp:Policy>
+                <sp:Strict />
+              </wsp:Policy>
+            </sp:Layout>
+            <sp:IncludeTimestamp />
+          </wsp:Policy>
+        </sp:TransportBinding>
+        <sp:EndorsingSupportingTokens xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <wsp:Policy>
+            <sp:SecureConversationToken sp:IncludeToken="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy/IncludeToken/AlwaysToRecipient">
+              <wsp:Policy>
+                <sp:BootstrapPolicy>
+                  <wsp:Policy>
+                    <sp:SignedParts>
+                      <sp:Body />
+                      <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+                      <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+                      <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+                      <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+                      <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+                      <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+                      <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+                    </sp:SignedParts>
+                    <sp:EncryptedParts>
+                      <sp:Body />
+                    </sp:EncryptedParts>
+                    <sp:TransportBinding>
+                      <wsp:Policy>
+                        <sp:TransportToken>
+                          <wsp:Policy>
+                            <sp:HttpsToken RequireClientCertificate="false" />
+                          </wsp:Policy>
+                        </sp:TransportToken>
+                        <sp:AlgorithmSuite>
+                          <wsp:Policy>
+                            <sp:Basic256 />
+                          </wsp:Policy>
+                        </sp:AlgorithmSuite>
+                        <sp:Layout>
+                          <wsp:Policy>
+                            <sp:Strict />
+                          </wsp:Policy>
+                        </sp:Layout>
+                        <sp:IncludeTimestamp />
+                      </wsp:Policy>
+                    </sp:TransportBinding>
+                    <sp:SignedSupportingTokens>
+                      <wsp:Policy>
+                        <sp:UsernameToken sp:IncludeToken="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy/IncludeToken/AlwaysToRecipient">
+                          <wsp:Policy>
+                            <sp:WssUsernameToken10 />
+                          </wsp:Policy>
+                        </sp:UsernameToken>
+                      </wsp:Policy>
+                    </sp:SignedSupportingTokens>
+                    <sp:Wss11>
+                      <wsp:Policy />
+                    </sp:Wss11>
+                    <sp:Trust10>
+                      <wsp:Policy>
+                        <sp:MustSupportIssuedTokens />
+                        <sp:RequireClientEntropy />
+                        <sp:RequireServerEntropy />
+                      </wsp:Policy>
+                    </sp:Trust10>
+                  </wsp:Policy>
+                </sp:BootstrapPolicy>
+              </wsp:Policy>
+            </sp:SecureConversationToken>
+          </wsp:Policy>
+        </sp:EndorsingSupportingTokens>
+        <sp:Wss11 xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <wsp:Policy />
+        </sp:Wss11>
+        <sp:Trust10 xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <wsp:Policy>
+            <sp:MustSupportIssuedTokens />
+            <sp:RequireClientEntropy />
+            <sp:RequireServerEntropy />
+          </wsp:Policy>
+        </sp:Trust10>
+        <wsaw:UsingAddressing />
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
   <wsdl:types>
     <xsd:schema targetNamespace="http://tempuri.org/Imports">
       <xsd:import schemaLocation="http://localhost:64747/Service.svc?xsd=xsd0" namespace="http://tempuri.org/" />
@@ -280,255 +381,259 @@
       <wsdl:output wsaw:Action="http://tempuri.org/IService/GetComplexUsersOfEventResponse" message="tns:IService_GetComplexUsersOfEvent_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
-  <wsdl:binding name="BasicHttpBinding_IService" type="tns:IService">
-    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+  <wsdl:binding name="WSHttpBinding_IService" type="tns:IService">
+    <wsp:PolicyReference URI="#WSHttpBinding_IService_policy" />
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
     <wsdl:operation name="GetData">
-      <soap:operation soapAction="http://tempuri.org/IService/GetData" style="document" />
+      <soap12:operation soapAction="http://tempuri.org/IService/GetData" style="document" />
       <wsdl:input>
-        <soap:body use="literal" />
+        <soap12:body use="literal" />
       </wsdl:input>
       <wsdl:output>
-        <soap:body use="literal" />
+        <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
     <wsdl:operation name="GetDataUsingDataContract">
-      <soap:operation soapAction="http://tempuri.org/IService/GetDataUsingDataContract" style="document" />
+      <soap12:operation soapAction="http://tempuri.org/IService/GetDataUsingDataContract" style="document" />
       <wsdl:input>
-        <soap:body use="literal" />
+        <soap12:body use="literal" />
       </wsdl:input>
       <wsdl:output>
-        <soap:body use="literal" />
+        <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
     <wsdl:operation name="InitializeDataBase">
-      <soap:operation soapAction="http://tempuri.org/IService/InitializeDataBase" style="document" />
+      <soap12:operation soapAction="http://tempuri.org/IService/InitializeDataBase" style="document" />
       <wsdl:input>
-        <soap:body use="literal" />
+        <soap12:body use="literal" />
       </wsdl:input>
       <wsdl:output>
-        <soap:body use="literal" />
+        <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
     <wsdl:operation name="GetUsers">
-      <soap:operation soapAction="http://tempuri.org/IService/GetUsers" style="document" />
+      <soap12:operation soapAction="http://tempuri.org/IService/GetUsers" style="document" />
       <wsdl:input>
-        <soap:body use="literal" />
+        <soap12:body use="literal" />
       </wsdl:input>
       <wsdl:output>
-        <soap:body use="literal" />
+        <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
     <wsdl:operation name="EmailTaken">
-      <soap:operation soapAction="http://tempuri.org/IService/EmailTaken" style="document" />
+      <soap12:operation soapAction="http://tempuri.org/IService/EmailTaken" style="document" />
       <wsdl:input>
-        <soap:body use="literal" />
+        <soap12:body use="literal" />
       </wsdl:input>
       <wsdl:output>
-        <soap:body use="literal" />
+        <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
     <wsdl:operation name="GetUsersOfEvent">
-      <soap:operation soapAction="http://tempuri.org/IService/GetUsersOfEvent" style="document" />
+      <soap12:operation soapAction="http://tempuri.org/IService/GetUsersOfEvent" style="document" />
       <wsdl:input>
-        <soap:body use="literal" />
+        <soap12:body use="literal" />
       </wsdl:input>
       <wsdl:output>
-        <soap:body use="literal" />
+        <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
     <wsdl:operation name="GetUserById">
-      <soap:operation soapAction="http://tempuri.org/IService/GetUserById" style="document" />
+      <soap12:operation soapAction="http://tempuri.org/IService/GetUserById" style="document" />
       <wsdl:input>
-        <soap:body use="literal" />
+        <soap12:body use="literal" />
       </wsdl:input>
       <wsdl:output>
-        <soap:body use="literal" />
+        <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
     <wsdl:operation name="GetUserByPassword">
-      <soap:operation soapAction="http://tempuri.org/IService/GetUserByPassword" style="document" />
+      <soap12:operation soapAction="http://tempuri.org/IService/GetUserByPassword" style="document" />
       <wsdl:input>
-        <soap:body use="literal" />
+        <soap12:body use="literal" />
       </wsdl:input>
       <wsdl:output>
-        <soap:body use="literal" />
+        <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
     <wsdl:operation name="GetEventsOwner">
-      <soap:operation soapAction="http://tempuri.org/IService/GetEventsOwner" style="document" />
+      <soap12:operation soapAction="http://tempuri.org/IService/GetEventsOwner" style="document" />
       <wsdl:input>
-        <soap:body use="literal" />
+        <soap12:body use="literal" />
       </wsdl:input>
       <wsdl:output>
-        <soap:body use="literal" />
+        <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
     <wsdl:operation name="CreateUser">
-      <soap:operation soapAction="http://tempuri.org/IService/CreateUser" style="document" />
+      <soap12:operation soapAction="http://tempuri.org/IService/CreateUser" style="document" />
       <wsdl:input>
-        <soap:body use="literal" />
+        <soap12:body use="literal" />
       </wsdl:input>
       <wsdl:output>
-        <soap:body use="literal" />
+        <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
     <wsdl:operation name="DeleteUser">
-      <soap:operation soapAction="http://tempuri.org/IService/DeleteUser" style="document" />
+      <soap12:operation soapAction="http://tempuri.org/IService/DeleteUser" style="document" />
       <wsdl:input>
-        <soap:body use="literal" />
+        <soap12:body use="literal" />
       </wsdl:input>
       <wsdl:output>
-        <soap:body use="literal" />
+        <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
     <wsdl:operation name="UpdateUser">
-      <soap:operation soapAction="http://tempuri.org/IService/UpdateUser" style="document" />
+      <soap12:operation soapAction="http://tempuri.org/IService/UpdateUser" style="document" />
       <wsdl:input>
-        <soap:body use="literal" />
+        <soap12:body use="literal" />
       </wsdl:input>
       <wsdl:output>
-        <soap:body use="literal" />
+        <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
     <wsdl:operation name="GetPosts">
-      <soap:operation soapAction="http://tempuri.org/IService/GetPosts" style="document" />
+      <soap12:operation soapAction="http://tempuri.org/IService/GetPosts" style="document" />
       <wsdl:input>
-        <soap:body use="literal" />
+        <soap12:body use="literal" />
       </wsdl:input>
       <wsdl:output>
-        <soap:body use="literal" />
+        <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
     <wsdl:operation name="GetPostByID">
-      <soap:operation soapAction="http://tempuri.org/IService/GetPostByID" style="document" />
+      <soap12:operation soapAction="http://tempuri.org/IService/GetPostByID" style="document" />
       <wsdl:input>
-        <soap:body use="literal" />
+        <soap12:body use="literal" />
       </wsdl:input>
       <wsdl:output>
-        <soap:body use="literal" />
+        <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
     <wsdl:operation name="GetPostsByEvent">
-      <soap:operation soapAction="http://tempuri.org/IService/GetPostsByEvent" style="document" />
+      <soap12:operation soapAction="http://tempuri.org/IService/GetPostsByEvent" style="document" />
       <wsdl:input>
-        <soap:body use="literal" />
+        <soap12:body use="literal" />
       </wsdl:input>
       <wsdl:output>
-        <soap:body use="literal" />
+        <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
     <wsdl:operation name="CreatePost">
-      <soap:operation soapAction="http://tempuri.org/IService/CreatePost" style="document" />
+      <soap12:operation soapAction="http://tempuri.org/IService/CreatePost" style="document" />
       <wsdl:input>
-        <soap:body use="literal" />
+        <soap12:body use="literal" />
       </wsdl:input>
       <wsdl:output>
-        <soap:body use="literal" />
+        <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
     <wsdl:operation name="DeletePost">
-      <soap:operation soapAction="http://tempuri.org/IService/DeletePost" style="document" />
+      <soap12:operation soapAction="http://tempuri.org/IService/DeletePost" style="document" />
       <wsdl:input>
-        <soap:body use="literal" />
+        <soap12:body use="literal" />
       </wsdl:input>
       <wsdl:output>
-        <soap:body use="literal" />
+        <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
     <wsdl:operation name="UpdatePost">
-      <soap:operation soapAction="http://tempuri.org/IService/UpdatePost" style="document" />
+      <soap12:operation soapAction="http://tempuri.org/IService/UpdatePost" style="document" />
       <wsdl:input>
-        <soap:body use="literal" />
+        <soap12:body use="literal" />
       </wsdl:input>
       <wsdl:output>
-        <soap:body use="literal" />
+        <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
     <wsdl:operation name="GetEvents">
-      <soap:operation soapAction="http://tempuri.org/IService/GetEvents" style="document" />
+      <soap12:operation soapAction="http://tempuri.org/IService/GetEvents" style="document" />
       <wsdl:input>
-        <soap:body use="literal" />
+        <soap12:body use="literal" />
       </wsdl:input>
       <wsdl:output>
-        <soap:body use="literal" />
+        <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
     <wsdl:operation name="GetEventById">
-      <soap:operation soapAction="http://tempuri.org/IService/GetEventById" style="document" />
+      <soap12:operation soapAction="http://tempuri.org/IService/GetEventById" style="document" />
       <wsdl:input>
-        <soap:body use="literal" />
+        <soap12:body use="literal" />
       </wsdl:input>
       <wsdl:output>
-        <soap:body use="literal" />
+        <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
     <wsdl:operation name="GetEventsOfUser">
-      <soap:operation soapAction="http://tempuri.org/IService/GetEventsOfUser" style="document" />
+      <soap12:operation soapAction="http://tempuri.org/IService/GetEventsOfUser" style="document" />
       <wsdl:input>
-        <soap:body use="literal" />
+        <soap12:body use="literal" />
       </wsdl:input>
       <wsdl:output>
-        <soap:body use="literal" />
+        <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
     <wsdl:operation name="CreateEvent">
-      <soap:operation soapAction="http://tempuri.org/IService/CreateEvent" style="document" />
+      <soap12:operation soapAction="http://tempuri.org/IService/CreateEvent" style="document" />
       <wsdl:input>
-        <soap:body use="literal" />
+        <soap12:body use="literal" />
       </wsdl:input>
       <wsdl:output>
-        <soap:body use="literal" />
+        <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
     <wsdl:operation name="DeleteEvent">
-      <soap:operation soapAction="http://tempuri.org/IService/DeleteEvent" style="document" />
+      <soap12:operation soapAction="http://tempuri.org/IService/DeleteEvent" style="document" />
       <wsdl:input>
-        <soap:body use="literal" />
+        <soap12:body use="literal" />
       </wsdl:input>
       <wsdl:output>
-        <soap:body use="literal" />
+        <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
     <wsdl:operation name="UpdateEvent">
-      <soap:operation soapAction="http://tempuri.org/IService/UpdateEvent" style="document" />
+      <soap12:operation soapAction="http://tempuri.org/IService/UpdateEvent" style="document" />
       <wsdl:input>
-        <soap:body use="literal" />
+        <soap12:body use="literal" />
       </wsdl:input>
       <wsdl:output>
-        <soap:body use="literal" />
+        <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
     <wsdl:operation name="IsAttend">
-      <soap:operation soapAction="http://tempuri.org/IService/IsAttend" style="document" />
+      <soap12:operation soapAction="http://tempuri.org/IService/IsAttend" style="document" />
       <wsdl:input>
-        <soap:body use="literal" />
+        <soap12:body use="literal" />
       </wsdl:input>
       <wsdl:output>
-        <soap:body use="literal" />
+        <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
     <wsdl:operation name="DeleteAttend">
-      <soap:operation soapAction="http://tempuri.org/IService/DeleteAttend" style="document" />
+      <soap12:operation soapAction="http://tempuri.org/IService/DeleteAttend" style="document" />
       <wsdl:input>
-        <soap:body use="literal" />
+        <soap12:body use="literal" />
       </wsdl:input>
       <wsdl:output>
-        <soap:body use="literal" />
+        <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
     <wsdl:operation name="GetComplexUsersOfEvent">
-      <soap:operation soapAction="http://tempuri.org/IService/GetComplexUsersOfEvent" style="document" />
+      <soap12:operation soapAction="http://tempuri.org/IService/GetComplexUsersOfEvent" style="document" />
       <wsdl:input>
-        <soap:body use="literal" />
+        <soap12:body use="literal" />
       </wsdl:input>
       <wsdl:output>
-        <soap:body use="literal" />
+        <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
   </wsdl:binding>
   <wsdl:service name="Service">
-    <wsdl:port name="BasicHttpBinding_IService" binding="tns:BasicHttpBinding_IService">
-      <soap:address location="http://localhost:64747/Service.svc" />
+    <wsdl:port name="WSHttpBinding_IService" binding="tns:WSHttpBinding_IService">
+      <soap12:address location="https://localhost:44337/Service.svc/SecureAccess" />
+      <wsa10:EndpointReference>
+        <wsa10:Address>https://localhost:44337/Service.svc/SecureAccess</wsa10:Address>
+      </wsa10:EndpointReference>
     </wsdl:port>
   </wsdl:service>
 </wsdl:definitions>
