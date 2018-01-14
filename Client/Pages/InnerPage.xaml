@@ -44,7 +44,23 @@
                         </StackPanel>
                         <StackPanel Grid.Row="1">
                             <TextBlock Text="Participiants" FontWeight="Bold" Background="AliceBlue" Padding="5"/>
-                            <ListView ItemsSource="{Binding SelectedEvent.Participiants, Mode=TwoWay}" />
+                            <ListView ItemsSource="{Binding SelectedEvent.Participiants, Mode=TwoWay}">
+                                <ListView.Background>
+                                    <LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
+                                        <GradientStop Color="Yellow" Offset="0"/>
+                                        <GradientStop Color="#FFFFA200" Offset="1"/>
+                                        <GradientStop Color="#FFFFB900" Offset="0.876"/>
+                                    </LinearGradientBrush>
+                                </ListView.Background>
+                                <ListView.ItemTemplate>
+                                    <DataTemplate>
+                                        <DockPanel Background="{x:Null}">
+                                            <Label VerticalContentAlignment="Center" Content="{Binding UserName}" BorderBrush="{x:Null}" FontWeight="Bold" FontSize="16" />
+                                            <Label VerticalContentAlignment="Center" Content="•" Foreground="{Binding Attends, Converter={local:AttendsToColorConverter}}" BorderBrush="{x:Null}" FontWeight="Bold" FontSize="36" Padding="0 0 0 6 "/>
+                                        </DockPanel>
+                                    </DataTemplate>
+                                </ListView.ItemTemplate>
+                            </ListView>
                         </StackPanel>
                     </Grid>
                 </StackPanel>
@@ -57,7 +73,7 @@
                             <ColumnDefinition Width="*"/>
                             <ColumnDefinition Width="2*"/>
                         </Grid.ColumnDefinitions>
-                            <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto" Grid.Column="0">
+                        <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto" Grid.Column="0">
                             <StackPanel >
                                 <Label Content="{x:Static p:Resources.SignIn}" />
                                 <TextBox Text="{Binding SelectedEvent.Title, Mode=TwoWay}"/>
