@@ -1,5 +1,6 @@
-﻿using Client.Properties;
-using Client.ServiceReference;
+﻿using Client.AzureServiceReference;
+using Client.Properties;
+//using Client.ServiceReference;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -132,7 +133,7 @@ namespace Client
         {
             if (AllValid)
             {
-                using (ServiceClient sc = new ServiceClient())
+                using (AzureServiceClient sc = new AzureServiceClient())
                 {
                     sc.ChannelFactory.Credentials.UserName.UserName = "meeteam";
                     sc.ChannelFactory.Credentials.UserName.Password = "jelszo";

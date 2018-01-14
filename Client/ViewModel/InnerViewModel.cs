@@ -1,4 +1,5 @@
-﻿using Client.ServiceReference;
+﻿//using Client.ServiceReference;
+using Client.AzureServiceReference;
 using Microsoft.Maps.MapControl.WPF;
 using System;
 using System.Collections.Generic;
@@ -51,7 +52,7 @@ namespace Client
 
         public async void loadEventListAsync()
         {
-            using (ServiceReference.ServiceClient sc = new ServiceReference.ServiceClient())
+            using (AzureServiceClient sc = new AzureServiceClient())
             {
                 sc.ChannelFactory.Credentials.UserName.UserName = "meeteam";
                 sc.ChannelFactory.Credentials.UserName.Password = "jelszo";

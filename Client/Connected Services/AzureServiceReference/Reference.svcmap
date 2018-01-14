@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="fbcc8695-69cb-4f56-b0eb-2ede5ac4a0cf" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://meeteamazureservice.azurewebsites.net/AzureService.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="AzureService.disco" MetadataType="Disco" ID="ed1da0d2-22e1-4669-8a39-c1ca06958bc0" SourceId="1" SourceUrl="http://meeteamazureservice.azurewebsites.net/AzureService.svc?disco" />
+    <MetadataFile FileName="AzureService.wsdl" MetadataType="Wsdl" ID="c49ef017-e442-4eee-a9fb-deb02b75bd37" SourceId="1" SourceUrl="http://meeteamazureservice.azurewebsites.net/AzureService.svc?wsdl" />
+    <MetadataFile FileName="AzureService.xsd" MetadataType="Schema" ID="beec6786-3d4d-4a4f-823d-5fb9ae0b5726" SourceId="1" SourceUrl="http://meeteamazureservice.azurewebsites.net/AzureService.svc?xsd=xsd0" />
+    <MetadataFile FileName="AzureService1.xsd" MetadataType="Schema" ID="94eb796f-623f-45bf-bb15-b9bb86cbe1c4" SourceId="1" SourceUrl="http://meeteamazureservice.azurewebsites.net/AzureService.svc?xsd=xsd1" />
+    <MetadataFile FileName="AzureService2.xsd" MetadataType="Schema" ID="4e7e5fbd-7af2-45cc-8d19-86b7d2388bcc" SourceId="1" SourceUrl="http://meeteamazureservice.azurewebsites.net/AzureService.svc?xsd=xsd2" />
+    <MetadataFile FileName="AzureService3.xsd" MetadataType="Schema" ID="24cc9ae8-1bb3-421d-9000-a29bb42d109c" SourceId="1" SourceUrl="http://meeteamazureservice.azurewebsites.net/AzureService.svc?xsd=xsd3" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

@@ -1,4 +1,5 @@
-﻿using Client.ServiceReference;
+﻿//using Client.ServiceReference;
+using Client.AzureServiceReference;
 using Microsoft.Maps.MapControl.WPF;
 using System;
 using System.Collections.Generic;

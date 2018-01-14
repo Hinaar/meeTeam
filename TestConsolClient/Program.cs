@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
-using TestConsolClient.ServiceReference;
+using TestConsolClient.AzureReference;
 
 namespace TestConsolClient
 {
@@ -14,10 +14,10 @@ namespace TestConsolClient
         {
             Console.ReadKey();
             
-            using (ServiceReference.ServiceClient sc = new ServiceReference.ServiceClient())
+            using (AzureServiceClient sc = new AzureServiceClient())
             {
-               sc.ChannelFactory.Credentials.UserName.UserName = "meeteam";
-                sc.ChannelFactory.Credentials.UserName.Password = "jelszo";
+               //sc.ChannelFactory.Credentials.UserName.UserName = "meeteam";
+               // sc.ChannelFactory.Credentials.UserName.Password = "jelszo";
                 
                 var users = sc.GetUserById(3);
                 Console.WriteLine(users.Email);
@@ -46,21 +46,21 @@ namespace TestConsolClient
         private static async void AsyncTest()
         {
             
-            using (ServiceReference.ServiceClient sc = new ServiceReference.ServiceClient())
-            {
-                //var users = await sc.GetUsersOfEventAsync(1);
-                //foreach (User user in users)
-                //{
-                //    Console.WriteLine($"{user.Email} , {user.Hash}");
-                //}
+            //using (ServiceClient sc = new ServiceClient())
+            //{
+            //    //var users = await sc.GetUsersOfEventAsync(1);
+            //    //foreach (User user in users)
+            //    //{
+            //    //    Console.WriteLine($"{user.Email} , {user.Hash}");
+            //    //}
 
-                var complex = await sc.GetComplexUsersOfEventAsync(1);
-                foreach (var item in complex)
-                {
-                    Console.WriteLine(item.UserName + " - " + item.Attends);
-                }
+            //    var complex = await sc.GetComplexUsersOfEventAsync(1);
+            //    foreach (var item in complex)
+            //    {
+            //        Console.WriteLine(item.UserName + " - " + item.Attends);
+            //    }
 
-            }
+            //}
         }
     }
 }

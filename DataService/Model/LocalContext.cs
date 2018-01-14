@@ -9,7 +9,7 @@ namespace DataService.Model
 {
     public class LocalContext : DbContext
     {
-        public LocalContext() : base("AzureContext") //("name=LocalContext")
+        public LocalContext() : base("name=LocalContext")  //("AzureContext") 
         {
             this.Configuration.ProxyCreationEnabled = false;
         }

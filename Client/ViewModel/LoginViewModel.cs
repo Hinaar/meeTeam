@@ -1,4 +1,5 @@
-﻿using Client.Properties;
+﻿using Client.AzureServiceReference;
+using Client.Properties;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -71,19 +72,21 @@ namespace Client
         //TODO: pass user to innerpage
         private async Task Login(object param)
         {
-
+            Debug.WriteLine("command started");
             //await Task.Delay(5000);
-            using (ServiceReference.ServiceClient sc = new ServiceReference.ServiceClient())
+            //using (ServiceReference.ServiceClient sc = new ServiceReference.ServiceClient())
+            //{
+            //    sc.ChannelFactory.Credentials.UserName.UserName = "meeteam";
+            //    sc.ChannelFactory.Credentials.UserName.Password = "jelszo";
+            using (AzureServiceClient sc = new AzureServiceClient())
             {
-                sc.ChannelFactory.Credentials.UserName.UserName = "meeteam";
-                sc.ChannelFactory.Credentials.UserName.Password = "jelszo";
                 DialogWindow tmp;
                 var pwdBox = param as PasswordBox;
                 var user = await sc.GetUserByPasswordAsync(Email, pwdBox.Password);
                 if (user == null)
                 {
                     tmp = new DialogWindow(rm.GetString("ErrorLogin"));
-                    
+
                     tmp.ShowDialog();
 
                 }

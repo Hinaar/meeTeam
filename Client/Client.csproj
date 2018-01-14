@@ -81,6 +81,11 @@
     </ApplicationDefinition>
     <Compile Include="Commands\EventToCommand.cs" />
     <Compile Include="Commands\RelayCommands.cs" />
+    <Compile Include="Connected Services\AzureServiceReference\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
     <Compile Include="Connected Services\ServiceReference\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -196,6 +201,34 @@
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <None Include="Connected Services\AzureServiceReference\AzureService.wsdl" />
+    <None Include="Connected Services\AzureServiceReference\AzureService.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\AzureServiceReference\AzureService1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\AzureServiceReference\AzureService2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\AzureServiceReference\AzureService3.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\AzureServiceReference\Client.AzureServiceReference.CompositeType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\AzureServiceReference\Client.AzureServiceReference.Event.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\AzureServiceReference\Client.AzureServiceReference.Post.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\AzureServiceReference\Client.AzureServiceReference.User.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\AzureServiceReference\Client.AzureServiceReference.UserAttend.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
     <None Include="Connected Services\ServiceReference\Client.ServiceReference.CompositeType.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
@@ -247,6 +280,7 @@
     <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <ItemGroup>
+    <WCFMetadataStorage Include="Connected Services\AzureServiceReference\" />
     <WCFMetadataStorage Include="Connected Services\ServiceReference\" />
   </ItemGroup>
   <ItemGroup>
@@ -260,6 +294,21 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Connected Services\ServiceReference\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\AzureServiceReference\AzureService.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\AzureServiceReference\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\AzureServiceReference\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\AzureServiceReference\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
