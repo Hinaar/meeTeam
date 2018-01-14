@@ -27,14 +27,26 @@
                 </Grid.ColumnDefinitions>
 
                 <StackPanel Grid.Column="0" TextBlock.TextAlignment="Center" Orientation="Vertical">
-                    <TextBlock Text="My Events" FontWeight="Bold" Background="AliceBlue" Padding="5"/>
-                    <ListView Name="lvEventList" ItemsSource="{Binding Path=EventList}" SelectedItem="{Binding SelectedEvent, Mode=TwoWay}">
-                        <ListView.ItemTemplate>
-                            <DataTemplate>
-                                <local:EventView/>
-                            </DataTemplate>
-                        </ListView.ItemTemplate>
-                    </ListView>
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="3*"/>
+                            <RowDefinition Height="1*" />
+                        </Grid.RowDefinitions>
+                        <StackPanel Grid.Row="0">
+                            <TextBlock Text="My Events" FontWeight="Bold" Background="AliceBlue" Padding="5"/>
+                            <ListView Name="lvEventList" ItemsSource="{Binding Path=EventList}" SelectedItem="{Binding SelectedEvent, Mode=TwoWay}">
+                                <ListView.ItemTemplate>
+                                    <DataTemplate DataType="{x:Type local:EventView}">
+                                        <local:EventView/>
+                                    </DataTemplate>
+                                </ListView.ItemTemplate>
+                            </ListView>
+                        </StackPanel>
+                        <StackPanel Grid.Row="1">
+                            <TextBlock Text="Participiants" FontWeight="Bold" Background="AliceBlue" Padding="5"/>
+                            <ListView ItemsSource="{Binding SelectedEvent.Participiants, Mode=TwoWay}" />
+                        </StackPanel>
+                    </Grid>
                 </StackPanel>
                 <StackPanel Grid.Column="1">
                     <Grid>
@@ -48,7 +60,7 @@
                             <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto" Grid.Column="0">
                             <StackPanel >
                                 <Label Content="{x:Static p:Resources.SignIn}" />
-                                <TextBox Text="{Binding SelectedEvent.Title, Mode=TwoWay}" />
+                                <TextBox Text="{Binding SelectedEvent.Title, Mode=TwoWay}"/>
                                 <Label Content="From:" />
                                 <TextBox Text="{Binding SelectedEvent.FromDate, Mode=TwoWay,StringFormat='yyyy.MM.dd HH:mm:ss '}" />
                                 <DatePicker SelectedDate="{Binding SelectedEvent.FromDate}"/>

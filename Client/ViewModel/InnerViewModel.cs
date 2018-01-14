@@ -54,8 +54,8 @@ namespace Client
         {
             using (AzureServiceClient sc = new AzureServiceClient())
             {
-                sc.ChannelFactory.Credentials.UserName.UserName = "meeteam";
-                sc.ChannelFactory.Credentials.UserName.Password = "jelszo";
+                //sc.ChannelFactory.Credentials.UserName.UserName = "meeteam";
+                //sc.ChannelFactory.Credentials.UserName.Password = "jelszo";
                 var list =await sc.GetEventsAsync();
                 foreach (Event even in list)
                 {

@@ -3,7 +3,9 @@ using Client.AzureServiceReference;
 using Microsoft.Maps.MapControl.WPF;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.Diagnostics;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
@@ -14,6 +16,7 @@ namespace Client
     public class EventViewModel : BaseViewModel
     {
         Event even;
+        public ObservableCollection<UserAttend> Participiants { get; set; }
 
         public string Description
         {
@@ -51,14 +54,24 @@ namespace Client
             }
         }
 
-
+        public async void loadUserAttendsAsync()
+        {
+            using (AzureServiceClient sc = new AzureServiceClient())
+            {
+                //sc.ChannelFactory.Credentials.UserName.UserName = "meeteam";
+                //sc.ChannelFactory.Credentials.UserName.Password = "jelszo";
+                var list = await sc.GetComplexUsersOfEventAsync(even.EventID);
+                Participiants = new ObservableCollection<UserAttend>(collection: list);
+            }
+        }
 
 
         public EventViewModel(Event e)
         {
             even = e;
             //TODO: adatbazisba megcserelni erteket es itt is (db be rosszul van)
-            EventLocation = new Location(e.Longitude, e.Latitude, 0.0); 
+            EventLocation = new Location(e.Longitude, e.Latitude, 0.0);
+            loadUserAttendsAsync();
         }
     }
 }
