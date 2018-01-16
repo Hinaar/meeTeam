@@ -15,7 +15,9 @@ namespace Client
 {
     public class EventViewModel : BaseViewModel
     {
-        Event even;
+        private Event even;
+        public Event Even { get => even; }
+
         public ObservableCollection<UserAttend> Participiants { get; set; }
 
         public string Description

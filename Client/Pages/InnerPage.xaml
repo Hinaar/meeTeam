@@ -76,18 +76,22 @@
                         <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto" Grid.Column="0">
                             <StackPanel >
                                 <Label Content="{x:Static p:Resources.SignIn}" />
-                                <TextBox Text="{Binding SelectedEvent.Title, Mode=TwoWay}"/>
+                                <TextBox Text="{Binding SelectedEvent.Title, Mode=TwoWay}" IsReadOnly="{Binding Path=IsEdit, Converter={local:InverseBooleanConverter}}"/>
                                 <Label Content="From:" />
-                                <TextBox Text="{Binding SelectedEvent.FromDate, Mode=TwoWay,StringFormat='yyyy.MM.dd HH:mm:ss '}" />
-                                <DatePicker SelectedDate="{Binding SelectedEvent.FromDate}"/>
+                                <TextBox Text="{Binding SelectedEvent.FromDate, Mode=TwoWay,StringFormat='yyyy.MM.dd HH:mm:ss '}" IsReadOnly="{Binding Path=IsEdit, Converter={local:InverseBooleanConverter}}"/>
+                                <DatePicker SelectedDate="{Binding SelectedEvent.FromDate}" IsEnabled="{Binding IsEdit}"/>
                                 <Label Content="To:" />
-                                <TextBox Text="{Binding SelectedEvent.ToDate, Mode=TwoWay, StringFormat='yyyy.MM.dd HH:mm:ss '}" />
+                                <TextBox Text="{Binding SelectedEvent.ToDate, Mode=TwoWay, StringFormat='yyyy.MM.dd HH:mm:ss '}" IsReadOnly="{Binding Path=IsEdit, Converter={local:InverseBooleanConverter}}"/>
                                 <Label Content="Description:" />
-                                <TextBox Text="{Binding SelectedEvent.Description, Mode=TwoWay}" />
+                                <TextBox Text="{Binding SelectedEvent.Description, Mode=TwoWay}" IsReadOnly="{Binding Path=IsEdit, Converter={local:InverseBooleanConverter}}"/>
                                 <Label Content="Posts:" />
                                 <TextBox Text=".include(e=>e.Posts)" />
-                                <Button Command="{Binding NewEventCommand}" Padding="10 10" Margin="0 20" Content="New" HorizontalAlignment="Center" />
-
+                                <StackPanel Orientation="Horizontal">
+                                    <Button Command="{Binding EditEventCommand}" Padding="10 10" Margin="10 20" Content="Edit" HorizontalAlignment="Left"/>
+                                    <Button Command="{Binding NewEventCommand}" Padding="10 10" Margin="10 20" Content="New" HorizontalAlignment="Center"/>
+                                    <Button Command="{Binding SaveEventCommand}"  Content="Save" HorizontalAlignment="Right" Padding="10 10" Margin="10 20" IsEnabled="{Binding IsEdit}"/>
+                                </StackPanel>
+                                
                             </StackPanel>
                         </ScrollViewer>
                         <DockPanel Grid.Column="1">

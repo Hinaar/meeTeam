@@ -31,6 +31,15 @@ namespace Client
             }
         }
 
+        private bool isEdit;
+
+        public bool IsEdit
+        {
+            get { return isEdit; }
+            set { isEdit = value; OnPropertyChanged(); }
+        }
+
+
         private EventViewModel selectedEvent;
         public EventViewModel SelectedEvent
         {
@@ -85,10 +94,56 @@ namespace Client
             SelectedEvent = EventList.Last();
         }
 
+        private RelayCommand editEvent;
+        private ICommand editEventCommand;
+
+        public ICommand EditEventCommand
+        {
+            get
+            {
+                if(editEventCommand == null)
+                {
+                    editEventCommand = new RelayCommand(x=> MakeEventEditable(), null);
+                }
+                return editEventCommand;
+            }
+            set { editEventCommand = value; }
+        }
+
+        private async Task MakeEventEditable()
+        {
+            IsEdit = true;
+        }
+
+        private RelayCommand saveEvent;
+        private ICommand saveEventCommand;
+
+        public ICommand SaveEventCommand
+        {
+            get
+            {
+                if (saveEventCommand == null)
+                {
+                    saveEventCommand = new RelayCommand(x => SaveEditedEvent(), null);
+                }
+                return saveEventCommand;
+            }
+            set { saveEventCommand = value; }
+        }
+
+        private async Task SaveEditedEvent()
+        {
+            IsEdit = false;
+            using (AzureServiceClient asc = new AzureServiceClient())
+            {
+                  await asc.UpdateEventAsync(SelectedEvent.Even.EventID, SelectedEvent.Even);
+            }
+        }
+
+
         public InnerViewModel()
         {
-          //  Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo("hu-HU");
-            
+            //  Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo("hu-HU");
             MapCenter = new Location(0, 0, 0);
             loadEventListAsync();
            
