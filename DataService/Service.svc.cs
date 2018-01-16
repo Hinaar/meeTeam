@@ -257,11 +257,8 @@ namespace DataService
             {
                 using (LocalContext ctx = new LocalContext())
                 {
-                    var ev = ctx.Events
-                        .SingleOrDefault(e => e.EventID == eventID);
-                    ctx.Posts.Where(p=>p.)
-                        
-                    return ev.Posts.ToList();
+                    var post = ctx.Posts.SqlQuery("dbo.EventPostsById @p0",eventID).ToList();
+                    return post;
                 }
             }
             catch (Exception e)

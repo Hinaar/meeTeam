@@ -255,10 +255,12 @@ namespace AzureService
             {
                 using (LocalContext ctx = new LocalContext())
                 {
-                    return ctx.Events
-                        .SingleOrDefault(e => e.EventID == eventID)
-                        .Posts
-                        .ToList();
+                    //return ctx.Events
+                    //    .SingleOrDefault(e => e.EventID == eventID)
+                    //    .Posts
+                    //    .ToList();
+                    var post = ctx.Posts.SqlQuery("dbo.EventPostsById @p0", eventID).ToList();
+                    return post;
                 }
             }
             catch (Exception e)
