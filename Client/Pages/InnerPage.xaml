@@ -25,7 +25,7 @@
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="4*"/>
                 </Grid.ColumnDefinitions>
-
+                <!-- left column-->
                 <StackPanel Grid.Column="0" TextBlock.TextAlignment="Center" Orientation="Vertical">
                     <Grid>
                         <Grid.RowDefinitions>
@@ -64,6 +64,7 @@
                         </StackPanel>
                     </Grid>
                 </StackPanel>
+                <!-- main content column -->
                 <StackPanel Grid.Column="1">
                     <Grid>
                         <Grid.OpacityMask>
@@ -73,7 +74,7 @@
                             <ColumnDefinition Width="*"/>
                             <ColumnDefinition Width="2*"/>
                         </Grid.ColumnDefinitions>
-                        <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto" Grid.Column="0">
+                        <!--<ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto" Grid.Column="0">-->
                             <StackPanel >
                                 <Label Content="{x:Static p:Resources.SignIn}" />
                                 <TextBox Text="{Binding SelectedEvent.Title, Mode=TwoWay}" IsReadOnly="{Binding Path=IsEdit, Converter={local:InverseBooleanConverter}}"/>
@@ -83,7 +84,7 @@
                                 <Label Content="To:" />
                                 <TextBox Text="{Binding SelectedEvent.ToDate, Mode=TwoWay, StringFormat='yyyy.MM.dd HH:mm:ss '}" IsReadOnly="{Binding Path=IsEdit, Converter={local:InverseBooleanConverter}}"/>
                                 <Label Content="Description:" />
-                                <TextBox Text="{Binding SelectedEvent.Description, Mode=TwoWay}" IsReadOnly="{Binding Path=IsEdit, Converter={local:InverseBooleanConverter}}"/>
+                                <TextBox Text="{Binding SelectedEvent.Description, Mode=TwoWay}" IsReadOnly="{Binding Path=IsEdit, Converter={local:InverseBooleanConverter}}"  TextWrapping="Wrap"/>
                                 <Label Content="Posts:" />
                                 <TextBox Text=".include(e=>e.Posts)" />
                                 <StackPanel Orientation="Horizontal">
@@ -93,7 +94,7 @@
                                 </StackPanel>
                                 
                             </StackPanel>
-                        </ScrollViewer>
+                        <!-- </ScrollViewer>-->
                         <DockPanel Grid.Column="1">
                             <m:Map x:Name="myMap" CredentialsProvider="AgYxX00-G5CD-Yy4ydFp9xnvPZNIpuETBAZyx8rZo3xHu1WxsoBKJxzlOFu20WR_" 
                                        Center="{Binding MapCenter, Mode=TwoWay}" ZoomLevel="16.000">
@@ -102,7 +103,9 @@
                             </m:Map>
                         </DockPanel>
                     </Grid>
+                    
                 </StackPanel>
+                <local:PostListControl Grid.Column="1" VerticalAlignment="Bottom" DataContext="{Binding}"/>
             </Grid>
         </Border>
     </Grid>

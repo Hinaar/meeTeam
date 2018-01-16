@@ -20,6 +20,13 @@ namespace Client
 
         public ObservableCollection<UserAttend> Participiants { get; set; }
 
+       // private PostListViewModel postListVm = new PostListViewModel();
+
+        public PostListViewModel PostListVm
+        {
+            get { return postListVm; } set { postListVm = value; OnPropertyChanged(); }
+        }
+
         public string Description
         {
             get { return even.Description; }
@@ -67,6 +74,20 @@ namespace Client
             }
         }
 
+        public async void loadPostsAsync()
+        {
+            using (AzureServiceClient asc = new AzureServiceClient())
+            {
+                var posts = await asc.GetPostsByEventAsync(Even.EventID);
+                //var postvms = new List<PostListItemViewModel>();
+                //foreach (var post in posts)
+                //{
+                //    postvms.Add(new PostListItemViewModel(post));
+                //}
+                //PostList = new ObservableCollection<PostListViewModel>(collection: postvms);
+            }
+        }
+
 
         public EventViewModel(Event e)
         {
@@ -74,6 +95,7 @@ namespace Client
             //TODO: adatbazisba megcserelni erteket es itt is (db be rosszul van)
             EventLocation = new Location(e.Longitude, e.Latitude, 0.0);
             loadUserAttendsAsync();
+            loadPostsAsync();
         }
     }
 }
