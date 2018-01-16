@@ -51,6 +51,19 @@ namespace Client
             set { even.ToDate = value; OnPropertyChanged(); }
         }
 
+        public double Longitude
+        {
+            get { return even.Longitude; }
+            set { even.Longitude = value; EventLocation = new Location(value, Latitude, 0.0); OnPropertyChanged(); } //?eleg new nelkul van propchange?
+        }
+
+        public double Latitude
+        {
+            get { return even.Latitude; }
+            set { even.Latitude = value; EventLocation = new Location(Longitude, value, 0.0);  OnPropertyChanged(); }
+        }
+
+
         private Location eventLocation = new Location();
         public Location EventLocation {
             get {

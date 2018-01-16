@@ -453,6 +453,23 @@ namespace AzureService
                 return false;
             }
         }
+        public Attend CreateAttend (Attend attend)
+        {
+            try
+            {
+                using (LocalContext ctx = new LocalContext())
+                {
+                    ctx.Attends.Add(attend);
+                    ctx.SaveChanges();
+                    return attend;
+                }
+            }
+            catch (Exception e)
+            {
+                Debug.WriteLine(e);
+                return null;
+            }
+        }
 
         public void DeleteAttend(int userId, int eventId)
         {

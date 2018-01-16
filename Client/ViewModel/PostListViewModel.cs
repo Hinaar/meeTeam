@@ -10,9 +10,9 @@ namespace Client
     public class PostListViewModel : BaseViewModel
     {
 
-        private List<PostListItemViewModel> postList = new List<PostListItemViewModel>();
+        private ObservableCollection<PostListItemViewModel> postList = new ObservableCollection<PostListItemViewModel>();
 
-        public List<PostListItemViewModel> PostList
+        public ObservableCollection<PostListItemViewModel> PostList
         {
             get { return postList; }
             set { postList = value; OnPropertyChanged(); }

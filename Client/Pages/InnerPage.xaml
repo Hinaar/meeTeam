@@ -67,31 +67,41 @@
                 <!-- main content column -->
                 <StackPanel Grid.Column="1">
                     <Grid>
-                        <Grid.OpacityMask>
-                            <VisualBrush Visual="{Binding ElementName=MyRoundedBorder}"/>
-                        </Grid.OpacityMask>
+                        
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="*"/>
                             <ColumnDefinition Width="2*"/>
                         </Grid.ColumnDefinitions>
                         <!--<ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto" Grid.Column="0">-->
                             <StackPanel >
-                                <Label Content="{x:Static p:Resources.SignIn}" />
+                                <Label Content="Title" />
                                 <TextBox Text="{Binding SelectedEvent.Title, Mode=TwoWay}" IsReadOnly="{Binding Path=IsEdit, Converter={local:InverseBooleanConverter}}"/>
                                 <Label Content="From:" />
-                                <TextBox Text="{Binding SelectedEvent.FromDate, Mode=TwoWay,StringFormat='yyyy.MM.dd HH:mm:ss '}" IsReadOnly="{Binding Path=IsEdit, Converter={local:InverseBooleanConverter}}"/>
+                            <!--<TextBox Text="{Binding SelectedEvent.FromDate, Mode=TwoWay,StringFormat='yyyy.MM.dd HH:mm:ss '}" IsReadOnly="{Binding Path=IsEdit, Converter={local:InverseBooleanConverter}}"/>-->
                                 <DatePicker SelectedDate="{Binding SelectedEvent.FromDate}" IsEnabled="{Binding IsEdit}"/>
                                 <Label Content="To:" />
-                                <TextBox Text="{Binding SelectedEvent.ToDate, Mode=TwoWay, StringFormat='yyyy.MM.dd HH:mm:ss '}" IsReadOnly="{Binding Path=IsEdit, Converter={local:InverseBooleanConverter}}"/>
+                            <!--<TextBox Text="{Binding SelectedEvent.ToDate, Mode=TwoWay, StringFormat='yyyy.MM.dd HH:mm:ss '}" IsReadOnly="{Binding Path=IsEdit, Converter={local:InverseBooleanConverter}}"/>-->
+                            <DatePicker SelectedDate="{Binding SelectedEvent.ToDate}" IsEnabled="{Binding IsEdit}"/>
                                 <Label Content="Description:" />
                                 <TextBox Text="{Binding SelectedEvent.Description, Mode=TwoWay}" IsReadOnly="{Binding Path=IsEdit, Converter={local:InverseBooleanConverter}}"  TextWrapping="Wrap"/>
-                                <Label Content="Posts:" />
-                                <TextBox Text=".include(e=>e.Posts)" />
+                                <Label Content="Coordinates:" />
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+                                <TextBox Text="{Binding SelectedEvent.Longitude}" IsReadOnly="{Binding Path=IsEdit, Converter={local:InverseBooleanConverter}}"
+                                         Grid.Column="0" Margin="5 0"/>
+                                <TextBox Text="{Binding SelectedEvent.Latitude}" IsReadOnly="{Binding Path=IsEdit, Converter={local:InverseBooleanConverter}}"
+                                         Grid.Column="1" Margin="5 0"/>
+
+                            </Grid>
                                 <StackPanel Orientation="Horizontal">
-                                    <Button Command="{Binding EditEventCommand}" Padding="10 10" Margin="10 20" Content="Edit" HorizontalAlignment="Left"/>
-                                    <Button Command="{Binding NewEventCommand}" Padding="10 10" Margin="10 20" Content="New" HorizontalAlignment="Center"/>
-                                    <Button Command="{Binding SaveEventCommand}"  Content="Save" HorizontalAlignment="Right" Padding="10 10" Margin="10 20" IsEnabled="{Binding IsEdit}"/>
-                                </StackPanel>
+                                    <Button Command="{Binding EditEventCommand}" Padding="10 0" Margin="5 20" Content="Edit"/>
+                                    <Button Command="{Binding NewEventCommand}" Padding="10 10" Margin="5 20" Content="New" />
+                                    <Button Command="{Binding SaveEventCommand}"  Content="Save" Padding="5 10" Margin="10 20" IsEnabled="{Binding IsEdit}"/>
+                                <Button Command="{Binding DeleteEventCommand}" Content="Delete" Padding="5 10" Margin="10 20"/>
+                            </StackPanel>
                                 
                             </StackPanel>
                         <!-- </ScrollViewer>-->
@@ -103,9 +113,26 @@
                             </m:Map>
                         </DockPanel>
                     </Grid>
+
+                    <StackPanel VerticalAlignment="Bottom">
+                        <local:PostListControl Height="200"  
+                         DataContext="{Binding SelectedEvent.PostListData}"/>
+
+                    </StackPanel>
                     
+                        <Grid VerticalAlignment="Center">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="6*" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+                            <TextBox Text="{Binding PostMessage}" Grid.Column="0" />
+                            <Button Command="{Binding SendPostCommand}" Content="Send" Grid.Column="1" />
+                        </Grid>
+                    
+
+
                 </StackPanel>
-                <local:PostListControl Grid.Column="1" VerticalAlignment="Bottom" DataContext="{Binding SelectedEvent.PostListData}"/>
+                
             </Grid>
         </Border>
     </Grid>

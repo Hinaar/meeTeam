@@ -234,6 +234,9 @@
     <None Include="Connected Services\AzureServiceReference\AzureService3.xsd">
       <SubType>Designer</SubType>
     </None>
+    <None Include="Connected Services\AzureServiceReference\Client.AzureServiceReference.Attend.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
     <None Include="Connected Services\AzureServiceReference\Client.AzureServiceReference.CompositeType.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>

@@ -1,6 +1,7 @@
 ﻿
 
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 
 namespace Client
 {
@@ -12,7 +13,7 @@ namespace Client
 
         public PostListDesignModel()
         {
-            PostList = new List<PostListItemViewModel>
+            PostList = new ObservableCollection<PostListItemViewModel>
             {
                 new PostListItemViewModel
                 {
@@ -38,7 +39,22 @@ namespace Client
                 {
                     Name ="bela",
                     Message ="designt time data for postlistcyxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
-                }
+                },
+                 new PostListItemViewModel
+                {
+                    Name ="bela",
+                    Message ="designt time data for postlist"
+                },
+                new PostListItemViewModel
+                {
+                    Name ="Pesta",
+                    Message ="2: designt time data for postlist"
+                },
+                new PostListItemViewModel
+                {
+                    Name ="bela2",
+                    Message ="oh designt time data for postlist"
+                },
             };
         }
     }
