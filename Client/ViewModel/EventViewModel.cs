@@ -20,11 +20,11 @@ namespace Client
 
         public ObservableCollection<UserAttend> Participiants { get; set; }
 
-       // private PostListViewModel postListVm = new PostListViewModel();
+       private PostListViewModel postListData = new PostListViewModel();
 
-        public PostListViewModel PostListVm
+        public PostListViewModel PostListData
         {
-            get { return postListVm; } set { postListVm = value; OnPropertyChanged(); }
+            get { return postListData; } set { postListData = value; OnPropertyChanged(); }
         }
 
         public string Description
@@ -79,12 +79,13 @@ namespace Client
             using (AzureServiceClient asc = new AzureServiceClient())
             {
                 var posts = await asc.GetPostsByEventAsync(Even.EventID);
-                //var postvms = new List<PostListItemViewModel>();
-                //foreach (var post in posts)
-                //{
-                //    postvms.Add(new PostListItemViewModel(post));
-                //}
-                //PostList = new ObservableCollection<PostListViewModel>(collection: postvms);
+                foreach (var post in posts)
+                {
+                    PostListData.PostList.Add(new PostListItemViewModel { Name = post.Writer, Message=post.Text });
+                }
+                
+                    Debug.WriteLine(posts.Count());
+               
             }
         }
 

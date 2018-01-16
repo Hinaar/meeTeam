@@ -257,10 +257,11 @@ namespace DataService
             {
                 using (LocalContext ctx = new LocalContext())
                 {
-                    return ctx.Events
-                        .SingleOrDefault(e => e.EventID == eventID)
-                        .Posts
-                        .ToList();
+                    var ev = ctx.Events
+                        .SingleOrDefault(e => e.EventID == eventID);
+                    ctx.Posts.Where(p=>p.)
+                        
+                    return ev.Posts.ToList();
                 }
             }
             catch (Exception e)

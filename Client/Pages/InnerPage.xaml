@@ -105,7 +105,7 @@
                     </Grid>
                     
                 </StackPanel>
-                <local:PostListControl Grid.Column="1" VerticalAlignment="Bottom" DataContext="{Binding}"/>
+                <local:PostListControl Grid.Column="1" VerticalAlignment="Bottom" DataContext="{Binding SelectedEvent.PostListData}"/>
             </Grid>
         </Border>
     </Grid>

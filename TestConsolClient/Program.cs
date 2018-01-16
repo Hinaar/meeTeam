@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using TestConsolClient.AzureReference;
+using TestConsolClient.ServiceReference1;
 
 namespace TestConsolClient
 {
@@ -14,29 +15,21 @@ namespace TestConsolClient
         {
             Console.ReadKey();
             
-            using (AzureServiceClient sc = new AzureServiceClient())
+            using (ServiceClient sc = new ServiceClient())
             {
-               //sc.ChannelFactory.Credentials.UserName.UserName = "meeteam";
-               // sc.ChannelFactory.Credentials.UserName.Password = "jelszo";
+                sc.ChannelFactory.Credentials.UserName.UserName = "meeteam";
+                sc.ChannelFactory.Credentials.UserName.Password = "jelszo";
                 
                 var users = sc.GetUserById(3);
                 Console.WriteLine(users.Email);
                 Console.WriteLine(users.Details.Address);
-                Console.ReadKey();
-                //sc.DeleteUser(4);
-                Console.ReadKey();
-                var mas = sc.GetUserById(3);
-                if (mas==null)
-                    Console.WriteLine("kitorlodott");
-                else
-                    Console.WriteLine("nem torlodott");
+                var post = sc.GetPostsByEvent(2);
+                foreach (var item in post)
+                {
+                    Console.WriteLine(item.Text);
+                }
+               
 
-
-                //foreach (var item in users)
-                //{
-                //    Console.WriteLine(item.Email);
-                //    Console.WriteLine("\t " + item.Details.Address);
-                //}
             }
           //  AsyncTest();
 

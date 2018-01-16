@@ -331,7 +331,7 @@ namespace AzureService
             {
                 using (LocalContext ctx = new LocalContext())
                 {
-                    return ctx.Events.Include(e=>e.Posts).ToList();
+                    return ctx.Events.ToList();
                 }
             }
             catch (Exception e)
