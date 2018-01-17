@@ -3,5 +3,6 @@
                     xmlns:local="clr-namespace:Client">
     
     <FontFamily x:Key="FontAwesome">/Fonts/fontawesome-webfont.ttf#FontAwesome</FontFamily>
+    
 
 </ResourceDictionary>

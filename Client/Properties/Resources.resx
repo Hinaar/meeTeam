@@ -136,10 +136,13 @@
     <value>Email</value>
   </data>
   <data name="ErrorAddress" xml:space="preserve">
-    <value>-</value>
+    <value>Address is required</value>
   </data>
   <data name="ErrorBirth" xml:space="preserve">
     <value>You must be between 10-150 years old</value>
+  </data>
+  <data name="ErrorCountry" xml:space="preserve">
+    <value>Country is required</value>
   </data>
   <data name="ErrorLogin" xml:space="preserve">
     <value>Invalid username or password</value>
@@ -154,7 +157,7 @@
     <value>Password must contain both numbers and letters </value>
   </data>
   <data name="ErrorPhoneNumber" xml:space="preserve">
-    <value>-</value>
+    <value>Invalid phone number format</value>
   </data>
   <data name="Name" xml:space="preserve">
     <value>Name</value>

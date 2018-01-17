@@ -77,10 +77,10 @@
                                 <Label Content="Title" />
                                 <TextBox Text="{Binding SelectedEvent.Title, Mode=TwoWay}" IsReadOnly="{Binding Path=IsEdit, Converter={local:InverseBooleanConverter}}"/>
                                 <Label Content="From:" />
-                            <!--<TextBox Text="{Binding SelectedEvent.FromDate, Mode=TwoWay,StringFormat='yyyy.MM.dd HH:mm:ss '}" IsReadOnly="{Binding Path=IsEdit, Converter={local:InverseBooleanConverter}}"/>-->
-                                <DatePicker SelectedDate="{Binding SelectedEvent.FromDate}" IsEnabled="{Binding IsEdit}"/>
+                            <TextBox Text="{Binding SelectedEvent.FromDate, Mode=TwoWay,StringFormat='yyyy.MM.dd HH:mm:ss '}" IsReadOnly="{Binding Path=IsEdit, Converter={local:InverseBooleanConverter}}"/>
+                            <DatePicker SelectedDate="{Binding SelectedEvent.FromDate}" IsEnabled="{Binding IsEdit}"/>
                                 <Label Content="To:" />
-                            <!--<TextBox Text="{Binding SelectedEvent.ToDate, Mode=TwoWay, StringFormat='yyyy.MM.dd HH:mm:ss '}" IsReadOnly="{Binding Path=IsEdit, Converter={local:InverseBooleanConverter}}"/>-->
+                            <TextBox Text="{Binding SelectedEvent.ToDate, Mode=TwoWay, StringFormat='yyyy.MM.dd HH:mm:ss '}" IsReadOnly="{Binding Path=IsEdit, Converter={local:InverseBooleanConverter}}"/>
                             <DatePicker SelectedDate="{Binding SelectedEvent.ToDate}" IsEnabled="{Binding IsEdit}"/>
                                 <Label Content="Description:" />
                                 <TextBox Text="{Binding SelectedEvent.Description, Mode=TwoWay}" IsReadOnly="{Binding Path=IsEdit, Converter={local:InverseBooleanConverter}}"  TextWrapping="Wrap"/>
@@ -96,11 +96,16 @@
                                          Grid.Column="1" Margin="5 0"/>
 
                             </Grid>
-                                <StackPanel Orientation="Horizontal">
-                                    <Button Command="{Binding EditEventCommand}" Padding="10 0" Margin="5 20" Content="Edit"/>
-                                    <Button Command="{Binding NewEventCommand}" Padding="10 10" Margin="5 20" Content="New" />
-                                    <Button Command="{Binding SaveEventCommand}"  Content="Save" Padding="5 10" Margin="10 20" IsEnabled="{Binding IsEdit}"/>
-                                <Button Command="{Binding DeleteEventCommand}" Content="Delete" Padding="5 10" Margin="10 20"/>
+                                <StackPanel Orientation="Horizontal" Height="60" HorizontalAlignment="Center">
+                                    <Button Command="{Binding EditEventCommand}" 
+                                           Style="{DynamicResource NextButtonStyle}" Content="&#xf040;" FontSize="25" Margin="5 10" Width="40"/>
+                                    <Button Command="{Binding NewEventCommand}" 
+                                            Style="{DynamicResource NextButtonStyle}" Content="&#xf055;" FontSize="25" Margin="5 10" Width="40"/>
+                                    <Button Command="{Binding SaveEventCommand}" 
+                                            Style="{DynamicResource NextButtonStyle}" Content="&#xf0c7;" FontSize="25" Margin="5 10" Width="40" 
+                                            IsEnabled="{Binding IsEdit}"/>
+                                <Button Command="{Binding DeleteEventCommand}" 
+                                        Style="{DynamicResource NextButtonStyle}" Content="&#xf12d;" FontSize="25" Margin="5 10" Width="40" />
                             </StackPanel>
                                 
                             </StackPanel>
@@ -115,7 +120,7 @@
                     </Grid>
 
                     <StackPanel VerticalAlignment="Bottom">
-                        <local:PostListControl Height="200"  
+                        <local:PostListControl Height="190"  
                          DataContext="{Binding SelectedEvent.PostListData}"/>
 
                     </StackPanel>
@@ -125,7 +130,11 @@
                                 <ColumnDefinition Width="6*" />
                                 <ColumnDefinition Width="*" />
                             </Grid.ColumnDefinitions>
-                            <TextBox Text="{Binding PostMessage}" Grid.Column="0" />
+                        <TextBox Text="{Binding PostMessage, UpdateSourceTrigger=PropertyChanged}" Grid.Column="0" >
+                            <TextBox.InputBindings>
+                                <KeyBinding Key="Return" Command="{Binding SendPostCommand}" />
+                            </TextBox.InputBindings>
+                        </TextBox>
                             <Button Command="{Binding SendPostCommand}" Content="Send" Grid.Column="1" />
                         </Grid>
                     

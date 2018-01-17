@@ -40,7 +40,7 @@
                                 <GradientStop Color="#FFD46B02" Offset="0.967"/>
                             </LinearGradientBrush>
                         </Border.Background>
-                        <TextBlock x:Name="textBlock" Margin="0" TextWrapping="Wrap" Text="&#xf011;" HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="{DynamicResource FontAwesome}" Height="19.205" Width="19.954" FontSize="20" Foreground="Black"/>
+                        <TextBlock x:Name="textBlock" Margin="0" TextWrapping="Wrap" Text="{TemplateBinding Content}" HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="{DynamicResource FontAwesome}"  FontSize="{TemplateBinding FontSize}" Foreground="Black"/>
                     </Border>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsDefaulted" Value="true">

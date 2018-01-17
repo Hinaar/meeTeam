@@ -115,7 +115,7 @@ namespace Client.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to -.
+        ///   Looks up a localized string similar to Address is required.
         /// </summary>
         public static string ErrorAddress {
             get {
@@ -129,6 +129,15 @@ namespace Client.Properties {
         public static string ErrorBirth {
             get {
                 return ResourceManager.GetString("ErrorBirth", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Country is required.
+        /// </summary>
+        public static string ErrorCountry {
+            get {
+                return ResourceManager.GetString("ErrorCountry", resourceCulture);
             }
         }
         
@@ -169,7 +178,7 @@ namespace Client.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to -.
+        ///   Looks up a localized string similar to Invalid phone number format.
         /// </summary>
         public static string ErrorPhoneNumber {
             get {

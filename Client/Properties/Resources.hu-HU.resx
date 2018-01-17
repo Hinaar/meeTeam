@@ -133,10 +133,13 @@
     <value>Születés</value>
   </data>
   <data name="ErrorAddress" xml:space="preserve">
-    <value>-</value>
+    <value>A címet kötelezp megadni</value>
   </data>
   <data name="ErrorBirth" xml:space="preserve">
     <value>10 és 150 év közöttinek kell lenned</value>
+  </data>
+  <data name="ErrorCountry" xml:space="preserve">
+    <value>Az országot kötelező megadni</value>
   </data>
   <data name="ErrorLogin" xml:space="preserve">
     <value>Hibás email-jelszó páros</value>
@@ -151,7 +154,7 @@
     <value>A jelszóban szerepelnie kell számnak és betűnek is</value>
   </data>
   <data name="ErrorPhoneNumber" xml:space="preserve">
-    <value>-</value>
+    <value>Hibás telefonszám formátum</value>
   </data>
   <data name="Name" xml:space="preserve">
     <value>Név</value>

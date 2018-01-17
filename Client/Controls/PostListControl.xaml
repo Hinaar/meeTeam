@@ -6,8 +6,8 @@
              xmlns:local="clr-namespace:Client"
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
-    <Grid d:DataContext="{x:Static local:PostListDesignModel.Instance}">
-        <ScrollViewer VerticalScrollBarVisibility="Auto">
+    <ScrollViewer VerticalScrollBarVisibility="Auto" d:DataContext="{x:Static local:PostListDesignModel.Instance}">
+        <Grid >
             <ItemsControl ItemsSource="{Binding PostList}">
                 <ItemsControl.ItemTemplate>
                     <DataTemplate>
@@ -15,6 +15,7 @@
                     </DataTemplate>
                 </ItemsControl.ItemTemplate>
             </ItemsControl>
-        </ScrollViewer>
-    </Grid>
+        </Grid>
+    </ScrollViewer>
+
 </UserControl>
