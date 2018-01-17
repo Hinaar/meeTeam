@@ -6,7 +6,7 @@
         xmlns:p="clr-namespace:Client.Properties"
         xmlns:local="clr-namespace:Client"
         mc:Ignorable="d"
-        Title="{x:Static p:Resources.Title}" Height="650" Width="900">
+        Title="{x:Static p:Resources.Title}" Height="700" Width="900">
     <DockPanel>
         <Frame x:Name="MainFrame" Content="{Binding CurrentPage, Converter={local:ApplicationPageValueConverter}}" NavigationUIVisibility="Hidden" />
         

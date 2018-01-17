@@ -107,6 +107,9 @@ namespace AzureService
         bool IsAttend(int userId, int eventId);
 
         [OperationContract]
+        void CreateOrUpdateAttend(Attend attend);
+
+        [OperationContract]
         Attend CreateAttend(Attend attend);
 
         [OperationContract]

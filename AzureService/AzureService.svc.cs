@@ -453,6 +453,37 @@ namespace AzureService
                 return false;
             }
         }
+
+        public void CreateOrUpdateAttend(Attend attend)
+        {
+            try
+            {
+                using (LocalContext ctx = new LocalContext())
+                {
+                    if(ctx.Attends.Any(a=>a.UserID==attend.UserID && a.EventID == attend.EventID))
+                    {
+                        ctx.Attends.Attach(attend);
+                        var entry = ctx.Entry(attend);
+                        entry.State = EntityState.Modified;
+                        ctx.SaveChanges();
+                    }
+                    else
+                    {
+                        if(ctx.Users.Any(u=>u.UserID == attend.UserID))
+                        {
+                            ctx.Attends.Add(attend);
+                            ctx.SaveChanges();
+                        }
+                       
+                    }
+                }
+            }
+            catch (Exception e)
+            {
+                Debug.WriteLine(e);
+            }
+        }
+
         public Attend CreateAttend (Attend attend)
         {
             try

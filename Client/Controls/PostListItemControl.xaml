@@ -12,17 +12,25 @@
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="{x:Type ContentControl}">
-                        <Border >
                             <Grid>
-                                <Border CornerRadius="10" Background="Aqua" Margin="2">
-                                    <StackPanel VerticalAlignment="Center">
+                                <Border CornerRadius="10" Margin="2">
+                                    <Border.Effect>
+                                        <DropShadowEffect Opacity="0.7" ShadowDepth="2" BlurRadius="3"/>
+                                    </Border.Effect>
+                                    <Border.Background>
+                                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                            <GradientStop Color="Aqua" Offset="0"/>
+                                            <GradientStop Color="White"/>
+                                            <GradientStop Color="#FF25FFFF" Offset="1"/>
+                                        </LinearGradientBrush>
+                                    </Border.Background>
+                                </Border>
+                                <StackPanel VerticalAlignment="Center">
                                         <TextBlock Text="{Binding Name}"  FontWeight="Bold" Padding="5,0,0,0 "/>
                                         <TextBlock Text="{Binding Message}" 
                                             TextWrapping="Wrap" Padding="5, 0, 5, 5"/>
-                                    </StackPanel>
-                                </Border>
+                                </StackPanel>
                             </Grid>
-                        </Border>
                     </ControlTemplate>
                 </Setter.Value>
             </Setter>

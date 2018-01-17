@@ -39,6 +39,9 @@ namespace Client
             set { isEdit = value; OnPropertyChanged(); }
         }
 
+        private string inviteUserID;
+        public string InviteUserID { get { return inviteUserID; } set { inviteUserID = value; OnPropertyChanged(); } }
+
         private string postMessage;
         public string PostMessage { get { return postMessage; } set { postMessage = value; OnPropertyChanged(); } }
 
@@ -77,7 +80,8 @@ namespace Client
                 }
             }
         }
-
+#region Commands
+        #region newEventCommand
 
         private RelayCommand newEvent;
         private ICommand newEventCommand;
@@ -106,6 +110,8 @@ namespace Client
             SelectedEvent = EventList.Last();
         }
 
+        #endregion
+        #region editEventCommand
         private RelayCommand editEvent;
         private ICommand editEventCommand;
 
@@ -126,32 +132,34 @@ namespace Client
         {
             IsEdit = true;
         }
+        #endregion
+        #region saveEventCommand
+                    private RelayCommand saveEvent;
+                    private ICommand saveEventCommand;
 
-        private RelayCommand saveEvent;
-        private ICommand saveEventCommand;
+                    public ICommand SaveEventCommand
+                    {
+                        get
+                        {
+                            if (saveEventCommand == null)
+                            {
+                                saveEventCommand = new RelayCommand(x => SaveEditedEvent(), null);
+                            }
+                            return saveEventCommand;
+                        }
+                        set { saveEventCommand = value; }
+                    }
 
-        public ICommand SaveEventCommand
-        {
-            get
-            {
-                if (saveEventCommand == null)
-                {
-                    saveEventCommand = new RelayCommand(x => SaveEditedEvent(), null);
-                }
-                return saveEventCommand;
-            }
-            set { saveEventCommand = value; }
-        }
-
-        private async Task SaveEditedEvent()
-        {
-            IsEdit = false;
-            using (AzureServiceClient asc = new AzureServiceClient())
-            {
-                  await asc.UpdateEventAsync(SelectedEvent.Even.EventID, SelectedEvent.Even);
-            }
-        }
-
+                    private async Task SaveEditedEvent()
+                    {
+                        IsEdit = false;
+                        using (AzureServiceClient asc = new AzureServiceClient())
+                        {
+                              await asc.UpdateEventAsync(SelectedEvent.Even.EventID, SelectedEvent.Even);
+                        }
+                    }
+                    #endregion
+        #region deleteEventCommand
         private RelayCommand deleteEvent;
         private ICommand deleteEventCommand;
 
@@ -180,7 +188,8 @@ namespace Client
             SelectedEvent = EventList.First();
         }
 
-
+        #endregion
+        #region sendPostCommand
         private RelayCommand sendPost;
         private ICommand sendPostCommand;
 
@@ -213,7 +222,117 @@ namespace Client
                 });
             PostMessage = "";
         }
+        #endregion
+        #region attendEventCommand
+        private RelayCommand attendEvent;
+        private ICommand attendEventCommand;
 
+        public ICommand AttendEventCommand
+        {
+            get
+            {
+                if (attendEventCommand == null)
+                {
+                    attendEventCommand = new RelayCommand(x => AttendEvent(), null);
+                }
+                return attendEventCommand;
+            }
+            set { attendEventCommand = value; }
+        }
+
+  
+        private async Task AttendEvent()
+        {
+            using (AzureServiceClient asc = new AzureServiceClient())
+            {
+                await asc.CreateOrUpdateAttendAsync(new Attend
+                {
+                    UserID = MainViewModel.Instance.User.UserID,
+                    EventID = SelectedEvent.Even.EventID,
+                    willAttend = true
+                });
+                SelectedEvent.loadUserAttendsAsync();
+            }
+        }
+        #endregion
+        #region declineEventCommand
+        private RelayCommand declineEvent;
+        private ICommand declineEventCommand;
+
+        public ICommand DeclineEventCommand
+        {
+            get
+            {
+                if (declineEventCommand == null)
+                {
+                    declineEventCommand = new RelayCommand(x => DeclineEvent(), null);
+                }
+                return declineEventCommand;
+            }
+            set { declineEventCommand = value; }
+        }
+
+
+        private async Task DeclineEvent()
+        {
+            using (AzureServiceClient asc = new AzureServiceClient())
+            {
+                await asc.CreateOrUpdateAttendAsync(new Attend
+                {
+                    UserID = MainViewModel.Instance.User.UserID,
+                    EventID = SelectedEvent.Even.EventID,
+                    willAttend = false
+                });
+                SelectedEvent.loadUserAttendsAsync();
+            }
+
+        }
+        #endregion
+        #region inviteCommand
+        private RelayCommand invite;
+        private ICommand inviteCommand;
+
+        public ICommand InviteCommand
+        {
+            get
+            {
+                if (inviteCommand == null)
+                {
+                    inviteCommand = new RelayCommand(x => Invite(InviteUserID, SelectedEvent.Even.EventID), null);
+                }
+                return inviteCommand;
+            }
+            set { inviteCommand = value; }
+        }
+
+
+        private async Task Invite(string userid, int eventId)
+        {
+            int id;
+            DialogWindow tmp;
+            if(Int32.TryParse(userid, out id))
+            {
+                using (AzureServiceClient asc = new AzureServiceClient())
+                {
+                    await asc.CreateOrUpdateAttendAsync(new Attend
+                    {
+                        UserID = id,
+                        EventID = SelectedEvent.Even.EventID,
+                        willAttend = false
+                    });
+                    SelectedEvent.loadUserAttendsAsync();
+                }
+                InviteUserID = "";
+            }
+            else
+            {
+                tmp = new DialogWindow("Try integers next time");
+                tmp.ShowDialog();
+            }
+            
+        }
+        #endregion
+        #endregion
 
         public InnerViewModel()
         {

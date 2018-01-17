@@ -18,9 +18,10 @@ namespace Client
         private Event even;
         public Event Even { get => even; }
 
-        public ObservableCollection<UserAttend> Participiants { get; set; }
+        private ObservableCollection<UserAttend> participiants;
+        public ObservableCollection<UserAttend> Participiants { get { return participiants; } set { participiants = value; OnPropertyChanged(); } }
 
-       private PostListViewModel postListData = new PostListViewModel();
+        private PostListViewModel postListData = new PostListViewModel();
 
         public PostListViewModel PostListData
         {

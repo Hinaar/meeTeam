@@ -26,11 +26,12 @@
                     <ColumnDefinition Width="4*"/>
                 </Grid.ColumnDefinitions>
                 <!-- left column-->
-                <StackPanel Grid.Column="0" TextBlock.TextAlignment="Center" Orientation="Vertical">
+                <DockPanel Grid.Column="0" TextBlock.TextAlignment="Center" >
                     <Grid>
                         <Grid.RowDefinitions>
-                            <RowDefinition Height="3*"/>
-                            <RowDefinition Height="1*" />
+                            <RowDefinition Height="4*"/>
+                            <RowDefinition Height="4*" />
+                            <RowDefinition Height="Auto" />
                         </Grid.RowDefinitions>
                         <StackPanel Grid.Row="0">
                             <TextBlock Text="My Events" FontWeight="Bold" Background="AliceBlue" Padding="5"/>
@@ -62,29 +63,45 @@
                                 </ListView.ItemTemplate>
                             </ListView>
                         </StackPanel>
+                        <Grid Grid.Row="2">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="3*" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+
+                            <TextBox Grid.Column="0" Text="{Binding InviteUserID, UpdateSourceTrigger=PropertyChanged}"
+                                     Style="{StaticResource WaterMarkTextbox}" Tag="User ID" FontSize="15" Height="27" VerticalAlignment="Bottom"/>
+                            <Button Grid.Column="2" Content="Invite"
+                                    Command="{Binding InviteCommand}"
+                                    Style="{DynamicResource NextButtonStyle}" FontWeight="Bold"/>
+                        </Grid>
+
                     </Grid>
-                </StackPanel>
+                </DockPanel>
                 <!-- main content column -->
-                <StackPanel Grid.Column="1">
-                    <Grid>
-                        
+                <Grid Grid.Column="1">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="5*" />
+                        <RowDefinition Height="3*" />
+                    </Grid.RowDefinitions>
+                    <Grid Grid.Row="0">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="*"/>
                             <ColumnDefinition Width="2*"/>
                         </Grid.ColumnDefinitions>
-                        <!--<ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto" Grid.Column="0">-->
-                            <StackPanel >
-                                <Label Content="Title" />
-                                <TextBox Text="{Binding SelectedEvent.Title, Mode=TwoWay}" IsReadOnly="{Binding Path=IsEdit, Converter={local:InverseBooleanConverter}}"/>
-                                <Label Content="From:" />
+                        <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto" Grid.Column="0">
+                            <StackPanel>
+                            <Label Content="Title" />
+                            <TextBox Text="{Binding SelectedEvent.Title, Mode=TwoWay}" IsReadOnly="{Binding Path=IsEdit, Converter={local:InverseBooleanConverter}}"/>
+                            <Label Content="From:" />
                             <TextBox Text="{Binding SelectedEvent.FromDate, Mode=TwoWay,StringFormat='yyyy.MM.dd HH:mm:ss '}" IsReadOnly="{Binding Path=IsEdit, Converter={local:InverseBooleanConverter}}"/>
                             <DatePicker SelectedDate="{Binding SelectedEvent.FromDate}" IsEnabled="{Binding IsEdit}"/>
-                                <Label Content="To:" />
+                            <Label Content="To:" />
                             <TextBox Text="{Binding SelectedEvent.ToDate, Mode=TwoWay, StringFormat='yyyy.MM.dd HH:mm:ss '}" IsReadOnly="{Binding Path=IsEdit, Converter={local:InverseBooleanConverter}}"/>
                             <DatePicker SelectedDate="{Binding SelectedEvent.ToDate}" IsEnabled="{Binding IsEdit}"/>
-                                <Label Content="Description:" />
-                                <TextBox Text="{Binding SelectedEvent.Description, Mode=TwoWay}" IsReadOnly="{Binding Path=IsEdit, Converter={local:InverseBooleanConverter}}"  TextWrapping="Wrap"/>
-                                <Label Content="Coordinates:" />
+                            <Label Content="Description:" />
+                            <TextBox Text="{Binding SelectedEvent.Description, Mode=TwoWay}" IsReadOnly="{Binding Path=IsEdit, Converter={local:InverseBooleanConverter}}"  TextWrapping="Wrap"/>
+                            <Label Content="Coordinates:" />
                             <Grid>
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="*" />
@@ -96,20 +113,28 @@
                                          Grid.Column="1" Margin="5 0"/>
 
                             </Grid>
-                                <StackPanel Orientation="Horizontal" Height="60" HorizontalAlignment="Center">
-                                    <Button Command="{Binding EditEventCommand}" 
+                            <StackPanel Orientation="Horizontal" Height="60" HorizontalAlignment="Center">
+                                <Button Command="{Binding EditEventCommand}" 
                                            Style="{DynamicResource NextButtonStyle}" Content="&#xf040;" FontSize="25" Margin="5 10" Width="40"/>
-                                    <Button Command="{Binding NewEventCommand}" 
+                                <Button Command="{Binding NewEventCommand}" 
                                             Style="{DynamicResource NextButtonStyle}" Content="&#xf055;" FontSize="25" Margin="5 10" Width="40"/>
-                                    <Button Command="{Binding SaveEventCommand}" 
+                                <Button Command="{Binding SaveEventCommand}" 
                                             Style="{DynamicResource NextButtonStyle}" Content="&#xf0c7;" FontSize="25" Margin="5 10" Width="40" 
                                             IsEnabled="{Binding IsEdit}"/>
                                 <Button Command="{Binding DeleteEventCommand}" 
-                                        Style="{DynamicResource NextButtonStyle}" Content="&#xf12d;" FontSize="25" Margin="5 10" Width="40" />
+                                            Style="{DynamicResource NextButtonStyle}" Content="&#xf12d;" FontSize="25" Margin="5 10" Width="40" />
                             </StackPanel>
-                                
+                            <StackPanel HorizontalAlignment="Center" Orientation="Horizontal" Height="30">
+                                <Button Command="{Binding AttendEventCommand}"
+                                        Content="Attend" FontWeight="Bold" FontSize="15" Margin="10 0 10 0"
+                                        Style="{DynamicResource NextButtonStyle}"/>
+                                <Button Command="{Binding DeclineEventCommand}"
+                                        Content="Decline" FontWeight="Bold" FontSize="15" Margin="10 0 10 0"
+                                        Style="{DynamicResource NextButtonStyle}"/>
                             </StackPanel>
-                        <!-- </ScrollViewer>-->
+
+                        </StackPanel>
+                        </ScrollViewer>
                         <DockPanel Grid.Column="1">
                             <m:Map x:Name="myMap" CredentialsProvider="AgYxX00-G5CD-Yy4ydFp9xnvPZNIpuETBAZyx8rZo3xHu1WxsoBKJxzlOFu20WR_" 
                                        Center="{Binding MapCenter, Mode=TwoWay}" ZoomLevel="16.000">
@@ -119,29 +144,32 @@
                         </DockPanel>
                     </Grid>
 
-                    <StackPanel VerticalAlignment="Bottom">
-                        <local:PostListControl Height="190"  
-                         DataContext="{Binding SelectedEvent.PostListData}"/>
-
-                    </StackPanel>
-                    
-                        <Grid VerticalAlignment="Center">
+                    <Grid ClipToBounds="True" Grid.Row="1">
+                        <Border BorderBrush="#FFFFA82A" BorderThickness="2" ClipToBounds="True" Margin="0 0 0 30">
+                            <local:PostListControl DataContext="{Binding SelectedEvent.PostListData}" VerticalAlignment="Top"/>
+                        </Border>
+                        <Grid VerticalAlignment="Bottom">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="6*" />
                                 <ColumnDefinition Width="*" />
                             </Grid.ColumnDefinitions>
-                        <TextBox Text="{Binding PostMessage, UpdateSourceTrigger=PropertyChanged}" Grid.Column="0" >
-                            <TextBox.InputBindings>
-                                <KeyBinding Key="Return" Command="{Binding SendPostCommand}" />
-                            </TextBox.InputBindings>
-                        </TextBox>
-                            <Button Command="{Binding SendPostCommand}" Content="Send" Grid.Column="1" />
+                            <TextBox Text="{Binding PostMessage, UpdateSourceTrigger=PropertyChanged}" 
+                                     Grid.Column="0" Height="30">
+                                <TextBox.InputBindings>
+                                    <KeyBinding Key="Return" Command="{Binding SendPostCommand}" />
+                                </TextBox.InputBindings>
+                            </TextBox>
+                            <Button Command="{Binding SendPostCommand}" Style="{DynamicResource NextButtonStyle}" 
+                                    Content="Send" Grid.Column="1" FontWeight="Bold" />
                         </Grid>
-                    
+                    </Grid>
 
 
-                </StackPanel>
-                
+
+
+
+                </Grid>
+
             </Grid>
         </Border>
     </Grid>

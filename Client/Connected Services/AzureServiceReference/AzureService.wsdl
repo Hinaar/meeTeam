@@ -183,6 +183,12 @@
   <wsdl:message name="IAzureService_IsAttend_OutputMessage">
     <wsdl:part name="parameters" element="tns:IsAttendResponse" />
   </wsdl:message>
+  <wsdl:message name="IAzureService_CreateOrUpdateAttend_InputMessage">
+    <wsdl:part name="parameters" element="tns:CreateOrUpdateAttend" />
+  </wsdl:message>
+  <wsdl:message name="IAzureService_CreateOrUpdateAttend_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CreateOrUpdateAttendResponse" />
+  </wsdl:message>
   <wsdl:message name="IAzureService_CreateAttend_InputMessage">
     <wsdl:part name="parameters" element="tns:CreateAttend" />
   </wsdl:message>
@@ -301,6 +307,10 @@
     <wsdl:operation name="IsAttend">
       <wsdl:input wsaw:Action="http://tempuri.org/IAzureService/IsAttend" message="tns:IAzureService_IsAttend_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IAzureService/IsAttendResponse" message="tns:IAzureService_IsAttend_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CreateOrUpdateAttend">
+      <wsdl:input wsaw:Action="http://tempuri.org/IAzureService/CreateOrUpdateAttend" message="tns:IAzureService_CreateOrUpdateAttend_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IAzureService/CreateOrUpdateAttendResponse" message="tns:IAzureService_CreateOrUpdateAttend_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="CreateAttend">
       <wsdl:input wsaw:Action="http://tempuri.org/IAzureService/CreateAttend" message="tns:IAzureService_CreateAttend_InputMessage" />
@@ -535,6 +545,15 @@
     </wsdl:operation>
     <wsdl:operation name="IsAttend">
       <soap:operation soapAction="http://tempuri.org/IAzureService/IsAttend" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreateOrUpdateAttend">
+      <soap:operation soapAction="http://tempuri.org/IAzureService/CreateOrUpdateAttend" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -791,6 +810,15 @@
     </wsdl:operation>
     <wsdl:operation name="IsAttend">
       <soap:operation soapAction="http://tempuri.org/IAzureService/IsAttend" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreateOrUpdateAttend">
+      <soap:operation soapAction="http://tempuri.org/IAzureService/CreateOrUpdateAttend" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

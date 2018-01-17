@@ -341,17 +341,29 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="CreateAttend">
+  <xs:element name="CreateOrUpdateAttend">
     <xs:complexType>
       <xs:sequence>
         <xs:element xmlns:q26="http://schemas.datacontract.org/2004/07/AzureService.Model" minOccurs="0" name="attend" nillable="true" type="q26:Attend" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
+  <xs:element name="CreateOrUpdateAttendResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CreateAttend">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q27="http://schemas.datacontract.org/2004/07/AzureService.Model" minOccurs="0" name="attend" nillable="true" type="q27:Attend" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
   <xs:element name="CreateAttendResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q27="http://schemas.datacontract.org/2004/07/AzureService.Model" minOccurs="0" name="CreateAttendResult" nillable="true" type="q27:Attend" />
+        <xs:element xmlns:q28="http://schemas.datacontract.org/2004/07/AzureService.Model" minOccurs="0" name="CreateAttendResult" nillable="true" type="q28:Attend" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -378,7 +390,7 @@
   <xs:element name="GetComplexUsersOfEventResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q28="http://schemas.datacontract.org/2004/07/AzureService.Model" minOccurs="0" name="GetComplexUsersOfEventResult" nillable="true" type="q28:ArrayOfUserAttend" />
+        <xs:element xmlns:q29="http://schemas.datacontract.org/2004/07/AzureService.Model" minOccurs="0" name="GetComplexUsersOfEventResult" nillable="true" type="q29:ArrayOfUserAttend" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

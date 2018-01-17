@@ -946,6 +946,12 @@ namespace Client.AzureServiceReference {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAzureService/IsAttend", ReplyAction="http://tempuri.org/IAzureService/IsAttendResponse")]
         System.Threading.Tasks.Task<bool> IsAttendAsync(int userId, int eventId);
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAzureService/CreateOrUpdateAttend", ReplyAction="http://tempuri.org/IAzureService/CreateOrUpdateAttendResponse")]
+        void CreateOrUpdateAttend(Client.AzureServiceReference.Attend attend);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAzureService/CreateOrUpdateAttend", ReplyAction="http://tempuri.org/IAzureService/CreateOrUpdateAttendResponse")]
+        System.Threading.Tasks.Task CreateOrUpdateAttendAsync(Client.AzureServiceReference.Attend attend);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAzureService/CreateAttend", ReplyAction="http://tempuri.org/IAzureService/CreateAttendResponse")]
         Client.AzureServiceReference.Attend CreateAttend(Client.AzureServiceReference.Attend attend);
         
@@ -1190,6 +1196,14 @@ namespace Client.AzureServiceReference {
         
         public System.Threading.Tasks.Task<bool> IsAttendAsync(int userId, int eventId) {
             return base.Channel.IsAttendAsync(userId, eventId);
+        }
+        
+        public void CreateOrUpdateAttend(Client.AzureServiceReference.Attend attend) {
+            base.Channel.CreateOrUpdateAttend(attend);
+        }
+        
+        public System.Threading.Tasks.Task CreateOrUpdateAttendAsync(Client.AzureServiceReference.Attend attend) {
+            return base.Channel.CreateOrUpdateAttendAsync(attend);
         }
         
         public Client.AzureServiceReference.Attend CreateAttend(Client.AzureServiceReference.Attend attend) {
