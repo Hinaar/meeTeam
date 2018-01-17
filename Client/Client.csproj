@@ -79,6 +79,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="AttachedProperties\PasswordBoxProperties.cs" />
     <Compile Include="Commands\EventToCommand.cs" />
     <Compile Include="Commands\RelayCommands.cs" />
     <Compile Include="Connected Services\AzureServiceReference\Reference.cs">

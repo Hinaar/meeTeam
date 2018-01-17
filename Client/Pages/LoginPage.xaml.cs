@@ -26,10 +26,10 @@ namespace Client
             
         }
 
-        private void pwdBox_PasswordChanged(object sender, RoutedEventArgs e)
-        {
-            var pwdboc= sender as PasswordBox;
-            pwdboc.Tag = "";
-        }
+        //private void pwdBox_PasswordChanged(object sender, RoutedEventArgs e)
+        //{
+        //    var pwdboc= sender as PasswordBox;
+        //    pwdboc.Tag = "";
+        //}
     }
 }
