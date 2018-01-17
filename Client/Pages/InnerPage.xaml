@@ -33,8 +33,8 @@
                             <RowDefinition Height="4*" />
                             <RowDefinition Height="Auto" />
                         </Grid.RowDefinitions>
-                        <StackPanel Grid.Row="0">
-                            <TextBlock Text="My Events" FontWeight="Bold" Background="AliceBlue" Padding="5"/>
+                        <DockPanel Grid.Row="0">
+                            <TextBlock Text="My Events" FontWeight="Bold" Background="AliceBlue" Padding="5" DockPanel.Dock="Top"/>
                             <ListView Name="lvEventList" ItemsSource="{Binding Path=EventList}" SelectedItem="{Binding SelectedEvent, Mode=TwoWay}">
                                 <ListView.ItemTemplate>
                                     <DataTemplate DataType="{x:Type local:EventView}">
@@ -42,9 +42,9 @@
                                     </DataTemplate>
                                 </ListView.ItemTemplate>
                             </ListView>
-                        </StackPanel>
-                        <StackPanel Grid.Row="1">
-                            <TextBlock Text="Participiants" FontWeight="Bold" Background="AliceBlue" Padding="5"/>
+                        </DockPanel>
+                        <DockPanel Grid.Row="1">
+                            <TextBlock Text="Participiants" FontWeight="Bold" Background="AliceBlue" Padding="5" DockPanel.Dock="Top"/>
                             <ListView ItemsSource="{Binding SelectedEvent.Participiants, Mode=TwoWay}">
                                 <ListView.Background>
                                     <LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
@@ -62,7 +62,7 @@
                                     </DataTemplate>
                                 </ListView.ItemTemplate>
                             </ListView>
-                        </StackPanel>
+                        </DockPanel>
                         <Grid Grid.Row="2">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="3*" />
@@ -89,7 +89,7 @@
                             <ColumnDefinition Width="*"/>
                             <ColumnDefinition Width="2*"/>
                         </Grid.ColumnDefinitions>
-                        <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto" Grid.Column="0">
+                        <ScrollViewer VerticalScrollBarVisibility="Auto"  HorizontalScrollBarVisibility="Disabled" Grid.Column="0">
                             <StackPanel>
                             <Label Content="Title" />
                             <TextBox Text="{Binding SelectedEvent.Title, Mode=TwoWay}" IsReadOnly="{Binding Path=IsEdit, Converter={local:InverseBooleanConverter}}"/>
