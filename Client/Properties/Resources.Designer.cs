@@ -232,7 +232,7 @@ namespace Client.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Main.
+        ///   Looks up a localized string similar to MeeTeam.
         /// </summary>
         public static string Title {
             get {
