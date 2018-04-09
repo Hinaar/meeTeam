@@ -51,7 +51,7 @@
                     </StackPanel>
                 </Border>
 
-                <Button IsEnabled="True" Command="{Binding RegisterPageCommand}" Content="Register" HorizontalAlignment="Center" Margin="0 10 0 10" Style="{DynamicResource RegisterButton}" Width="164"/>
+                <Button Command="{Binding RegisterPageCommand}" Content="Register" HorizontalAlignment="Center" Margin="0 10 0 10" Style="{DynamicResource RegisterButton}" Width="164"/>
 
             </StackPanel>
         </ScrollViewer>
