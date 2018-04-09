@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace DataServiceTests.ServiceReference1 {
+namespace UnitTestProject.ServiceReference1 {
     
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -39,6 +39,12 @@ namespace DataServiceTests.ServiceReference1 {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/GetUsers", ReplyAction="http://tempuri.org/IService/GetUsersResponse")]
         System.Threading.Tasks.Task<DataService.Model.User[]> GetUsersAsync();
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/EmailTaken", ReplyAction="http://tempuri.org/IService/EmailTakenResponse")]
+        bool EmailTaken(string email);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/EmailTaken", ReplyAction="http://tempuri.org/IService/EmailTakenResponse")]
+        System.Threading.Tasks.Task<bool> EmailTakenAsync(string email);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/GetUsersOfEvent", ReplyAction="http://tempuri.org/IService/GetUsersOfEventResponse")]
         DataService.Model.User[] GetUsersOfEvent(int eventId);
         
@@ -64,10 +70,10 @@ namespace DataServiceTests.ServiceReference1 {
         System.Threading.Tasks.Task<DataService.Model.User> GetEventsOwnerAsync(int eventId);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/CreateUser", ReplyAction="http://tempuri.org/IService/CreateUserResponse")]
-        void CreateUser(DataService.Model.User user);
+        DataService.Model.User CreateUser(DataService.Model.User user);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/CreateUser", ReplyAction="http://tempuri.org/IService/CreateUserResponse")]
-        System.Threading.Tasks.Task CreateUserAsync(DataService.Model.User user);
+        System.Threading.Tasks.Task<DataService.Model.User> CreateUserAsync(DataService.Model.User user);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/DeleteUser", ReplyAction="http://tempuri.org/IService/DeleteUserResponse")]
         void DeleteUser(int id);
@@ -173,12 +179,12 @@ namespace DataServiceTests.ServiceReference1 {
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public interface IServiceChannel : DataServiceTests.ServiceReference1.IService, System.ServiceModel.IClientChannel {
+    public interface IServiceChannel : UnitTestProject.ServiceReference1.IService, System.ServiceModel.IClientChannel {
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public partial class ServiceClient : System.ServiceModel.ClientBase<DataServiceTests.ServiceReference1.IService>, DataServiceTests.ServiceReference1.IService {
+    public partial class ServiceClient : System.ServiceModel.ClientBase<UnitTestProject.ServiceReference1.IService>, UnitTestProject.ServiceReference1.IService {
         
         public ServiceClient() {
         }
@@ -231,6 +237,14 @@ namespace DataServiceTests.ServiceReference1 {
             return base.Channel.GetUsersAsync();
         }
         
+        public bool EmailTaken(string email) {
+            return base.Channel.EmailTaken(email);
+        }
+        
+        public System.Threading.Tasks.Task<bool> EmailTakenAsync(string email) {
+            return base.Channel.EmailTakenAsync(email);
+        }
+        
         public DataService.Model.User[] GetUsersOfEvent(int eventId) {
             return base.Channel.GetUsersOfEvent(eventId);
         }
@@ -263,11 +277,11 @@ namespace DataServiceTests.ServiceReference1 {
             return base.Channel.GetEventsOwnerAsync(eventId);
         }
         
-        public void CreateUser(DataService.Model.User user) {
-            base.Channel.CreateUser(user);
+        public DataService.Model.User CreateUser(DataService.Model.User user) {
+            return base.Channel.CreateUser(user);
         }
         
-        public System.Threading.Tasks.Task CreateUserAsync(DataService.Model.User user) {
+        public System.Threading.Tasks.Task<DataService.Model.User> CreateUserAsync(DataService.Model.User user) {
             return base.Channel.CreateUserAsync(user);
         }
         

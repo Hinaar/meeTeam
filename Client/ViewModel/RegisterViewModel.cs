@@ -109,13 +109,7 @@ namespace Client
                         result = rm.GetString("ErrorBirth");
                     }
                 }
-                if(columnName == null || columnName == nameof(PhoneNumber))
-                {
-                    if(!Regex.IsMatch(PhoneNumber ?? "", @"/^[0-9\+]{1,}[0-9\-]{3,15}$/"))
-                    {
-                        result = rm.GetString("ErrorPhoneNumber");
-                    }
-                }
+               
                 if(columnName == null || columnName == nameof(Country))
                 {
                     if((Country??"").Equals(string.Empty))

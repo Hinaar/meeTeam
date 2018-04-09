@@ -15,11 +15,11 @@ namespace TestConsolClient
         {
             Console.ReadKey();
             
-            using (AzureServiceClient sc = new AzureServiceClient())
+            using (ServiceClient sc = new ServiceClient())
             {
-                //sc.ChannelFactory.Credentials.UserName.UserName = "meeteam";
-                //sc.ChannelFactory.Credentials.UserName.Password = "jelszo";
-                
+                sc.ChannelFactory.Credentials.UserName.UserName = "meeteam";
+                sc.ChannelFactory.Credentials.UserName.Password = "jelszo";
+
                 var users = sc.GetUserById(3);
                 Console.WriteLine(users.Email);
                 Console.WriteLine(users.Details.Address);
