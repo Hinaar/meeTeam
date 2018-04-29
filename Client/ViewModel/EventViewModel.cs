@@ -1,5 +1,5 @@
-﻿//using Client.ServiceReference;
-using Client.AzureServiceReference;
+﻿using Client.ServiceReference;
+//using Client.AzureServiceReference;
 using Microsoft.Maps.MapControl.WPF;
 using System;
 using System.Collections.Generic;
@@ -79,10 +79,10 @@ namespace Client
 
         public async void loadUserAttendsAsync()
         {
-            using (AzureServiceClient sc = new AzureServiceClient())
+            using (Service1Client sc = new Service1Client())//AzureServiceClient sc = new AzureServiceClient())
             {
-                //sc.ChannelFactory.Credentials.UserName.UserName = "meeteam";
-                //sc.ChannelFactory.Credentials.UserName.Password = "jelszo";
+                sc.ChannelFactory.Credentials.UserName.UserName = "meeteam";
+                sc.ChannelFactory.Credentials.UserName.Password = "jelszo";
                 var list = await sc.GetComplexUsersOfEventAsync(even.EventID);
                 Participiants = new ObservableCollection<UserAttend>(collection: list);
             }
@@ -90,16 +90,17 @@ namespace Client
 
         public async void loadPostsAsync()
         {
-            using (AzureServiceClient asc = new AzureServiceClient())
+            using (Service1Client asc = new Service1Client())//AzureServiceClient asc = new AzureServiceClient())
             {
                 var posts = await asc.GetPostsByEventAsync(Even.EventID);
+
                 foreach (var post in posts)
                 {
-                    PostListData.PostList.Add(new PostListItemViewModel { Name = post.Writer, Message=post.Text });
+                    PostListData.PostList.Add(new PostListItemViewModel { Name = post.Writer, Message = post.Text });
                 }
-                
-                    Debug.WriteLine(posts.Count());
-               
+
+                Debug.WriteLine(posts.Count());
+
             }
         }
 

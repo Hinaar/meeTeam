@@ -1,5 +1,5 @@
-﻿//using Client.ServiceReference;
-using Client.AzureServiceReference;
+﻿using Client.ServiceReference;
+//using Client.AzureServiceReference;
 using Microsoft.Maps.MapControl.WPF;
 using System;
 using System.Collections.Generic;
@@ -69,11 +69,11 @@ namespace Client
 
         public async void loadEventListAsync()
         {
-            using (AzureServiceClient sc = new AzureServiceClient())
+            using (Service1Client sc = new Service1Client()) //AzureServiceClient sc = new AzureServiceClient())
             {
                 //sc.ChannelFactory.Credentials.UserName.UserName = "meeteam";
                 //sc.ChannelFactory.Credentials.UserName.Password = "jelszo";
-                var list =await sc.GetEventsAsync();
+                var list = await sc.GetEventsAsync();
                 foreach (Event even in list)
                 {
                     EventList.Add(new EventViewModel(even));
@@ -100,9 +100,9 @@ namespace Client
         private async Task NewEvent()
         {
             Event even;
-            using (AzureServiceClient asc = new AzureServiceClient())
+            using (Service1Client asc = new Service1Client()) //AzureServiceClient asc = new AzureServiceClient())
             {
-                even = await asc.CreateEventAsync(new Event {FromDate = DateTime.Now, ToDate = DateTime.Now });
+                even = await asc.CreateEventAsync(new Event { FromDate = DateTime.Now, ToDate = DateTime.Now });
                 await asc.CreateAttendAsync(new Attend { UserID = MainViewModel.Instance.User.UserID, EventID = even.EventID });
             }
 
@@ -153,10 +153,10 @@ namespace Client
                     private async Task SaveEditedEvent()
                     {
                         IsEdit = false;
-                        using (AzureServiceClient asc = new AzureServiceClient())
-                        {
-                              await asc.UpdateEventAsync(SelectedEvent.Even.EventID, SelectedEvent.Even);
-                        }
+            using (Service1Client asc = new Service1Client())//AzureServiceClient asc = new AzureServiceClient())
+            {
+                await asc.UpdateEventAsync(SelectedEvent.Even.EventID, SelectedEvent.Even);
+            }
                     }
                     #endregion
         #region deleteEventCommand
@@ -178,11 +178,11 @@ namespace Client
 
         private async Task DeleteEditedEvent()
         {
-            
-            using (AzureServiceClient asc = new AzureServiceClient())
+
+            using (Service1Client asc = new Service1Client())//AzureServiceClient asc = new AzureServiceClient())
             {
                 await asc.DeleteEventAsync(SelectedEvent.Even.EventID);
-                
+
             }
             EventList.Remove(SelectedEvent);
             SelectedEvent = EventList.First();
@@ -190,6 +190,7 @@ namespace Client
 
         #endregion
         #region sendPostCommand
+        //TODO db-be elmenteni a postokats
         private RelayCommand sendPost;
         private ICommand sendPostCommand;
 
@@ -243,7 +244,7 @@ namespace Client
   
         private async Task AttendEvent()
         {
-            using (AzureServiceClient asc = new AzureServiceClient())
+            using (Service1Client asc = new Service1Client())//AzureServiceClient asc = new AzureServiceClient())
             {
                 await asc.CreateOrUpdateAttendAsync(new Attend
                 {
@@ -275,7 +276,7 @@ namespace Client
 
         private async Task DeclineEvent()
         {
-            using (AzureServiceClient asc = new AzureServiceClient())
+            using (Service1Client asc = new Service1Client())//AzureServiceClient asc = new AzureServiceClient())
             {
                 await asc.CreateOrUpdateAttendAsync(new Attend
                 {
@@ -308,11 +309,10 @@ namespace Client
 
         private async Task Invite(string userid, int eventId)
         {
-            int id;
             DialogWindow tmp;
-            if(Int32.TryParse(userid, out id))
+            if (Int32.TryParse(userid, out int id))
             {
-                using (AzureServiceClient asc = new AzureServiceClient())
+                using (Service1Client asc = new Service1Client())//AzureServiceClient asc = new AzureServiceClient())
                 {
                     await asc.CreateOrUpdateAttendAsync(new Attend
                     {
@@ -322,12 +322,13 @@ namespace Client
                     });
                     SelectedEvent.loadUserAttendsAsync();
                 }
-                InviteUserID = "";
+                InviteUserID = string.Empty;
             }
             else
             {
                 tmp = new DialogWindow("Try integers next time");
                 tmp.ShowDialog();
+                InviteUserID = string.Empty;
             }
             
         }

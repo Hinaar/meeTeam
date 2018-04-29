@@ -15,68 +15,7 @@ namespace Client.ServiceReference {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="CompositeType", Namespace="http://schemas.datacontract.org/2004/07/DataService")]
-    [System.SerializableAttribute()]
-    public partial class CompositeType : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
-        
-        [System.NonSerializedAttribute()]
-        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private bool BoolValueField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string StringValueField;
-        
-        [global::System.ComponentModel.BrowsableAttribute(false)]
-        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
-            get {
-                return this.extensionDataField;
-            }
-            set {
-                this.extensionDataField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public bool BoolValue {
-            get {
-                return this.BoolValueField;
-            }
-            set {
-                if ((this.BoolValueField.Equals(value) != true)) {
-                    this.BoolValueField = value;
-                    this.RaisePropertyChanged("BoolValue");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string StringValue {
-            get {
-                return this.StringValueField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.StringValueField, value) != true)) {
-                    this.StringValueField = value;
-                    this.RaisePropertyChanged("StringValue");
-                }
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="User", Namespace="http://schemas.datacontract.org/2004/07/DataService.Model")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="User", Namespace="http://schemas.datacontract.org/2004/07/LocalService.Model")]
     [System.SerializableAttribute()]
     public partial class User : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
         
@@ -84,7 +23,7 @@ namespace Client.ServiceReference {
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.Collections.Generic.List<Client.ServiceReference.Attend> AttendsField;
+        private Client.ServiceReference.Attend[] AttendsField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private Client.ServiceReference.UserDetail DetailsField;
@@ -93,7 +32,7 @@ namespace Client.ServiceReference {
         private string EmailField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.Collections.Generic.List<Client.ServiceReference.Event> EventsField;
+        private Client.ServiceReference.Event[] EventsField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private byte[] HashField;
@@ -115,7 +54,7 @@ namespace Client.ServiceReference {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Collections.Generic.List<Client.ServiceReference.Attend> Attends {
+        public Client.ServiceReference.Attend[] Attends {
             get {
                 return this.AttendsField;
             }
@@ -154,7 +93,7 @@ namespace Client.ServiceReference {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Collections.Generic.List<Client.ServiceReference.Event> Events {
+        public Client.ServiceReference.Event[] Events {
             get {
                 return this.EventsField;
             }
@@ -217,7 +156,7 @@ namespace Client.ServiceReference {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="UserDetail", Namespace="http://schemas.datacontract.org/2004/07/DataService.Model")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="UserDetail", Namespace="http://schemas.datacontract.org/2004/07/LocalService.Model")]
     [System.SerializableAttribute()]
     public partial class UserDetail : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
         
@@ -326,7 +265,7 @@ namespace Client.ServiceReference {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="Attend", Namespace="http://schemas.datacontract.org/2004/07/DataService.Model")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="Attend", Namespace="http://schemas.datacontract.org/2004/07/LocalService.Model")]
     [System.SerializableAttribute()]
     public partial class Attend : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
         
@@ -435,7 +374,7 @@ namespace Client.ServiceReference {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="Event", Namespace="http://schemas.datacontract.org/2004/07/DataService.Model")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="Event", Namespace="http://schemas.datacontract.org/2004/07/LocalService.Model")]
     [System.SerializableAttribute()]
     public partial class Event : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
         
@@ -443,7 +382,7 @@ namespace Client.ServiceReference {
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.Collections.Generic.List<Client.ServiceReference.Attend> AttendsField;
+        private Client.ServiceReference.Attend[] AttendsField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string DescriptionField;
@@ -467,7 +406,7 @@ namespace Client.ServiceReference {
         private Client.ServiceReference.User OwnerField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.Collections.Generic.List<Client.ServiceReference.Post> PostsField;
+        private Client.ServiceReference.Post[] PostsField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string TitleField;
@@ -486,7 +425,7 @@ namespace Client.ServiceReference {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Collections.Generic.List<Client.ServiceReference.Attend> Attends {
+        public Client.ServiceReference.Attend[] Attends {
             get {
                 return this.AttendsField;
             }
@@ -590,7 +529,7 @@ namespace Client.ServiceReference {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Collections.Generic.List<Client.ServiceReference.Post> Posts {
+        public Client.ServiceReference.Post[] Posts {
             get {
                 return this.PostsField;
             }
@@ -640,12 +579,18 @@ namespace Client.ServiceReference {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="Post", Namespace="http://schemas.datacontract.org/2004/07/DataService.Model")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="Post", Namespace="http://schemas.datacontract.org/2004/07/LocalService.Model")]
     [System.SerializableAttribute()]
     public partial class Post : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
         
         [System.NonSerializedAttribute()]
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private Client.ServiceReference.Event EvenField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int EventIDField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private int PostIDField;
@@ -666,6 +611,32 @@ namespace Client.ServiceReference {
             }
             set {
                 this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public Client.ServiceReference.Event Even {
+            get {
+                return this.EvenField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.EvenField, value) != true)) {
+                    this.EvenField = value;
+                    this.RaisePropertyChanged("Even");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int EventID {
+            get {
+                return this.EventIDField;
+            }
+            set {
+                if ((this.EventIDField.Equals(value) != true)) {
+                    this.EventIDField = value;
+                    this.RaisePropertyChanged("EventID");
+                }
             }
         }
         
@@ -733,7 +704,7 @@ namespace Client.ServiceReference {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="UserAttend", Namespace="http://schemas.datacontract.org/2004/07/DataService.Model")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="UserAttend", Namespace="http://schemas.datacontract.org/2004/07/LocalService.Model")]
     [System.SerializableAttribute()]
     public partial class UserAttend : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
         
@@ -793,213 +764,209 @@ namespace Client.ServiceReference {
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="ServiceReference.IService")]
-    public interface IService {
+    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="ServiceReference.IService1")]
+    public interface IService1 {
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/GetData", ReplyAction="http://tempuri.org/IService/GetDataResponse")]
-        string GetData(int value);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/GetData", ReplyAction="http://tempuri.org/IService/GetDataResponse")]
-        System.Threading.Tasks.Task<string> GetDataAsync(int value);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/GetDataUsingDataContract", ReplyAction="http://tempuri.org/IService/GetDataUsingDataContractResponse")]
-        Client.ServiceReference.CompositeType GetDataUsingDataContract(Client.ServiceReference.CompositeType composite);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/GetDataUsingDataContract", ReplyAction="http://tempuri.org/IService/GetDataUsingDataContractResponse")]
-        System.Threading.Tasks.Task<Client.ServiceReference.CompositeType> GetDataUsingDataContractAsync(Client.ServiceReference.CompositeType composite);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/InitializeDataBase", ReplyAction="http://tempuri.org/IService/InitializeDataBaseResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/InitializeDataBase", ReplyAction="http://tempuri.org/IService1/InitializeDataBaseResponse")]
         void InitializeDataBase();
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/InitializeDataBase", ReplyAction="http://tempuri.org/IService/InitializeDataBaseResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/InitializeDataBase", ReplyAction="http://tempuri.org/IService1/InitializeDataBaseResponse")]
         System.Threading.Tasks.Task InitializeDataBaseAsync();
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/GetUsers", ReplyAction="http://tempuri.org/IService/GetUsersResponse")]
-        System.Collections.Generic.List<Client.ServiceReference.User> GetUsers();
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetUsers", ReplyAction="http://tempuri.org/IService1/GetUsersResponse")]
+        Client.ServiceReference.User[] GetUsers();
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/GetUsers", ReplyAction="http://tempuri.org/IService/GetUsersResponse")]
-        System.Threading.Tasks.Task<System.Collections.Generic.List<Client.ServiceReference.User>> GetUsersAsync();
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetUsers", ReplyAction="http://tempuri.org/IService1/GetUsersResponse")]
+        System.Threading.Tasks.Task<Client.ServiceReference.User[]> GetUsersAsync();
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/EmailTaken", ReplyAction="http://tempuri.org/IService/EmailTakenResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/EmailTaken", ReplyAction="http://tempuri.org/IService1/EmailTakenResponse")]
         bool EmailTaken(string email);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/EmailTaken", ReplyAction="http://tempuri.org/IService/EmailTakenResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/EmailTaken", ReplyAction="http://tempuri.org/IService1/EmailTakenResponse")]
         System.Threading.Tasks.Task<bool> EmailTakenAsync(string email);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/GetUsersOfEvent", ReplyAction="http://tempuri.org/IService/GetUsersOfEventResponse")]
-        System.Collections.Generic.List<Client.ServiceReference.User> GetUsersOfEvent(int eventId);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetUsersOfEvent", ReplyAction="http://tempuri.org/IService1/GetUsersOfEventResponse")]
+        Client.ServiceReference.User[] GetUsersOfEvent(int eventId);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/GetUsersOfEvent", ReplyAction="http://tempuri.org/IService/GetUsersOfEventResponse")]
-        System.Threading.Tasks.Task<System.Collections.Generic.List<Client.ServiceReference.User>> GetUsersOfEventAsync(int eventId);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetUsersOfEvent", ReplyAction="http://tempuri.org/IService1/GetUsersOfEventResponse")]
+        System.Threading.Tasks.Task<Client.ServiceReference.User[]> GetUsersOfEventAsync(int eventId);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/GetUserById", ReplyAction="http://tempuri.org/IService/GetUserByIdResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetUserById", ReplyAction="http://tempuri.org/IService1/GetUserByIdResponse")]
         Client.ServiceReference.User GetUserById(int id);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/GetUserById", ReplyAction="http://tempuri.org/IService/GetUserByIdResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetUserById", ReplyAction="http://tempuri.org/IService1/GetUserByIdResponse")]
         System.Threading.Tasks.Task<Client.ServiceReference.User> GetUserByIdAsync(int id);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/GetUserByPassword", ReplyAction="http://tempuri.org/IService/GetUserByPasswordResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetUserByPassword", ReplyAction="http://tempuri.org/IService1/GetUserByPasswordResponse")]
         Client.ServiceReference.User GetUserByPassword(string email, string psw);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/GetUserByPassword", ReplyAction="http://tempuri.org/IService/GetUserByPasswordResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetUserByPassword", ReplyAction="http://tempuri.org/IService1/GetUserByPasswordResponse")]
         System.Threading.Tasks.Task<Client.ServiceReference.User> GetUserByPasswordAsync(string email, string psw);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/GetEventsOwner", ReplyAction="http://tempuri.org/IService/GetEventsOwnerResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetEventsOwner", ReplyAction="http://tempuri.org/IService1/GetEventsOwnerResponse")]
         Client.ServiceReference.User GetEventsOwner(int eventId);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/GetEventsOwner", ReplyAction="http://tempuri.org/IService/GetEventsOwnerResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetEventsOwner", ReplyAction="http://tempuri.org/IService1/GetEventsOwnerResponse")]
         System.Threading.Tasks.Task<Client.ServiceReference.User> GetEventsOwnerAsync(int eventId);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/CreateUser", ReplyAction="http://tempuri.org/IService/CreateUserResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/CreateUser", ReplyAction="http://tempuri.org/IService1/CreateUserResponse")]
         Client.ServiceReference.User CreateUser(Client.ServiceReference.User user);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/CreateUser", ReplyAction="http://tempuri.org/IService/CreateUserResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/CreateUser", ReplyAction="http://tempuri.org/IService1/CreateUserResponse")]
         System.Threading.Tasks.Task<Client.ServiceReference.User> CreateUserAsync(Client.ServiceReference.User user);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/DeleteUser", ReplyAction="http://tempuri.org/IService/DeleteUserResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/DeleteUser", ReplyAction="http://tempuri.org/IService1/DeleteUserResponse")]
         void DeleteUser(int id);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/DeleteUser", ReplyAction="http://tempuri.org/IService/DeleteUserResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/DeleteUser", ReplyAction="http://tempuri.org/IService1/DeleteUserResponse")]
         System.Threading.Tasks.Task DeleteUserAsync(int id);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/UpdateUser", ReplyAction="http://tempuri.org/IService/UpdateUserResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/UpdateUser", ReplyAction="http://tempuri.org/IService1/UpdateUserResponse")]
         Client.ServiceReference.User UpdateUser(int id, Client.ServiceReference.User user);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/UpdateUser", ReplyAction="http://tempuri.org/IService/UpdateUserResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/UpdateUser", ReplyAction="http://tempuri.org/IService1/UpdateUserResponse")]
         System.Threading.Tasks.Task<Client.ServiceReference.User> UpdateUserAsync(int id, Client.ServiceReference.User user);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/GetPosts", ReplyAction="http://tempuri.org/IService/GetPostsResponse")]
-        System.Collections.Generic.List<Client.ServiceReference.Post> GetPosts();
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetPosts", ReplyAction="http://tempuri.org/IService1/GetPostsResponse")]
+        Client.ServiceReference.Post[] GetPosts();
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/GetPosts", ReplyAction="http://tempuri.org/IService/GetPostsResponse")]
-        System.Threading.Tasks.Task<System.Collections.Generic.List<Client.ServiceReference.Post>> GetPostsAsync();
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetPosts", ReplyAction="http://tempuri.org/IService1/GetPostsResponse")]
+        System.Threading.Tasks.Task<Client.ServiceReference.Post[]> GetPostsAsync();
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/GetPostByID", ReplyAction="http://tempuri.org/IService/GetPostByIDResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetPostByID", ReplyAction="http://tempuri.org/IService1/GetPostByIDResponse")]
         Client.ServiceReference.Post GetPostByID(int id);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/GetPostByID", ReplyAction="http://tempuri.org/IService/GetPostByIDResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetPostByID", ReplyAction="http://tempuri.org/IService1/GetPostByIDResponse")]
         System.Threading.Tasks.Task<Client.ServiceReference.Post> GetPostByIDAsync(int id);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/GetPostsByEvent", ReplyAction="http://tempuri.org/IService/GetPostsByEventResponse")]
-        System.Collections.Generic.List<Client.ServiceReference.Post> GetPostsByEvent(int eventID);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetPostsByEvent", ReplyAction="http://tempuri.org/IService1/GetPostsByEventResponse")]
+        Client.ServiceReference.Post[] GetPostsByEvent(int eventID);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/GetPostsByEvent", ReplyAction="http://tempuri.org/IService/GetPostsByEventResponse")]
-        System.Threading.Tasks.Task<System.Collections.Generic.List<Client.ServiceReference.Post>> GetPostsByEventAsync(int eventID);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetPostsByEvent", ReplyAction="http://tempuri.org/IService1/GetPostsByEventResponse")]
+        System.Threading.Tasks.Task<Client.ServiceReference.Post[]> GetPostsByEventAsync(int eventID);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/CreatePost", ReplyAction="http://tempuri.org/IService/CreatePostResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/CreatePost", ReplyAction="http://tempuri.org/IService1/CreatePostResponse")]
         Client.ServiceReference.Post CreatePost(Client.ServiceReference.Post post);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/CreatePost", ReplyAction="http://tempuri.org/IService/CreatePostResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/CreatePost", ReplyAction="http://tempuri.org/IService1/CreatePostResponse")]
         System.Threading.Tasks.Task<Client.ServiceReference.Post> CreatePostAsync(Client.ServiceReference.Post post);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/DeletePost", ReplyAction="http://tempuri.org/IService/DeletePostResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/DeletePost", ReplyAction="http://tempuri.org/IService1/DeletePostResponse")]
         void DeletePost(int id);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/DeletePost", ReplyAction="http://tempuri.org/IService/DeletePostResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/DeletePost", ReplyAction="http://tempuri.org/IService1/DeletePostResponse")]
         System.Threading.Tasks.Task DeletePostAsync(int id);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/UpdatePost", ReplyAction="http://tempuri.org/IService/UpdatePostResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/UpdatePost", ReplyAction="http://tempuri.org/IService1/UpdatePostResponse")]
         Client.ServiceReference.Post UpdatePost(int id, Client.ServiceReference.Post post);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/UpdatePost", ReplyAction="http://tempuri.org/IService/UpdatePostResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/UpdatePost", ReplyAction="http://tempuri.org/IService1/UpdatePostResponse")]
         System.Threading.Tasks.Task<Client.ServiceReference.Post> UpdatePostAsync(int id, Client.ServiceReference.Post post);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/GetEvents", ReplyAction="http://tempuri.org/IService/GetEventsResponse")]
-        System.Collections.Generic.List<Client.ServiceReference.Event> GetEvents();
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetEvents", ReplyAction="http://tempuri.org/IService1/GetEventsResponse")]
+        Client.ServiceReference.Event[] GetEvents();
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/GetEvents", ReplyAction="http://tempuri.org/IService/GetEventsResponse")]
-        System.Threading.Tasks.Task<System.Collections.Generic.List<Client.ServiceReference.Event>> GetEventsAsync();
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetEvents", ReplyAction="http://tempuri.org/IService1/GetEventsResponse")]
+        System.Threading.Tasks.Task<Client.ServiceReference.Event[]> GetEventsAsync();
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/GetEventById", ReplyAction="http://tempuri.org/IService/GetEventByIdResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetEventById", ReplyAction="http://tempuri.org/IService1/GetEventByIdResponse")]
         Client.ServiceReference.Event GetEventById(int id);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/GetEventById", ReplyAction="http://tempuri.org/IService/GetEventByIdResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetEventById", ReplyAction="http://tempuri.org/IService1/GetEventByIdResponse")]
         System.Threading.Tasks.Task<Client.ServiceReference.Event> GetEventByIdAsync(int id);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/GetEventsOfUser", ReplyAction="http://tempuri.org/IService/GetEventsOfUserResponse")]
-        System.Collections.Generic.List<Client.ServiceReference.Event> GetEventsOfUser(int userId);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetEventsOfUser", ReplyAction="http://tempuri.org/IService1/GetEventsOfUserResponse")]
+        Client.ServiceReference.Event[] GetEventsOfUser(int userId);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/GetEventsOfUser", ReplyAction="http://tempuri.org/IService/GetEventsOfUserResponse")]
-        System.Threading.Tasks.Task<System.Collections.Generic.List<Client.ServiceReference.Event>> GetEventsOfUserAsync(int userId);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetEventsOfUser", ReplyAction="http://tempuri.org/IService1/GetEventsOfUserResponse")]
+        System.Threading.Tasks.Task<Client.ServiceReference.Event[]> GetEventsOfUserAsync(int userId);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/CreateEvent", ReplyAction="http://tempuri.org/IService/CreateEventResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/CreateEvent", ReplyAction="http://tempuri.org/IService1/CreateEventResponse")]
         Client.ServiceReference.Event CreateEvent(Client.ServiceReference.Event even);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/CreateEvent", ReplyAction="http://tempuri.org/IService/CreateEventResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/CreateEvent", ReplyAction="http://tempuri.org/IService1/CreateEventResponse")]
         System.Threading.Tasks.Task<Client.ServiceReference.Event> CreateEventAsync(Client.ServiceReference.Event even);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/DeleteEvent", ReplyAction="http://tempuri.org/IService/DeleteEventResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/DeleteEvent", ReplyAction="http://tempuri.org/IService1/DeleteEventResponse")]
         void DeleteEvent(int eventId);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/DeleteEvent", ReplyAction="http://tempuri.org/IService/DeleteEventResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/DeleteEvent", ReplyAction="http://tempuri.org/IService1/DeleteEventResponse")]
         System.Threading.Tasks.Task DeleteEventAsync(int eventId);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/UpdateEvent", ReplyAction="http://tempuri.org/IService/UpdateEventResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/UpdateEvent", ReplyAction="http://tempuri.org/IService1/UpdateEventResponse")]
         Client.ServiceReference.Event UpdateEvent(int eventId, Client.ServiceReference.Event even);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/UpdateEvent", ReplyAction="http://tempuri.org/IService/UpdateEventResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/UpdateEvent", ReplyAction="http://tempuri.org/IService1/UpdateEventResponse")]
         System.Threading.Tasks.Task<Client.ServiceReference.Event> UpdateEventAsync(int eventId, Client.ServiceReference.Event even);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/IsAttend", ReplyAction="http://tempuri.org/IService/IsAttendResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/IsAttend", ReplyAction="http://tempuri.org/IService1/IsAttendResponse")]
         bool IsAttend(int userId, int eventId);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/IsAttend", ReplyAction="http://tempuri.org/IService/IsAttendResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/IsAttend", ReplyAction="http://tempuri.org/IService1/IsAttendResponse")]
         System.Threading.Tasks.Task<bool> IsAttendAsync(int userId, int eventId);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/DeleteAttend", ReplyAction="http://tempuri.org/IService/DeleteAttendResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/CreateOrUpdateAttend", ReplyAction="http://tempuri.org/IService1/CreateOrUpdateAttendResponse")]
+        void CreateOrUpdateAttend(Client.ServiceReference.Attend attend);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/CreateOrUpdateAttend", ReplyAction="http://tempuri.org/IService1/CreateOrUpdateAttendResponse")]
+        System.Threading.Tasks.Task CreateOrUpdateAttendAsync(Client.ServiceReference.Attend attend);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/CreateAttend", ReplyAction="http://tempuri.org/IService1/CreateAttendResponse")]
+        Client.ServiceReference.Attend CreateAttend(Client.ServiceReference.Attend attend);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/CreateAttend", ReplyAction="http://tempuri.org/IService1/CreateAttendResponse")]
+        System.Threading.Tasks.Task<Client.ServiceReference.Attend> CreateAttendAsync(Client.ServiceReference.Attend attend);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/DeleteAttend", ReplyAction="http://tempuri.org/IService1/DeleteAttendResponse")]
         void DeleteAttend(int userId, int eventId);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/DeleteAttend", ReplyAction="http://tempuri.org/IService/DeleteAttendResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/DeleteAttend", ReplyAction="http://tempuri.org/IService1/DeleteAttendResponse")]
         System.Threading.Tasks.Task DeleteAttendAsync(int userId, int eventId);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/GetComplexUsersOfEvent", ReplyAction="http://tempuri.org/IService/GetComplexUsersOfEventResponse")]
-        System.Collections.Generic.List<Client.ServiceReference.UserAttend> GetComplexUsersOfEvent(int eventID);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetComplexUsersOfEvent", ReplyAction="http://tempuri.org/IService1/GetComplexUsersOfEventResponse")]
+        Client.ServiceReference.UserAttend[] GetComplexUsersOfEvent(int eventID);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/GetComplexUsersOfEvent", ReplyAction="http://tempuri.org/IService/GetComplexUsersOfEventResponse")]
-        System.Threading.Tasks.Task<System.Collections.Generic.List<Client.ServiceReference.UserAttend>> GetComplexUsersOfEventAsync(int eventID);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetComplexUsersOfEvent", ReplyAction="http://tempuri.org/IService1/GetComplexUsersOfEventResponse")]
+        System.Threading.Tasks.Task<Client.ServiceReference.UserAttend[]> GetComplexUsersOfEventAsync(int eventID);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/TruncateDatabase", ReplyAction="http://tempuri.org/IService1/TruncateDatabaseResponse")]
+        void TruncateDatabase();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/TruncateDatabase", ReplyAction="http://tempuri.org/IService1/TruncateDatabaseResponse")]
+        System.Threading.Tasks.Task TruncateDatabaseAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/SeedDatabase", ReplyAction="http://tempuri.org/IService1/SeedDatabaseResponse")]
+        void SeedDatabase();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/SeedDatabase", ReplyAction="http://tempuri.org/IService1/SeedDatabaseResponse")]
+        System.Threading.Tasks.Task SeedDatabaseAsync();
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public interface IServiceChannel : Client.ServiceReference.IService, System.ServiceModel.IClientChannel {
+    public interface IService1Channel : Client.ServiceReference.IService1, System.ServiceModel.IClientChannel {
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public partial class ServiceClient : System.ServiceModel.ClientBase<Client.ServiceReference.IService>, Client.ServiceReference.IService {
+    public partial class Service1Client : System.ServiceModel.ClientBase<Client.ServiceReference.IService1>, Client.ServiceReference.IService1 {
         
-        public ServiceClient() {
+        public Service1Client() {
         }
         
-        public ServiceClient(string endpointConfigurationName) : 
+        public Service1Client(string endpointConfigurationName) : 
                 base(endpointConfigurationName) {
         }
         
-        public ServiceClient(string endpointConfigurationName, string remoteAddress) : 
+        public Service1Client(string endpointConfigurationName, string remoteAddress) : 
                 base(endpointConfigurationName, remoteAddress) {
         }
         
-        public ServiceClient(string endpointConfigurationName, System.ServiceModel.EndpointAddress remoteAddress) : 
+        public Service1Client(string endpointConfigurationName, System.ServiceModel.EndpointAddress remoteAddress) : 
                 base(endpointConfigurationName, remoteAddress) {
         }
         
-        public ServiceClient(System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
+        public Service1Client(System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
                 base(binding, remoteAddress) {
-        }
-        
-        public string GetData(int value) {
-            return base.Channel.GetData(value);
-        }
-        
-        public System.Threading.Tasks.Task<string> GetDataAsync(int value) {
-            return base.Channel.GetDataAsync(value);
-        }
-        
-        public Client.ServiceReference.CompositeType GetDataUsingDataContract(Client.ServiceReference.CompositeType composite) {
-            return base.Channel.GetDataUsingDataContract(composite);
-        }
-        
-        public System.Threading.Tasks.Task<Client.ServiceReference.CompositeType> GetDataUsingDataContractAsync(Client.ServiceReference.CompositeType composite) {
-            return base.Channel.GetDataUsingDataContractAsync(composite);
         }
         
         public void InitializeDataBase() {
@@ -1010,11 +977,11 @@ namespace Client.ServiceReference {
             return base.Channel.InitializeDataBaseAsync();
         }
         
-        public System.Collections.Generic.List<Client.ServiceReference.User> GetUsers() {
+        public Client.ServiceReference.User[] GetUsers() {
             return base.Channel.GetUsers();
         }
         
-        public System.Threading.Tasks.Task<System.Collections.Generic.List<Client.ServiceReference.User>> GetUsersAsync() {
+        public System.Threading.Tasks.Task<Client.ServiceReference.User[]> GetUsersAsync() {
             return base.Channel.GetUsersAsync();
         }
         
@@ -1026,11 +993,11 @@ namespace Client.ServiceReference {
             return base.Channel.EmailTakenAsync(email);
         }
         
-        public System.Collections.Generic.List<Client.ServiceReference.User> GetUsersOfEvent(int eventId) {
+        public Client.ServiceReference.User[] GetUsersOfEvent(int eventId) {
             return base.Channel.GetUsersOfEvent(eventId);
         }
         
-        public System.Threading.Tasks.Task<System.Collections.Generic.List<Client.ServiceReference.User>> GetUsersOfEventAsync(int eventId) {
+        public System.Threading.Tasks.Task<Client.ServiceReference.User[]> GetUsersOfEventAsync(int eventId) {
             return base.Channel.GetUsersOfEventAsync(eventId);
         }
         
@@ -1082,11 +1049,11 @@ namespace Client.ServiceReference {
             return base.Channel.UpdateUserAsync(id, user);
         }
         
-        public System.Collections.Generic.List<Client.ServiceReference.Post> GetPosts() {
+        public Client.ServiceReference.Post[] GetPosts() {
             return base.Channel.GetPosts();
         }
         
-        public System.Threading.Tasks.Task<System.Collections.Generic.List<Client.ServiceReference.Post>> GetPostsAsync() {
+        public System.Threading.Tasks.Task<Client.ServiceReference.Post[]> GetPostsAsync() {
             return base.Channel.GetPostsAsync();
         }
         
@@ -1098,11 +1065,11 @@ namespace Client.ServiceReference {
             return base.Channel.GetPostByIDAsync(id);
         }
         
-        public System.Collections.Generic.List<Client.ServiceReference.Post> GetPostsByEvent(int eventID) {
+        public Client.ServiceReference.Post[] GetPostsByEvent(int eventID) {
             return base.Channel.GetPostsByEvent(eventID);
         }
         
-        public System.Threading.Tasks.Task<System.Collections.Generic.List<Client.ServiceReference.Post>> GetPostsByEventAsync(int eventID) {
+        public System.Threading.Tasks.Task<Client.ServiceReference.Post[]> GetPostsByEventAsync(int eventID) {
             return base.Channel.GetPostsByEventAsync(eventID);
         }
         
@@ -1130,11 +1097,11 @@ namespace Client.ServiceReference {
             return base.Channel.UpdatePostAsync(id, post);
         }
         
-        public System.Collections.Generic.List<Client.ServiceReference.Event> GetEvents() {
+        public Client.ServiceReference.Event[] GetEvents() {
             return base.Channel.GetEvents();
         }
         
-        public System.Threading.Tasks.Task<System.Collections.Generic.List<Client.ServiceReference.Event>> GetEventsAsync() {
+        public System.Threading.Tasks.Task<Client.ServiceReference.Event[]> GetEventsAsync() {
             return base.Channel.GetEventsAsync();
         }
         
@@ -1146,11 +1113,11 @@ namespace Client.ServiceReference {
             return base.Channel.GetEventByIdAsync(id);
         }
         
-        public System.Collections.Generic.List<Client.ServiceReference.Event> GetEventsOfUser(int userId) {
+        public Client.ServiceReference.Event[] GetEventsOfUser(int userId) {
             return base.Channel.GetEventsOfUser(userId);
         }
         
-        public System.Threading.Tasks.Task<System.Collections.Generic.List<Client.ServiceReference.Event>> GetEventsOfUserAsync(int userId) {
+        public System.Threading.Tasks.Task<Client.ServiceReference.Event[]> GetEventsOfUserAsync(int userId) {
             return base.Channel.GetEventsOfUserAsync(userId);
         }
         
@@ -1186,6 +1153,22 @@ namespace Client.ServiceReference {
             return base.Channel.IsAttendAsync(userId, eventId);
         }
         
+        public void CreateOrUpdateAttend(Client.ServiceReference.Attend attend) {
+            base.Channel.CreateOrUpdateAttend(attend);
+        }
+        
+        public System.Threading.Tasks.Task CreateOrUpdateAttendAsync(Client.ServiceReference.Attend attend) {
+            return base.Channel.CreateOrUpdateAttendAsync(attend);
+        }
+        
+        public Client.ServiceReference.Attend CreateAttend(Client.ServiceReference.Attend attend) {
+            return base.Channel.CreateAttend(attend);
+        }
+        
+        public System.Threading.Tasks.Task<Client.ServiceReference.Attend> CreateAttendAsync(Client.ServiceReference.Attend attend) {
+            return base.Channel.CreateAttendAsync(attend);
+        }
+        
         public void DeleteAttend(int userId, int eventId) {
             base.Channel.DeleteAttend(userId, eventId);
         }
@@ -1194,12 +1177,28 @@ namespace Client.ServiceReference {
             return base.Channel.DeleteAttendAsync(userId, eventId);
         }
         
-        public System.Collections.Generic.List<Client.ServiceReference.UserAttend> GetComplexUsersOfEvent(int eventID) {
+        public Client.ServiceReference.UserAttend[] GetComplexUsersOfEvent(int eventID) {
             return base.Channel.GetComplexUsersOfEvent(eventID);
         }
         
-        public System.Threading.Tasks.Task<System.Collections.Generic.List<Client.ServiceReference.UserAttend>> GetComplexUsersOfEventAsync(int eventID) {
+        public System.Threading.Tasks.Task<Client.ServiceReference.UserAttend[]> GetComplexUsersOfEventAsync(int eventID) {
             return base.Channel.GetComplexUsersOfEventAsync(eventID);
+        }
+        
+        public void TruncateDatabase() {
+            base.Channel.TruncateDatabase();
+        }
+        
+        public System.Threading.Tasks.Task TruncateDatabaseAsync() {
+            return base.Channel.TruncateDatabaseAsync();
+        }
+        
+        public void SeedDatabase() {
+            base.Channel.SeedDatabase();
+        }
+        
+        public System.Threading.Tasks.Task SeedDatabaseAsync() {
+            return base.Channel.SeedDatabaseAsync();
         }
     }
 }

@@ -5,7 +5,8 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using TestConsolClient.AzureReference;
-using TestConsolClient.ServiceReference1;
+using TestConsolClient.ServiceReference2;
+//using TestConsolClient.ServiceReference1;
 
 namespace TestConsolClient
 {
@@ -15,19 +16,17 @@ namespace TestConsolClient
         {
             Console.ReadKey();
             
-            using (ServiceClient sc = new ServiceClient())
+            using (Service1Client sc = new Service1Client())
             {
-                sc.ChannelFactory.Credentials.UserName.UserName = "meeteam";
-                sc.ChannelFactory.Credentials.UserName.Password = "jelszo";
-
+                //sc.ChannelFactory.Credentials.UserName.UserName = "meeteam";
+                //sc.ChannelFactory.Credentials.UserName.Password = "jelszo";
+                
                 var users = sc.GetUserById(3);
                 Console.WriteLine(users.Email);
                 Console.WriteLine(users.Details.Address);
-                var post = sc.GetPostsByEvent(2);
-                foreach (var item in post)
-                {
-                    Console.WriteLine(item.Text);
-                }
+                Console.ReadKey();
+                var post = sc.GetPostsByEvent(1);
+                Console.ReadLine();
                
 
             }

@@ -11,7 +11,7 @@ namespace Client
         public PostListItemDesignModel()
         {
             this.Name = "Bela";
-            this.Message = "csodas szoveg nagyon design time ";
+            this.Message = "design time uzenet ters";
         }
     }
 }

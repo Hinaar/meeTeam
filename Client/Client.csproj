@@ -257,7 +257,8 @@
     <None Include="Connected Services\AzureServiceReference\Client.AzureServiceReference.UserAttend.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Connected Services\ServiceReference\Client.ServiceReference.CompositeType.datasource">
+    <Resource Include="Fonts\fontawesome-webfont.ttf" />
+    <None Include="Connected Services\ServiceReference\Client.ServiceReference.Attend.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Connected Services\ServiceReference\Client.ServiceReference.Event.datasource">
@@ -272,20 +273,16 @@
     <None Include="Connected Services\ServiceReference\Client.ServiceReference.UserAttend.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Connected Services\ServiceReference\Service.wsdl" />
-    <None Include="Connected Services\ServiceReference\Service.xsd">
-      <SubType>Designer</SubType>
-    </None>
+    <None Include="Connected Services\ServiceReference\Service1.wsdl" />
     <None Include="Connected Services\ServiceReference\Service1.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Connected Services\ServiceReference\Service2.xsd">
+    <None Include="Connected Services\ServiceReference\Service11.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Connected Services\ServiceReference\Service3.xsd">
+    <None Include="Connected Services\ServiceReference\Service12.xsd">
       <SubType>Designer</SubType>
     </None>
-    <Resource Include="Fonts\fontawesome-webfont.ttf" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -312,21 +309,6 @@
     <WCFMetadataStorage Include="Connected Services\ServiceReference\" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Connected Services\ServiceReference\Service.disco" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Connected Services\ServiceReference\configuration91.svcinfo" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Connected Services\ServiceReference\configuration.svcinfo" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Connected Services\ServiceReference\Reference.svcmap">
-      <Generator>WCF Proxy Generator</Generator>
-      <LastGenOutput>Reference.cs</LastGenOutput>
-    </None>
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Connected Services\AzureServiceReference\AzureService.disco" />
   </ItemGroup>
   <ItemGroup>
@@ -337,6 +319,21 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Connected Services\AzureServiceReference\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\ServiceReference\Service1.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\ServiceReference\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\ServiceReference\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\ServiceReference\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>

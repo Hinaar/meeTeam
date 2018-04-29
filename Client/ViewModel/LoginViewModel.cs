@@ -1,5 +1,6 @@
-﻿using Client.AzureServiceReference;
+﻿//using Client.AzureServiceReference;
 using Client.Properties;
+using Client.ServiceReference;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -29,6 +30,19 @@ namespace Client
         //{
         //    await RunCommand();
         //}
+
+        public LoginViewModel()
+        {
+          // TempMethodAsync();
+        }
+
+        private async Task TempMethodAsync()
+        {
+            using (Service1Client sc = new Service1Client())
+            {
+                await sc.TruncateDatabaseAsync();
+            }
+        }
 
         #region Commands
         private RelayCommand login;
@@ -76,10 +90,11 @@ namespace Client
             //await Task.Delay(5000);
             //using (ServiceReference.ServiceClient sc = new ServiceReference.ServiceClient())
             //{
-            //    sc.ChannelFactory.Credentials.UserName.UserName = "meeteam";
-            //    sc.ChannelFactory.Credentials.UserName.Password = "jelszo";
-            using (AzureServiceClient sc = new AzureServiceClient())
+            using (Service1Client sc = new Service1Client())//AzureServiceClient sc = new AzureServiceClient())
             {
+                sc.ChannelFactory.Credentials.UserName.UserName = "meeteam";
+                sc.ChannelFactory.Credentials.UserName.Password = "jelszo";
+
                 DialogWindow tmp;
                 var pwdBox = param as PasswordBox;
                 var user = await sc.GetUserByPasswordAsync(Email, pwdBox.Password);

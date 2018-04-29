@@ -1,6 +1,6 @@
-﻿using Client.AzureServiceReference;
+﻿//using Client.AzureServiceReference;
 using Client.Properties;
-//using Client.ServiceReference;
+using Client.ServiceReference;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -109,7 +109,13 @@ namespace Client
                         result = rm.GetString("ErrorBirth");
                     }
                 }
-               
+                if(columnName == null || columnName == nameof(PhoneNumber))
+                {
+                    if(!Regex.IsMatch(PhoneNumber ?? "", @"/^[0-9\+]{1,}[0-9\-]{3,15}$/"))
+                    {
+                        result = rm.GetString("ErrorPhoneNumber");
+                    }
+                }
                 if(columnName == null || columnName == nameof(Country))
                 {
                     if((Country??"").Equals(string.Empty))
@@ -150,7 +156,7 @@ namespace Client
         {
             if (AllValid)
             {
-                using (AzureServiceClient sc = new AzureServiceClient())
+                using (Service1Client sc = new Service1Client()) //AzureServiceClient sc = new AzureServiceClient())
                 {
                     sc.ChannelFactory.Credentials.UserName.UserName = "meeteam";
                     sc.ChannelFactory.Credentials.UserName.Password = "jelszo";
@@ -162,7 +168,8 @@ namespace Client
                     }
                     else
                     {
-                        var user = sc.CreateUser(new User {
+                        var user = sc.CreateUser(new User
+                        {
                             Email = this.Email,
                             Hash = Encoding.UTF8.GetBytes(this.Password),
                             Details = new UserDetail
@@ -174,7 +181,7 @@ namespace Client
                                 PhoneNumber = this.PhoneNumber
                             }
                         });
-                        if(user == null)
+                        if (user == null)
                         {
                             new DialogWindow(rm.GetString("CreateUserDialog")).Show();
                         }

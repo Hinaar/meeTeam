@@ -1,17 +1,19 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.27004.2005
+VisualStudioVersion = 15.0.27130.2027
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataService", "DataService\DataService.csproj", "{F67152AC-FED1-48E9-8335-2D9033AE1582}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestConsolClient", "TestConsolClient\TestConsolClient.csproj", "{3C6F1129-83A7-419F-9F47-9D4E31EC505E}"
 	ProjectSection(ProjectDependencies) = postProject
+		{050FDF11-D946-47C7-8185-81B1AEB5FE3D} = {050FDF11-D946-47C7-8185-81B1AEB5FE3D}
 		{F67152AC-FED1-48E9-8335-2D9033AE1582} = {F67152AC-FED1-48E9-8335-2D9033AE1582}
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Client", "Client\Client.csproj", "{24CD4A1E-055D-4705-B1DA-7A48824BCA99}"
 	ProjectSection(ProjectDependencies) = postProject
+		{050FDF11-D946-47C7-8185-81B1AEB5FE3D} = {050FDF11-D946-47C7-8185-81B1AEB5FE3D}
 		{F67152AC-FED1-48E9-8335-2D9033AE1582} = {F67152AC-FED1-48E9-8335-2D9033AE1582}
 	EndProjectSection
 EndProject
@@ -21,6 +23,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTestProject", "UnitTest
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AzureService", "AzureService\AzureService.csproj", "{6FF52750-EB2B-4D9A-B062-5730C289E5E8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LocalService", "LocalService\LocalService.csproj", "{050FDF11-D946-47C7-8185-81B1AEB5FE3D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -48,6 +52,10 @@ Global
 		{6FF52750-EB2B-4D9A-B062-5730C289E5E8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6FF52750-EB2B-4D9A-B062-5730C289E5E8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6FF52750-EB2B-4D9A-B062-5730C289E5E8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{050FDF11-D946-47C7-8185-81B1AEB5FE3D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{050FDF11-D946-47C7-8185-81B1AEB5FE3D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{050FDF11-D946-47C7-8185-81B1AEB5FE3D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{050FDF11-D946-47C7-8185-81B1AEB5FE3D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
