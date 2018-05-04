@@ -41,6 +41,7 @@ namespace Client
             using (Service1Client sc = new Service1Client())
             {
                 await sc.TruncateDatabaseAsync();
+                await sc.SeedDatabaseAsync();
             }
         }
 
