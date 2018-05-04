@@ -1,0 +1,533 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="Service1" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://tempuri.org/Imports">
+      <xsd:import schemaLocation="http://localhost:2860/Service1.svc?xsd=xsd0" namespace="http://tempuri.org/" />
+      <xsd:import schemaLocation="http://localhost:2860/Service1.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="http://localhost:2860/Service1.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/LocalService.Model" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="IService1_InitializeDataBase_InputMessage">
+    <wsdl:part name="parameters" element="tns:InitializeDataBase" />
+  </wsdl:message>
+  <wsdl:message name="IService1_InitializeDataBase_OutputMessage">
+    <wsdl:part name="parameters" element="tns:InitializeDataBaseResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetUsers_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetUsers" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetUsers_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetUsersResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_EmailTaken_InputMessage">
+    <wsdl:part name="parameters" element="tns:EmailTaken" />
+  </wsdl:message>
+  <wsdl:message name="IService1_EmailTaken_OutputMessage">
+    <wsdl:part name="parameters" element="tns:EmailTakenResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetUsersOfEvent_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetUsersOfEvent" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetUsersOfEvent_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetUsersOfEventResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetUserById_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetUserById" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetUserById_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetUserByIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetUserByPassword_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetUserByPassword" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetUserByPassword_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetUserByPasswordResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetEventsOwner_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetEventsOwner" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetEventsOwner_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetEventsOwnerResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_CreateUser_InputMessage">
+    <wsdl:part name="parameters" element="tns:CreateUser" />
+  </wsdl:message>
+  <wsdl:message name="IService1_CreateUser_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CreateUserResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_DeleteUser_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteUser" />
+  </wsdl:message>
+  <wsdl:message name="IService1_DeleteUser_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteUserResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_UpdateUser_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateUser" />
+  </wsdl:message>
+  <wsdl:message name="IService1_UpdateUser_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateUserResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetPosts_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetPosts" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetPosts_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetPostsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetPostByID_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetPostByID" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetPostByID_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetPostByIDResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetPostsByEvent_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetPostsByEvent" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetPostsByEvent_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetPostsByEventResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_CreatePost_InputMessage">
+    <wsdl:part name="parameters" element="tns:CreatePost" />
+  </wsdl:message>
+  <wsdl:message name="IService1_CreatePost_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CreatePostResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_DeletePost_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeletePost" />
+  </wsdl:message>
+  <wsdl:message name="IService1_DeletePost_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeletePostResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_UpdatePost_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdatePost" />
+  </wsdl:message>
+  <wsdl:message name="IService1_UpdatePost_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdatePostResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetEvents_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetEvents" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetEvents_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetEventsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetEventById_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetEventById" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetEventById_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetEventByIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetEventsOfUser_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetEventsOfUser" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetEventsOfUser_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetEventsOfUserResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_CreateEvent_InputMessage">
+    <wsdl:part name="parameters" element="tns:CreateEvent" />
+  </wsdl:message>
+  <wsdl:message name="IService1_CreateEvent_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CreateEventResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_DeleteEvent_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteEvent" />
+  </wsdl:message>
+  <wsdl:message name="IService1_DeleteEvent_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteEventResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_UpdateEvent_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateEvent" />
+  </wsdl:message>
+  <wsdl:message name="IService1_UpdateEvent_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateEventResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_IsAttend_InputMessage">
+    <wsdl:part name="parameters" element="tns:IsAttend" />
+  </wsdl:message>
+  <wsdl:message name="IService1_IsAttend_OutputMessage">
+    <wsdl:part name="parameters" element="tns:IsAttendResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_CreateOrUpdateAttend_InputMessage">
+    <wsdl:part name="parameters" element="tns:CreateOrUpdateAttend" />
+  </wsdl:message>
+  <wsdl:message name="IService1_CreateOrUpdateAttend_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CreateOrUpdateAttendResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_CreateAttend_InputMessage">
+    <wsdl:part name="parameters" element="tns:CreateAttend" />
+  </wsdl:message>
+  <wsdl:message name="IService1_CreateAttend_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CreateAttendResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_DeleteAttend_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteAttend" />
+  </wsdl:message>
+  <wsdl:message name="IService1_DeleteAttend_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteAttendResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetComplexUsersOfEvent_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetComplexUsersOfEvent" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetComplexUsersOfEvent_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetComplexUsersOfEventResponse" />
+  </wsdl:message>
+  <wsdl:portType name="IService1">
+    <wsdl:operation name="InitializeDataBase">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/InitializeDataBase" message="tns:IService1_InitializeDataBase_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/InitializeDataBaseResponse" message="tns:IService1_InitializeDataBase_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetUsers">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetUsers" message="tns:IService1_GetUsers_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/GetUsersResponse" message="tns:IService1_GetUsers_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="EmailTaken">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/EmailTaken" message="tns:IService1_EmailTaken_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/EmailTakenResponse" message="tns:IService1_EmailTaken_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetUsersOfEvent">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetUsersOfEvent" message="tns:IService1_GetUsersOfEvent_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/GetUsersOfEventResponse" message="tns:IService1_GetUsersOfEvent_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetUserById">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetUserById" message="tns:IService1_GetUserById_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/GetUserByIdResponse" message="tns:IService1_GetUserById_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetUserByPassword">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetUserByPassword" message="tns:IService1_GetUserByPassword_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/GetUserByPasswordResponse" message="tns:IService1_GetUserByPassword_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetEventsOwner">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetEventsOwner" message="tns:IService1_GetEventsOwner_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/GetEventsOwnerResponse" message="tns:IService1_GetEventsOwner_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CreateUser">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/CreateUser" message="tns:IService1_CreateUser_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/CreateUserResponse" message="tns:IService1_CreateUser_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteUser">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/DeleteUser" message="tns:IService1_DeleteUser_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/DeleteUserResponse" message="tns:IService1_DeleteUser_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateUser">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/UpdateUser" message="tns:IService1_UpdateUser_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/UpdateUserResponse" message="tns:IService1_UpdateUser_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetPosts">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetPosts" message="tns:IService1_GetPosts_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/GetPostsResponse" message="tns:IService1_GetPosts_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetPostByID">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetPostByID" message="tns:IService1_GetPostByID_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/GetPostByIDResponse" message="tns:IService1_GetPostByID_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetPostsByEvent">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetPostsByEvent" message="tns:IService1_GetPostsByEvent_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/GetPostsByEventResponse" message="tns:IService1_GetPostsByEvent_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CreatePost">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/CreatePost" message="tns:IService1_CreatePost_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/CreatePostResponse" message="tns:IService1_CreatePost_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeletePost">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/DeletePost" message="tns:IService1_DeletePost_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/DeletePostResponse" message="tns:IService1_DeletePost_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdatePost">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/UpdatePost" message="tns:IService1_UpdatePost_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/UpdatePostResponse" message="tns:IService1_UpdatePost_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetEvents">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetEvents" message="tns:IService1_GetEvents_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/GetEventsResponse" message="tns:IService1_GetEvents_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetEventById">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetEventById" message="tns:IService1_GetEventById_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/GetEventByIdResponse" message="tns:IService1_GetEventById_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetEventsOfUser">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetEventsOfUser" message="tns:IService1_GetEventsOfUser_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/GetEventsOfUserResponse" message="tns:IService1_GetEventsOfUser_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CreateEvent">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/CreateEvent" message="tns:IService1_CreateEvent_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/CreateEventResponse" message="tns:IService1_CreateEvent_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteEvent">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/DeleteEvent" message="tns:IService1_DeleteEvent_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/DeleteEventResponse" message="tns:IService1_DeleteEvent_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateEvent">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/UpdateEvent" message="tns:IService1_UpdateEvent_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/UpdateEventResponse" message="tns:IService1_UpdateEvent_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="IsAttend">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/IsAttend" message="tns:IService1_IsAttend_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/IsAttendResponse" message="tns:IService1_IsAttend_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CreateOrUpdateAttend">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/CreateOrUpdateAttend" message="tns:IService1_CreateOrUpdateAttend_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/CreateOrUpdateAttendResponse" message="tns:IService1_CreateOrUpdateAttend_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CreateAttend">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/CreateAttend" message="tns:IService1_CreateAttend_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/CreateAttendResponse" message="tns:IService1_CreateAttend_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteAttend">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/DeleteAttend" message="tns:IService1_DeleteAttend_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/DeleteAttendResponse" message="tns:IService1_DeleteAttend_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetComplexUsersOfEvent">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetComplexUsersOfEvent" message="tns:IService1_GetComplexUsersOfEvent_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/GetComplexUsersOfEventResponse" message="tns:IService1_GetComplexUsersOfEvent_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="BasicHttpBinding_IService1" type="tns:IService1">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="InitializeDataBase">
+      <soap:operation soapAction="http://tempuri.org/IService1/InitializeDataBase" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUsers">
+      <soap:operation soapAction="http://tempuri.org/IService1/GetUsers" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EmailTaken">
+      <soap:operation soapAction="http://tempuri.org/IService1/EmailTaken" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUsersOfEvent">
+      <soap:operation soapAction="http://tempuri.org/IService1/GetUsersOfEvent" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUserById">
+      <soap:operation soapAction="http://tempuri.org/IService1/GetUserById" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUserByPassword">
+      <soap:operation soapAction="http://tempuri.org/IService1/GetUserByPassword" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetEventsOwner">
+      <soap:operation soapAction="http://tempuri.org/IService1/GetEventsOwner" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreateUser">
+      <soap:operation soapAction="http://tempuri.org/IService1/CreateUser" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteUser">
+      <soap:operation soapAction="http://tempuri.org/IService1/DeleteUser" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateUser">
+      <soap:operation soapAction="http://tempuri.org/IService1/UpdateUser" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPosts">
+      <soap:operation soapAction="http://tempuri.org/IService1/GetPosts" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPostByID">
+      <soap:operation soapAction="http://tempuri.org/IService1/GetPostByID" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPostsByEvent">
+      <soap:operation soapAction="http://tempuri.org/IService1/GetPostsByEvent" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreatePost">
+      <soap:operation soapAction="http://tempuri.org/IService1/CreatePost" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeletePost">
+      <soap:operation soapAction="http://tempuri.org/IService1/DeletePost" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdatePost">
+      <soap:operation soapAction="http://tempuri.org/IService1/UpdatePost" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetEvents">
+      <soap:operation soapAction="http://tempuri.org/IService1/GetEvents" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetEventById">
+      <soap:operation soapAction="http://tempuri.org/IService1/GetEventById" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetEventsOfUser">
+      <soap:operation soapAction="http://tempuri.org/IService1/GetEventsOfUser" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreateEvent">
+      <soap:operation soapAction="http://tempuri.org/IService1/CreateEvent" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteEvent">
+      <soap:operation soapAction="http://tempuri.org/IService1/DeleteEvent" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateEvent">
+      <soap:operation soapAction="http://tempuri.org/IService1/UpdateEvent" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="IsAttend">
+      <soap:operation soapAction="http://tempuri.org/IService1/IsAttend" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreateOrUpdateAttend">
+      <soap:operation soapAction="http://tempuri.org/IService1/CreateOrUpdateAttend" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreateAttend">
+      <soap:operation soapAction="http://tempuri.org/IService1/CreateAttend" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteAttend">
+      <soap:operation soapAction="http://tempuri.org/IService1/DeleteAttend" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetComplexUsersOfEvent">
+      <soap:operation soapAction="http://tempuri.org/IService1/GetComplexUsersOfEvent" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="Service1">
+    <wsdl:port name="BasicHttpBinding_IService1" binding="tns:BasicHttpBinding_IService1">
+      <soap:address location="http://localhost:2860/Service1.svc" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
